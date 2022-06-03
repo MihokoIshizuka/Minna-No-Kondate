@@ -1,0 +1,2 @@
+class MenuComment < ApplicationRecord
+end
