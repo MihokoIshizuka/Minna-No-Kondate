@@ -10,15 +10,17 @@
           <p>食事に関するお悩みを、みんなの献立で解決しませんか？</p>
         </div>
       </div>
-      <div class="row justify-content-center">
-        <%= link_to "新規登録", member_session_path, class: "btn btn-success btn-block mb-3 sign_up" %>
-      </div>
-      <div class="row justify-content-center">
-        <%= link_to "ログイン", new_member_registration_path, class: "btn btn-info btn-block mb-3 sign_in" %>
-      </div>
-      <div class="row justify-content-center">
-        <%= link_to "ログインせずに見る", new_member_registration_path, class: "btn btn-info btn-block mb-3 sign_in" %>
+      <div class="btn-wrapper col-5 mx-auto">
+        <div class="row justify-content-center">
+          <%= link_to "新規登録", member_session_path, class: "btn btn-success btn-block mb-3 sign_up" %>
+        </div>
+        <div class="row justify-content-center">
+          <%= link_to "ログイン", new_member_registration_path, class: "btn btn-info btn-block mb-3 sign_in" %>
+        </div>
+        <div class="row justify-content-center">
+          <%= link_to "ログインせずに見る", menus_path, class: "guest_login" %>
+        </div>
       </div>
     </div>
-  </div>  
+  </div>
 </div>
