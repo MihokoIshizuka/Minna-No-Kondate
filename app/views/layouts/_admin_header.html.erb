@@ -3,18 +3,15 @@
     <%= link_to root_path, class: "navbar-brand" do %>
       <%= image_tag 'logo.jpg' %>
     <% end %>
-    
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    
+
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
           <%= link_to "会員一覧",admin_members_path, class: "btn btn-outline-secondary mr-1 header_btn" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "献立一覧", admin_menus_path, class: "btn btn-outline-secondary mr-1 header_btn" %>
         </li>
         <li class="nav-item">
           <%= link_to "コミュニティ", admin_groups_path, class: "btn btn-outline-secondary mr-1 header_btn" %>

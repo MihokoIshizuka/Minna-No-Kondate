@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <h3>新規登録</h3>
+    <div class="col-8">
+      <%= form_with model: @menu, local: true do |f| %>
+        <div class="form-group">
+          <%= f.label :"日付", class: "col-3 form-label" %>
+          <%= f.date_select :date, class: "col-5" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :"内容", class: "col-3 form-label" %>
+          <%= f.text_area :body, class: "col-5" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :"画像", class: "col-3 form-label" %>
+          <%= f.file_field :menu_image, class: "col-5" %>
+        </div>
+        <div class="form-group">
+          <%= f.submit "新規登録", class: "btn btn-outline-success" %>
+        </div>
+      <% end %>
+      
+    </div>
+  </div>
+</div>

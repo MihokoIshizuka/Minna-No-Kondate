@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-4 mr-5">
+      <%= image_tag @menu.get_menu_image, size:"200x200", fallback:"no_image.jpg" %>
+      <%= @menu.date %>
+    </div>
+    <div class="col-6">
+      <%= @menu.body %>
+      
+    </div>
+  </div>
+</div>
