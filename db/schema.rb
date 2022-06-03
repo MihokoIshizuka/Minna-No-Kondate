@@ -25,26 +25,37 @@ ActiveRecord::Schema.define(version: 2022_06_03_045445) do
   end
 
   create_table "chats", force: :cascade do |t|
+    t.integer "member_id"
+    t.integer "group_id"
+    t.string "message"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "favorites", force: :cascade do |t|
+    t.integer "member_id"
+    t.integer "menu_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "group_members", force: :cascade do |t|
+    t.integer "group_id"
+    t.integer "member_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "group_tags", force: :cascade do |t|
+    t.integer "group_id"
+    t.integer "tag_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "groups", force: :cascade do |t|
+    t.string "name"
+    t.string "introduction"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -65,26 +76,36 @@ ActiveRecord::Schema.define(version: 2022_06_03_045445) do
   end
 
   create_table "menu_comments", force: :cascade do |t|
+    t.integer "member_id"
+    t.integer "menu_id"
+    t.string "comment"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "menu_tags", force: :cascade do |t|
+    t.integer "menu_id"
+    t.integer "tag_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "menus", force: :cascade do |t|
+    t.date "date"
+    t.text "body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "relationships", force: :cascade do |t|
+    t.integer "followed_id"
+    t.integer "follower_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "tags", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

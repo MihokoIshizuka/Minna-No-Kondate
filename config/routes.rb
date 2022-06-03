@@ -26,7 +26,7 @@ scope module: :public do
 
   resources :groups do
     get 'join' => "groups#join"
-    delete 'all_destroy' =>"groups#all_destroy"
+    delete 'all_destroy' => "groups#all_destroy"
     resources :chats, only: [:index, :create, :destroy]
   end
 
@@ -37,6 +37,13 @@ namespace :admin do
 
   resources :members, only: [:index, :show, :edit, :update]
   resources :tags, only: [:index, :create, :update, :edit, :destroy]
+  resources :groups, only: [:index, :show, :edit, :update] do
+    delete 'all_destroy' => "groups#all_destroy"
+    resources :chats, only: [:index, :create, :destroy]
+  end
+  resources :menus, only: [:index, :show, :edit, :update, :destroy] do
+    resources :menu_comments, only: [:create, :destroy]
+  end
 
 end
 
