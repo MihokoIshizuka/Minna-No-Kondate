@@ -119,6 +119,7 @@ ActiveRecord::Schema.define(version: 2022_06_03_120542) do
   end
 
   create_table "menus", force: :cascade do |t|
+    t.integer "member_id"
     t.date "date"
     t.text "body"
     t.datetime "created_at", precision: 6, null: false

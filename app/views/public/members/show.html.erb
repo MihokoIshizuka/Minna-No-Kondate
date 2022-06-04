@@ -1,1 +1,17 @@
 <h2>メンバー詳細</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <%= render 'info', member: @member %>
+    </div>
+    <div class="col-9">
+      <% @menus.each do |menu| %>
+        <div class="col-3 menus_item">
+          <%= image_tag menu.get_menu_image, size:"150x150", fallback:"no_image.jpg" %>
+          <%= menu.date %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+

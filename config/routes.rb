@@ -11,9 +11,9 @@ Rails.application.routes.draw do
 scope module: :public do
   root to: "homes#top"
   get '/about' => "homes#about"
-  get '/members/:id/quit' => "members#quit"
 
   resources :members, except: [:destroy] do
+    get '/quit' => "members#quit"
     resource :relationships, only: [:create, :destroy]
       get 'followings' => "relationships#followings", as: 'followings'
       get 'followers' => "relationships#followers", as: 'followers'

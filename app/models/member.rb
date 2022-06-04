@@ -5,6 +5,9 @@ class Member < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :menus
+
+
   def get_profile_image
     (profile_image.attached?) ? profile_image : 'no_image.jpg'
   end

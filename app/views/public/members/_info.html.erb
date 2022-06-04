@@ -1,0 +1,19 @@
+<table class="table">
+  <tr>
+    <%= image_tag member.get_profile_image, size:"100x100", fallback:"no_image.jpg" %>
+  </tr>
+  <tr>
+    <th>name</th>
+    <td><%= member.name %></td>
+  </tr>
+  <tr>
+    <th>intro</th>
+    <td><%= member.introduction %></td>
+  </tr>
+</table>
+
+<div class="row">
+  <%= link_to edit_member_path(member), class: "btn btn-outline-secondary btn-block" do %>
+    <i class="fas fa-user-cog"></i>
+  <% end %>
+</div>
