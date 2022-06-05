@@ -13,6 +13,11 @@
         <%= menu.member.name %><br>
         <%= menu.date %>
       <% end %>
+      <p>
+        <i class="fas fa-comment fa-2x" style="color:lightsteelblue;"></i>
+        <%= link_to "#{menu.menu_comments.count}", menu_path(menu), class: "btn" %>
+      </p>
+
     </div>
   <% end %>
 </div>

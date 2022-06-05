@@ -2,6 +2,8 @@ class Menu < ApplicationRecord
   has_one_attached :menu_image
 
   belongs_to :member
+  has_many :menu_comments, dependent: :destroy
+
 
 
   validates :date, presence: true

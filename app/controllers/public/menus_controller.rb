@@ -21,6 +21,7 @@ class Public::MenusController < ApplicationController
 
   def show
     @menu = Menu.find(params[:id])
+    @menu_comment = MenuComment.new
   end
 
   def edit

@@ -5,7 +5,8 @@ class Member < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :menus
+  has_many :menus, dependent: :destroy
+  has_many :menu_comments, dependent: :destroy
 
   validates :name, presence: true, uniqueness: true, length:{minimum:2, maximum:15}
   validates :introduction, presence: true, length:{maximum:50}
@@ -18,6 +19,6 @@ class Member < ApplicationRecord
 
 
   def get_profile_image(width, height)
-    (profile_image.attached?) ? profile_image.variant(resize_to_limit:[width,height]).processed : 'no_image.jpg'
+    (profile_image.attached?) ? profile_image.variant(resize_to_limit:[width,height]).processed : 'cat.png'
   end
 end

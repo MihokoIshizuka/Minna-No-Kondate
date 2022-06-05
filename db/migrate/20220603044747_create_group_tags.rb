@@ -2,8 +2,8 @@ class CreateGroupTags < ActiveRecord::Migration[6.1]
   def change
     create_table :group_tags do |t|
 
-      t.integer :group_id
-      t.integer :tag_id
+      t.references :group, foreign_key: true
+      t.references :tag, foreign_key: true
 
       t.timestamps
     end

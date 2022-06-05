@@ -58,6 +58,8 @@ ActiveRecord::Schema.define(version: 2022_06_03_120542) do
     t.string "message"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["group_id"], name: "index_chats_on_group_id"
+    t.index ["member_id"], name: "index_chats_on_member_id"
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -65,13 +67,17 @@ ActiveRecord::Schema.define(version: 2022_06_03_120542) do
     t.integer "menu_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["member_id"], name: "index_favorites_on_member_id"
+    t.index ["menu_id"], name: "index_favorites_on_menu_id"
   end
 
   create_table "group_members", force: :cascade do |t|
-    t.integer "group_id"
     t.integer "member_id"
+    t.integer "group_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["group_id"], name: "index_group_members_on_group_id"
+    t.index ["member_id"], name: "index_group_members_on_member_id"
   end
 
   create_table "group_tags", force: :cascade do |t|
@@ -79,6 +85,8 @@ ActiveRecord::Schema.define(version: 2022_06_03_120542) do
     t.integer "tag_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["group_id"], name: "index_group_tags_on_group_id"
+    t.index ["tag_id"], name: "index_group_tags_on_tag_id"
   end
 
   create_table "groups", force: :cascade do |t|
@@ -109,6 +117,8 @@ ActiveRecord::Schema.define(version: 2022_06_03_120542) do
     t.string "comment"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["member_id"], name: "index_menu_comments_on_member_id"
+    t.index ["menu_id"], name: "index_menu_comments_on_menu_id"
   end
 
   create_table "menu_tags", force: :cascade do |t|
@@ -116,6 +126,8 @@ ActiveRecord::Schema.define(version: 2022_06_03_120542) do
     t.integer "tag_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["menu_id"], name: "index_menu_tags_on_menu_id"
+    t.index ["tag_id"], name: "index_menu_tags_on_tag_id"
   end
 
   create_table "menus", force: :cascade do |t|
@@ -141,4 +153,16 @@ ActiveRecord::Schema.define(version: 2022_06_03_120542) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "chats", "groups"
+  add_foreign_key "chats", "members"
+  add_foreign_key "favorites", "members"
+  add_foreign_key "favorites", "menus"
+  add_foreign_key "group_members", "groups"
+  add_foreign_key "group_members", "members"
+  add_foreign_key "group_tags", "groups"
+  add_foreign_key "group_tags", "tags"
+  add_foreign_key "menu_comments", "members"
+  add_foreign_key "menu_comments", "menus"
+  add_foreign_key "menu_tags", "menus"
+  add_foreign_key "menu_tags", "tags"
 end
