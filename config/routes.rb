@@ -14,6 +14,7 @@ scope module: :public do
 
   resources :members, except: [:destroy] do
     get '/quit' => "members#quit"
+    patch '/out' => "members#out"
     resource :relationships, only: [:create, :destroy]
       get 'followings' => "relationships#followings", as: 'followings'
       get 'followers' => "relationships#followers", as: 'followers'

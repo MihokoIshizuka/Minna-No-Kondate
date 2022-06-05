@@ -1,1 +1,34 @@
-<h2>メンバー一覧</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <%= render 'public/members/info', member: current_member %>
+    </div>
+    <div class="col-8 offset-1">
+      <table class="table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>name</th>
+            <th>introduction</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @members.each do |member| %>
+          <tr>
+            <td>
+              <%= link_to member_path(member) do %>
+                <%= image_tag member.get_profile_image(100, 100) %>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to member_path(member) do %>
+                <%= member.name %>
+              <% end %>
+            </td>
+            <td><%= member.introduction %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>

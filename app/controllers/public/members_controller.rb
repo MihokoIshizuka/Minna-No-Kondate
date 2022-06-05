@@ -2,7 +2,7 @@ class Public::MembersController < ApplicationController
   before_action :authenticate_member!, except: [:index,]
 
   def index
-    @members = Member.all
+    @members = Member.where(is_deleted: false)
   end
 
   def show
@@ -24,7 +24,14 @@ class Public::MembersController < ApplicationController
   end
 
   def quit
+    @member = current_member
+  end
 
+  def out
+    @member = current_member
+    @member.update(is_deleted: true)
+    reset_session
+    redirect_to root_path, notice: "退会処理が実行されました。"
   end
 
   private

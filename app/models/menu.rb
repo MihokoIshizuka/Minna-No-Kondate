@@ -10,7 +10,6 @@ class Menu < ApplicationRecord
 
 
   def get_menu_image(width, height)
-    (menu_image.attached?) ? menu_image : 'no_image.jpg'
     menu_image.variant(resize_to_limit:[width,height]).processed
   end
 end

@@ -2,6 +2,7 @@
 
 class Public::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
+  before_action :reject_deleted_member, only: [:create]
 
 
   def after_sign_in_path_for(resource)
@@ -10,6 +11,18 @@ class Public::SessionsController < Devise::SessionsController
 
   def after_sign_out_path_for(resource)
     root_path
+  end
+
+
+  protected
+
+  def reject_deleted_member
+    @member = Member.find_by(email: params[:member][:email])
+    if @member
+      if @member.valid_password?(params[:member][:password]) && (@member.is_deleted)
+        redirect_to new_member_registration_path, notice: "退会済みです。再度ご登録をしてご利用ください。"
+      end
+    end
   end
 
   # GET /resource/sign_in

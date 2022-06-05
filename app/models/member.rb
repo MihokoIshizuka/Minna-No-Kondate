@@ -7,11 +7,17 @@ class Member < ApplicationRecord
 
   has_many :menus
 
+  validates :name, presence: true, uniqueness: true, length:{minimum:2, maximum:15}
+  validates :introduction, presence: true, length:{maximum:50}
+  validates :is_deleted, inclusion: { in: [true, false] }
 
 
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
 
 
-  def get_profile_image
-    (profile_image.attached?) ? profile_image : 'no_image.jpg'
+  def get_profile_image(width, height)
+    (profile_image.attached?) ? profile_image.variant(resize_to_limit:[width,height]).processed : 'no_image.jpg'
   end
 end

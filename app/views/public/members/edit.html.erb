@@ -4,7 +4,7 @@
   </div>
   <div class="row">
     <div class="col-8 mx-auto">
-      <%= form_with model: @member, local: true do |f| %>
+      <%= form_with model: @member, url: member_path(@member), method: :patch, local: true do |f| %>
         <div class="form-group">
           <%= f.label :名前 %>
           <%= f.text_field :name %>
