@@ -9,7 +9,7 @@ class Public::MenusController < ApplicationController
     @menu = Menu.new(menu_params)
     @menu.member_id = current_member.id
     if @menu.save
-      redirect_to 'show', notice: "投稿しました"
+      redirect_to member_path(current_member), notice: "献立を投稿しました"
     else
       render 'new'
     end
@@ -37,7 +37,12 @@ class Public::MenusController < ApplicationController
   end
 
   def destroy
-    
+    @menu = Menu.find(params[:id])
+    if @menu.destroy
+      redirect_to member_path(current_member)
+    else
+      render 'edit'
+    end
   end
 
   private
