@@ -1,12 +1,14 @@
 class Public::MenusController < ApplicationController
+  before_action :authenticate_member!, except: [:index, :show]
 
   def new
     @menu = Menu.new
   end
 
   def create
-    @menu = Menu.new
-    if @menu.save(menu_params)
+    @menu = Menu.new(menu_params)
+    @menu.member_id = current_member.id
+    if @menu.save
       redirect_to 'show', notice: "投稿しました"
     else
       render 'new'
@@ -26,9 +28,16 @@ class Public::MenusController < ApplicationController
   end
 
   def update
+    @menu = Menu.find(params[:id])
+    if @menu.update(menu_params)
+      redirect_to menu_path(@menu), notice: "献立情報が更新されました"
+    else
+      render 'edit'
+    end
   end
 
   def destroy
+    
   end
 
   private

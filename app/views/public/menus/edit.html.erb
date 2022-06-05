@@ -1,1 +1,16 @@
-<h2>メニュー編集</h2>
+<div class="container">
+  <div class="row justify-content-center">
+    <h2>献立編集</h2>
+  </div>
+  <div class="row">
+    <div class="col-8 mx-auto">
+      <%= form_with model: @menu, url: menu_path(@menu), method: :PATCH, local: true do |f| %>
+        <%= render 'form', f: f %>
+        <div class="form-group">
+          <%= f.submit "変更する", class: "btn btn-outline-success" %>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
