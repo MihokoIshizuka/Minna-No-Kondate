@@ -1,5 +1,6 @@
 class Public::MenusController < ApplicationController
   before_action :authenticate_member!, except: [:index, :show]
+  before_action :correct_member, only: [:edit, :update, :destroy]
 
   def new
     @menu = Menu.new
@@ -50,6 +51,12 @@ class Public::MenusController < ApplicationController
 
   def menu_params
     params.require(:menu).permit(:date, :body, :menu_image)
+  end
+
+  def correct_member
+    @menu = Menu.find(params[:id])
+    @member = @menu.member
+    redirect_to menu_path(@menu) unless @member == current_member
   end
 
 end
