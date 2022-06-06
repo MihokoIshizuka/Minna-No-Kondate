@@ -7,6 +7,7 @@ class Member < ApplicationRecord
 
   has_many :menus, dependent: :destroy
   has_many :menu_comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   validates :name, presence: true, uniqueness: true, length:{minimum:2, maximum:15}
   validates :introduction, presence: true, length:{maximum:50}

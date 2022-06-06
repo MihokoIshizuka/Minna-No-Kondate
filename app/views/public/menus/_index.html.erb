@@ -14,7 +14,19 @@
         <%= menu.date %>
       <% end %>
       <p>
-        <i class="fas fa-comment fa-2x" style="color:lightsteelblue;"></i>
+        <% if menu.favorited_by?(current_member) %>
+          <%= link_to menu_favorites_path(menu), method: :delete do %>
+            <i class="fas fa-heart fa-2x" style="color:palevioletred;"></i>
+            <%= menu.favorites.count %>
+          <% end %>
+        <% else %>
+          <%= link_to menu_favorites_path(menu), method: :post do %>
+            <i class="fas fa-heart fa-2x" style="color:whitesmoke;"></i>
+            <%= menu.favorites.count %>
+          <% end %>
+        <% end %>
+
+        <i class="fas fa-comment fa-2x ml-3" style="color:lightsteelblue;"></i>
         <%= link_to "#{menu.menu_comments.count}", menu_path(menu), class: "btn" %>
       </p>
 
