@@ -1,5 +1,6 @@
 class Public::MembersController < ApplicationController
   before_action :authenticate_member!, except: [:index]
+  # ゲストユーザは退会動作ができないようにする
   before_action :ensure_normal_member, only: [:out]
 
 

@@ -1,0 +1,11 @@
+<% if menu.favorited_by?(current_member) %>
+  <%= link_to menu_favorites_path(menu), method: :delete, remote: true do %>
+    <i class="fas fa-heart fa-2x" style="color:palevioletred;"></i>
+    <%= menu.favorites.count %>
+  <% end %>
+<% else %>
+  <%= link_to menu_favorites_path(menu), method: :post, remote: true do %>
+    <i class="fas fa-heart fa-2x" style="color:whitesmoke;"></i>
+    <%= menu.favorites.count %>
+  <% end %>
+<% end %>

@@ -1,4 +1,5 @@
 class Public::RelationshipsController < ApplicationController
+  # ゲストユーザーはフォロー動作ができないようにする
   before_action :ensure_normal_member, only: [:create, :destroy]
 
   def create

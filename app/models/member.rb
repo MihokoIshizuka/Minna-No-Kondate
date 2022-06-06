@@ -17,17 +17,17 @@ class Member < ApplicationRecord
   validates :introduction, presence: true, length:{maximum:20}
   validates :is_deleted, inclusion: { in: [true, false] }
 
-
+# 退会したユーザーが同じアカウントで登録できないようにする
   def active_for_authentication?
     super && (is_deleted == false)
   end
-
+# ゲストユーザーの設定
   def self.guest
     find_or_create_by!(email: 'guest@example.com', name: 'ゲスト', introduction: 'ゲストユーザー') do |member|
       member.password = SecureRandom.urlsafe_base64
     end
   end
-
+# フォロー・フォロワーの設定
   def follow(member_id)
     relationships.create(followed_id: member_id)
   end

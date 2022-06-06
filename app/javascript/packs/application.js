@@ -15,6 +15,9 @@ import "../stylesheets/application"
 import '../stylesheets/mystyle.css'
 import '@fortawesome/fontawesome-free/js/all'
 
+//= require jquery
+//= require rails-ujs
+
 
 Rails.start()
 Turbolinks.start()
