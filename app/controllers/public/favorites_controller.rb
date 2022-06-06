@@ -2,13 +2,15 @@ class Public::FavoritesController < ApplicationController
   before_action :authenticate_member!
 
   def create
-    favorite = Favorite.new(member_id: current_member.id, menu_id: params[:menu_id])
+    @menu = Menu.find(params[:menu_id])
+    favorite = current_member.favorites.new(menu_id: @menu.id)
     favorite.save
 
   end
 
   def destroy
-    favorite = Favorite.find_by(member_id: current_member.id, menu_id: params[:menu_id])
+    @menu = Menu.find(params[:menu_id])
+    favorite = current_member.favorites.find_by(menu_id: @menu.id)
     favorite.destroy
 
   end
