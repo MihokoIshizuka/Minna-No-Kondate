@@ -17,8 +17,14 @@ class Member < ApplicationRecord
     super && (is_deleted == false)
   end
 
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com', name: 'ゲスト', introduction: 'ゲストユーザー') do |member|
+      member.password = SecureRandom.urlsafe_base64
+    end
+  end
+
 
   def get_profile_image(width, height)
-    (profile_image.attached?) ? profile_image.variant(resize_to_limit:[width,height]).processed : 'cat.png'
+    (profile_image.attached?) ? profile_image.variant(resize_to_limit:[width,height]).processed : 'no_image.jpg'
   end
 end

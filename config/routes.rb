@@ -8,45 +8,50 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
 
-scope module: :public do
-  root to: "homes#top"
-  get '/about' => "homes#about"
-
-  resources :members, except: [:destroy] do
-    get '/quit' => "members#quit"
-    patch '/out' => "members#out"
-    resource :relationships, only: [:create, :destroy]
-      get 'followings' => "relationships#followings", as: 'followings'
-      get 'followers' => "relationships#followers", as: 'followers'
+  devise_scope :member do
+    post '/guest_sign_in' => 'public/sessions#guest_sign_in'
   end
 
-  resources :menus do
-    resources :menu_comments, only: [:create, :destroy]
-    resource :favorites, only: [:create, :destroy]
+  scope module: :public do
+    root to: "homes#top"
+    get '/about' => "homes#about"
+
+
+    resources :members, except: [:destroy] do
+      get '/quit' => "members#quit"
+      patch '/out' => "members#out"
+      resource :relationships, only: [:create, :destroy]
+        get 'followings' => "relationships#followings", as: 'followings'
+        get 'followers' => "relationships#followers", as: 'followers'
+    end
+
+    resources :menus do
+      resources :menu_comments, only: [:create, :destroy]
+      resource :favorites, only: [:create, :destroy]
+    end
+
+    resources :groups do
+      get 'join' => "groups#join"
+      delete 'all_destroy' => "groups#all_destroy"
+      resources :chats, only: [:index, :create, :destroy]
+    end
+
+
   end
 
-  resources :groups do
-    get 'join' => "groups#join"
-    delete 'all_destroy' => "groups#all_destroy"
-    resources :chats, only: [:index, :create, :destroy]
+  namespace :admin do
+
+    resources :members, only: [:index, :show, :edit, :update]
+    resources :tags, only: [:index, :create, :update, :edit, :destroy]
+    resources :groups, only: [:index, :show, :edit, :update] do
+      delete 'all_destroy' => "groups#all_destroy"
+      resources :chats, only: [:index, :create, :destroy]
+    end
+    resources :menus, only: [:index, :show, :edit, :update, :destroy] do
+      resources :menu_comments, only: [:create, :destroy]
+    end
+
   end
-
-
-end
-
-namespace :admin do
-
-  resources :members, only: [:index, :show, :edit, :update]
-  resources :tags, only: [:index, :create, :update, :edit, :destroy]
-  resources :groups, only: [:index, :show, :edit, :update] do
-    delete 'all_destroy' => "groups#all_destroy"
-    resources :chats, only: [:index, :create, :destroy]
-  end
-  resources :menus, only: [:index, :show, :edit, :update, :destroy] do
-    resources :menu_comments, only: [:create, :destroy]
-  end
-
-end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

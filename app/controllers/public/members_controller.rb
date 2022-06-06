@@ -1,5 +1,7 @@
 class Public::MembersController < ApplicationController
-  before_action :authenticate_member!, except: [:index,]
+  before_action :authenticate_member!, except: [:index]
+  before_action :ensure_normal_member, only: [:out]
+
 
   def index
     @members = Member.where(is_deleted: false)
@@ -39,5 +41,10 @@ class Public::MembersController < ApplicationController
     params.require(:member).permit(:name, :introduction, :profile_image)
   end
 
+  def ensure_normal_member
+    if current_member.email == 'guest@example.com'
+      redirect_to menus_path, alert: "ゲストユーザーの退会はできません"
+    end
+  end
 
 end
