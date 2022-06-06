@@ -9,7 +9,7 @@
   <% menus.each do |menu| %>
     <div class="col-3 mx-5 menus_item">
       <%= link_to menu_path(menu) do %>
-        <%= image_tag menu.get_menu_image(200, 200) %><br>
+        <%= image_tag menu.menu_image, size:"200x150" %><br>
         <%= menu.member.name %><br>
         <%= menu.date %>
       <% end %>

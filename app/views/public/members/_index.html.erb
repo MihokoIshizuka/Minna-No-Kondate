@@ -1,0 +1,36 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th></th>
+      <th>name</th>
+      <th>introduction</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% members.each do |member| %>
+    <tr>
+      <td>
+        <%= link_to member_path(member) do %>
+          <%= image_tag member.get_profile_image, size:"65x65" %>
+        <% end %>
+      </td>
+      <td>
+        <%= link_to member_path(member) do %>
+          <%= member.name %>
+        <% end %>
+      </td>
+      <td><%= member.introduction %></td>
+      <td>
+        <% unless member == current_member %>
+          <% if current_member.following?(member) %>
+            <%= link_to "フォロー外す", member_relationships_path(member), method: :delete, class: "btn btn-danger" %>
+          <% else %>
+            <%= link_to "フォローする", member_relationships_path(member), method: :post, class: "btn btn-success" %>
+          <% end %>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

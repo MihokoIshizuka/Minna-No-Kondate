@@ -12,9 +12,6 @@ class Menu < ApplicationRecord
   validates :menu_image, presence: true
 
 
-  def get_menu_image(width, height)
-    menu_image.variant(resize_to_limit:[width,height]).processed
-  end
   
   def favorited_by?(member)
     favorites.exists?(member_id: member.id)

@@ -1,6 +1,6 @@
 <div class="row justify-content-center">
   <div class="mx-auto mb-3">
-    <%= image_tag member.get_profile_image(150, 150) %>
+    <%= image_tag member.get_profile_image, size:"150x150" %>
   </div>
 </div>
 <table class="table">
@@ -11,6 +11,22 @@
   <tr>
     <th>intro</th>
     <td><%= member.introduction %></td>
+  </tr>
+  <tr>
+    <th>フォロー</th>
+    <td>
+      <%= link_to member_followings_path(member) do %>
+        <%= member.followings.count %>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <th>フォロワー</th>
+    <td>
+      <%= link_to member_followers_path(member) do %>
+        <%= member.followers.count %>
+      <% end %>
+    </td>
   </tr>
 </table>
 

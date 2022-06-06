@@ -8,9 +8,13 @@ class Member < ApplicationRecord
   has_many :menus, dependent: :destroy
   has_many :menu_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+  has_many :followings, through: :relationships, source: :followed
+  has_many :followers, through: :reverse_of_relationships, source: :follower
 
-  validates :name, presence: true, uniqueness: true, length:{minimum:2, maximum:15}
-  validates :introduction, presence: true, length:{maximum:50}
+  validates :name, presence: true, uniqueness: true, length:{minimum:2, maximum:10}
+  validates :introduction, presence: true, length:{maximum:20}
   validates :is_deleted, inclusion: { in: [true, false] }
 
 
@@ -24,8 +28,20 @@ class Member < ApplicationRecord
     end
   end
 
+  def follow(member_id)
+    relationships.create(followed_id: member_id)
+  end
 
-  def get_profile_image(width, height)
-    (profile_image.attached?) ? profile_image.variant(resize_to_limit:[width,height]).processed : 'no_image.jpg'
+  def unfollow(member_id)
+    relationships.find_by(followed_id: member_id).destroy
+  end
+
+  def following?(member)
+    followings.include?(member)
+  end
+
+
+  def get_profile_image
+    (profile_image.attached?) ? profile_image : 'no_image.jpg'
   end
 end
