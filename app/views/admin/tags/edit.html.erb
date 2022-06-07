@@ -1,1 +1,18 @@
-<h2>タグ編集</h2>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-7">
+      <%= form_with model: @tag, url: admin_tag_path(@tag), method: :patch do |f| %>
+        <table class="table text-center tag-form">
+          <tr>
+            <th>タグ名</th>
+            <td><%= f.text_field :name %></td>
+            <td><%= f.submit "タグ変更", class: "btn btn-outline-info" %></td>
+            <td>
+              <%= link_to "タグ削除", admin_tag_path(@tag), method: :delete, class: "btn btn-outline-danger" %>
+            </td>
+          </tr>
+        </table>
+      <% end %>
+    </div>
+  </div>
+</div>
