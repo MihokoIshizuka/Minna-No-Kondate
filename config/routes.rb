@@ -42,6 +42,7 @@ Rails.application.routes.draw do
   namespace :admin do
 
     resources :members, only: [:index, :show, :edit, :update]
+      patch '/out' => "members#out"
     resources :tags, only: [:index, :create, :update, :edit, :destroy]
     resources :groups, only: [:index, :show, :edit, :update] do
       delete 'all_destroy' => "groups#all_destroy"

@@ -1,1 +1,33 @@
-<h2>メニュー詳細</h2>
+<div class="container">
+  <div class="row justify-content-around">
+    <div class="col-5">
+      <%= image_tag @menu.menu_image, size:"400x350" %>
+    </div>
+    <div class="col-6">
+      <div class="row justify-content-center">
+        <%= @menu.date %>
+      </div>
+      <div class="row">
+        <div class="col">
+          <!--内容を改行表示できる-->
+          <%=safe_join(@menu.body.split("\n"),tag(:br))%>
+        </div>
+      </div>
+
+      <div class="row justify-content-end">
+        <div class="col-3">
+          <%= link_to "編集", edit_admin_menu_path(@menu), class: "btn btn-success" %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--コメント非同期部分-->
+  <div class="row justify-content-center">
+    <div id="menu_comments_form" class="col-4">
+      <%= render 'public/menu_comments/menu_comments_form', menu: @menu, menu_comment: @menu_comment %>
+    </div>
+    <div id="menu_comments_area", class="col-6">
+      <%= render 'public/menu_comments/menu_comments', menu: @menu %>
+    </div>
+  </div>
+</div>

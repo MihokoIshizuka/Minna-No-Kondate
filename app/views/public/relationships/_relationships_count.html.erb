@@ -1,0 +1,13 @@
+<th>Follow</th>
+<td>
+  <%= link_to member_followings_path(member), remote: true do %>
+    <%= member.followings.count %>
+  <% end %>
+</td>
+
+<th>Follower</th>
+<td>
+  <%= link_to member_followers_path(member), remote: true do %>
+    <%= member.followers.count %>
+  <% end %>
+</td>
