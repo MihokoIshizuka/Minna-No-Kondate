@@ -2,20 +2,17 @@ class Public::MenuCommentsController < ApplicationController
 
   def create
     @menu = Menu.find(params[:menu_id])
-    @menu_comment = MenuComment.new(menu_comment_params)
-    @menu_comment.member_id = current_member.id
+    @menu_comment = current_member.menu_comments.new(menu_comment_params)
     @menu_comment.menu_id = @menu.id
-    if @menu_comment.save
-      redirect_to menu_path(@menu)
-    else
-      redirect_to request.referer
+    unless @menu_comment.save
+      render 'public/menus/show'
     end
   end
 
   def destroy
     @menu = Menu.find(params[:menu_id])
-    MenuComment.find(params[:id]).destroy
-    redirect_to request.referer
+    @menu_comment = MenuComment.find(params[:id])
+    @menu_comment.destroy
   end
 
   private
