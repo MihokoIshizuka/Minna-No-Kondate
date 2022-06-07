@@ -21,9 +21,15 @@
           <div class="form-group">
             <%= f.submit "変更する", class: "btn btn-outline-primary" %>
           </div>
-          <div class="form-group">
-            <%= link_to "退会する", admin_out_path(@member), method: :patch, "data-confirm" => "会員を強制退会させますか？", class: "btn btn-outline-danger" %>
-          </div>
+          <% if @member.is_deleted == false %>
+            <div class="form-group">
+              <%= link_to "退会する", admin_out_path(@member), method: :patch, "data-confirm" => "会員を強制退会させますか？", class: "btn btn-outline-danger" %>
+            </div>
+          <% else %>
+            <div class="form-group">
+              <%= link_to "会員に戻す", class: "btn btn-outline-danger" %>
+            </div>
+          <% end %>
         </div>
       <% end %>
     </div>

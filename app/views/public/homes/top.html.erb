@@ -1,26 +1,31 @@
 <div class="container">
-  <div class="row">
+  <div class="row justify-content-center">
     <div class="col-1"></div>
-    <div class="col-10 mx-auto">
-      <div class="main-visual">
-        <div class="main-visual-content">
+    <div class="col-10 mx-auto main-visual">
+      <div class="row justify-content-center mx-auto">
+        <div class="col-7 text-center main-visual-content">
           <p>今日の献立何にしよう・・・</p>
           <p>血圧やコレステロールに良い食事って何だろう？</p>
           <p>介護食や離乳食、みんなはどういうものを作っている？</p>
           <p>食事に関するお悩みを、みんなの献立で解決しませんか？</p>
         </div>
       </div>
-      <div class="btn-wrapper col-5 mx-auto">
-        <div class="row justify-content-center">
+      <div class="row justify-content-center">
+        <div class="col-5 mx-auto">
           <%= link_to "新規登録", new_member_registration_path, class: "btn btn-success btn-block mb-3 sign_up" %>
         </div>
-        <div class="row justify-content-center">
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-5 mx-auto">
           <%= link_to "ログイン", new_member_session_path, class: "btn btn-info btn-block mb-3 sign_in" %>
         </div>
-        <div class="row justify-content-center">
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-5 text-center">
           <%= link_to "ゲストログイン（閲覧用）", guest_sign_in_path, method: :post, class: "guest_login" %>
         </div>
       </div>
     </div>
+    <div class="col-1"></div>
   </div>
 </div>

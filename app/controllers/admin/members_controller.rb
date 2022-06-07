@@ -26,7 +26,8 @@ class Admin::MembersController < ApplicationController
     reset_session
     redirect_to admin_members_path, notice: "退会処理が実行されました"
   end
-
+  
+  
   private
 
   def member_params

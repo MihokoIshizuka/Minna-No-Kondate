@@ -1,5 +1,13 @@
-/*トップ画面
+/*トップ画面*/
 .main-visual {
-    background-image: url('images/main-visual.png');
+    background-image: url('../images/main-visual.png');
+    background-size: cover;
+    background-position: center;
+    width: 900px;
+    height: 600px;
 }
-*/
+
+.main-visual-content {
+  background-color: rgba(255, 255, 255, 0.4);
+  margin: 50px auto;
+}
