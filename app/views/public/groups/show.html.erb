@@ -9,7 +9,7 @@
             <th>紹介</th>
             <th>タグ</th>
             <th>メンバー</th>
-            <th></th>
+            <th colspan="2"></th>
           </tr>
         </thead>
         <tbody>
@@ -29,9 +29,22 @@
                 <%= member.name %>
               <% end %>
             </td>
+            <td>
+              <% if @group.members.include?(current_member) %>
+                <%= link_to "グループを退会", group_path(@group), method: :delete, class: "btn btn-danger" %>
+              <% else %>
+                <%= link_to "グループに参加", group_join_path(@group), class: "btn btn-info" %>
+              <% end %>
+            </td>
           </tr>
         </tbody>
       </table>
+      <div class="row justify-content-around">
+        <% if @group.members.include?(current_member) %>
+          <%= link_to "グループチャット", group_chats_path(@group), class: "btn btn-outline-primary" %>
+          <%= link_to "編集", edit_group_path(@group), class: "btn btn-outline-success" %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

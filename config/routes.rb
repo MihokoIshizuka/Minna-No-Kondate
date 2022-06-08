@@ -45,7 +45,7 @@ Rails.application.routes.draw do
       patch '/out' => "members#out"
     resources :tags, only: [:index, :create, :update, :edit, :destroy]
     resources :groups, only: [:index, :show, :edit, :update] do
-      delete 'all_destroy' => "groups#all_destroy"
+      delete '/all_destroy' => "groups#all_destroy"
       resources :chats, only: [:index, :create, :destroy]
     end
     resources :menus, only: [:index, :show, :edit, :update, :destroy] do
