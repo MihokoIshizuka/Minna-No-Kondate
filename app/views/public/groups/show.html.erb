@@ -1,1 +1,37 @@
-<h2>グループ詳細</h2>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-10">
+      <table class="table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>グループ名</th>
+            <th>紹介</th>
+            <th>タグ</th>
+            <th>メンバー</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <%= image_tag @group.get_image, size:"120x120" %>
+            </td>
+            <td><%= @group.name %></td>
+            <td><%= @group.introduction %></td>
+            <td>
+              <% @group.tags.each do |tag| %>
+                <span class="badge badge-info"><%= tag.name %></span>
+              <% end %>
+            </td>
+            <td>
+              <% @group.members.each do |member| %>
+                <%= member.name %>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

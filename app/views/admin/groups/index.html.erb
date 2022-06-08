@@ -1,1 +1,44 @@
-<h2>グループ一覧</h2>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-8">
+      <table class="table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>グループ名</th>
+            <th>紹介</th>
+            <th>タグ</th>
+            <th>メンバー数</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @groups.each do |group| %>
+            <tr>
+              <td>
+                <%= link_to admin_group_path(group) do %>
+                  <%= image_tag group.get_image, size:"65x65" %>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to admin_group_path(group) do %>
+                  <%= group.name %>
+                <% end %>
+              </td>
+              <td><%= group.introduction %></td>
+              <td>
+                <% group.tags.each do |tag| %>
+                  <span class="badge badge-info"><%= tag.name %></span>
+                <% end %>
+              </td>
+              <td><%= group.members.count %></td>
+              <td>
+                <%= link_to "編集", edit_admin_group_path(group), class: "btn btn-sm btn-outline-success" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

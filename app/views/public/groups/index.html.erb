@@ -7,8 +7,8 @@
     </div>
   </div>
   <div class="row justify-content-center">
-    <div class="col-8">
-      <table class="table">
+    <div class="col-10">
+      <table class="table mx-auto">
         <thead>
           <tr>
             <th></th>
@@ -21,28 +21,30 @@
         </thead>
         <tbody>
           <% @groups.each do |group| %>
-          <td>
-            <%= link_to group_path(group) do %>
-              <%= image_tag group.get_image, size:"65x65" %>
-            <% end %>
-          </td>
-          <td>
-            <%= link_to group_path(group) do %>
-              <%= group.name %>
-            <% end %>
-          </td>
-          <td><%= group.introduction %></td>
-          <td>
-            <% group.tags.each do |tag| %>
-              <span class="badge badge-info"><%= tag.name %></span>
-            <% end %>
-          </td>
-          <td><%= group.members.count %></td>
-          <% if group.owner_id == current_member %>
-            <td>
-              <%= link_to "編集", edit_group_path(group), class: "btn btn-sm btn-outline-success" %>
-            </td>
-          <% end %>
+            <tr>
+              <td>
+                <%= link_to group_path(group) do %>
+                  <%= image_tag group.get_image, size:"65x65" %>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to group_path(group) do %>
+                  <%= group.name %>
+                <% end %>
+              </td>
+              <td><%= group.introduction %></td>
+              <td>
+                <% group.tags.each do |tag| %>
+                  <span class="badge badge-info"><%= tag.name %></span>
+                <% end %>
+              </td>
+              <td><%= group.members.count %></td>
+              <% if group.owner_id == current_member.id %>
+                <td>
+                  <%= link_to "編集", edit_group_path(group), class: "btn btn-sm btn-outline-success" %>
+                </td>
+              <% end %>
+            </tr>
           <% end %>
         </tbody>
       </table>
