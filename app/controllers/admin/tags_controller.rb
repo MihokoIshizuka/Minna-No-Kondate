@@ -11,6 +11,7 @@ class Admin::TagsController < ApplicationController
     if @tag.save
       redirect_to admin_tags_path
     else
+      @tags = Tag.all
       render 'index'
     end
   end

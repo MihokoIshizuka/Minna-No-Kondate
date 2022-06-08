@@ -92,6 +92,8 @@ ActiveRecord::Schema.define(version: 2022_06_03_120542) do
   create_table "groups", force: :cascade do |t|
     t.string "name"
     t.string "introduction"
+    t.string "image_id"
+    t.integer "owner_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

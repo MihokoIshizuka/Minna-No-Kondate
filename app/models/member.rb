@@ -12,12 +12,14 @@ class Member < ApplicationRecord
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
+  has_many :group_members
+  has_many :groups, through: :group_members, dependent: :destroy
 
   validates :name, presence: true, uniqueness: true, length:{minimum:2, maximum:10}
   validates :introduction, presence: true, length:{maximum:20}
   validates :is_deleted, inclusion: { in: [true, false] }
 
-# 退会したユーザーが同じアカウントで登録できないようにする
+# 退会したユーザーは同じアカウントでログインできない
   def active_for_authentication?
     super && (is_deleted == false)
   end
