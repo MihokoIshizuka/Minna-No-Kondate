@@ -17,7 +17,8 @@ class Public::ChatsController < ApplicationController
   end
 
   def destroy
-    @chat = Chat.find(params[:group_id])
+    @group = Group.find(params[:group_id])
+    @chat = Chat.find(params[:id])
     @chat.destroy
     redirect_to request.referer, notice: "メッセージを削除しました"
   end
