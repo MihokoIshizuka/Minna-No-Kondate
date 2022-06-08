@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 2022_06_03_120542) do
     t.integer "member_id"
     t.integer "group_id"
     t.string "message"
+    t.string "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["group_id"], name: "index_chats_on_group_id"

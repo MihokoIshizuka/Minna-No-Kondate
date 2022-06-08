@@ -1,1 +1,46 @@
-<h2>チャット一覧</h2>
+<div class="container">
+  <%= link_to "＜ #{@group.name}", group_path(@group) %>
+  <div class="row justify-content-center">
+    <div class="col-10">
+      <table class="table">
+        <% @chats.each do |chat| %>
+          <tr>
+            <td>
+              <%= link_to member_path(chat.member_id) do %>
+                <%= image_tag chat.member.get_profile_image, size:"60x60" %><br>
+                <%= chat.member.name %>
+              <% end %>
+            </td>
+            <td>
+              <%= chat.created_at.strftime('%Y/%m/%d') %>
+              <p><%= chat.message %></p>
+            </td>
+            <% if chat.member.id == current_member.id %>
+              <td>
+                <%= link_to "削除", group_chat_path(@group), method: :delete, class: "btn btn-sm btn-danger" %>
+              </td>
+            <% end %>
+          </tr>
+          <% if chat.image_url != nil %>
+            <tr>
+              <%= image_tag chat.image_url %>
+            </tr>
+          <% end %>
+        <% end %>
+      </table>
+      <div class="row justify-content-center">
+        <%= form_with model: @chat, url: group_chats, method: :post do |f| %>
+          <%= text_field_tag 'chat[group_id]', "#{@group.id}", type: 'hidden' %>
+          <div class="form-group">
+            <%= f.text_area :message, row="5", name: 'chat[message]' %>
+          </div>
+          <div class="form-group">
+            <%= f.file_field :image, accept: 'image/*', name: 'chat[image]' %>
+          </div>
+          <div class="form-group">
+            <%= f.submit "投稿", class: "btn btn-outline-secondary" %>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

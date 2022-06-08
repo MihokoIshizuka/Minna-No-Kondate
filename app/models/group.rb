@@ -4,6 +4,7 @@ class Group < ApplicationRecord
   has_many :members, through: :group_members, dependent: :destroy
   has_many :group_tags
   has_many :tags, through: :group_tags, dependent: :destroy
+  has_many :chats, dependent: :destroy
 
 
   validates :name, presence: true, length:{minimum:2, maximum:15}

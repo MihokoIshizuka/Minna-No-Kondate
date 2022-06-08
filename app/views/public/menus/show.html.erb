@@ -8,7 +8,12 @@
         <%= @menu.date %>
       </div>
       <div class="row">
-        <div class="col">
+        <% @menu.tags.each do |tag| %>
+          <span class="badge badge-info"><%= tag.name %></span>
+        <% end %>
+      </div>
+      <div class="row">
+        <div class="col ">
           <!--内容を改行表示できる-->
           <%=safe_join(@menu.body.split("\n"),tag(:br))%>
         </div>
