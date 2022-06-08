@@ -17,7 +17,7 @@ class Public::MenusController < ApplicationController
   end
 
   def index
-    @menus = Menu.all
+    @menus = params[:tag_id].present? ? Tag.find(params[:tag_id]).menus : Menu.all
   end
 
   def show
@@ -50,7 +50,7 @@ class Public::MenusController < ApplicationController
   private
 
   def menu_params
-    params.require(:menu).permit(:date, :body, :menu_image)
+    params.require(:menu).permit(:date, :body, :menu_image, tag_ids: [])
   end
 
   def correct_member

@@ -7,13 +7,13 @@
     </div>
   </div>
   <% menus.each do |menu| %>
-    <div class="col-3 mx-3 menus_item">
+    <div class="col-3 mx-3 text-center menus_item">
       <%= link_to menu_path(menu) do %>
         <%= image_tag menu.menu_image, size:"200x150" %><br>
         <%= menu.member.name %><br>
         <%= menu.date %>
       <% end %>
-      <p>
+      <div>
         <span id="favorite_buttons_<%= menu.id %>">
           <%= render "public/favorites/favorites", menu: menu %>
         </span>
@@ -22,7 +22,12 @@
             <i class="fas fa-comment fa-2x ml-3 mr-1" style="color:lightsteelblue;"></i><%= menu.menu_comments.count %>
           <% end %>
         </span>
-      </p>
+      </div>
+      <div>
+        <% menu.tags.each do |tag| %>
+          <span class="badge badge-info"><%= tag.name %></span>
+        <% end %>
+      </div>
 
     </div>
   <% end %>

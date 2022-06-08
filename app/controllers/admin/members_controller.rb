@@ -20,14 +20,7 @@ class Admin::MembersController < ApplicationController
     redirect_to admin_member_path(@member), notice: "登録情報を更新しました"
   end
 
-  def out
-    @member = Member.find(params[:id])
-    @member.update(is_deleted: true)
-    reset_session
-    redirect_to admin_members_path, notice: "退会処理が実行されました"
-  end
-  
-  
+
   private
 
   def member_params

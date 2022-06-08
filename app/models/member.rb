@@ -14,6 +14,7 @@ class Member < ApplicationRecord
   has_many :followers, through: :reverse_of_relationships, source: :follower
   has_many :group_members
   has_many :groups, through: :group_members, dependent: :destroy
+ 
 
   validates :name, presence: true, uniqueness: true, length:{minimum:2, maximum:10}
   validates :introduction, presence: true, length:{maximum:20}

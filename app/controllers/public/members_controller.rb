@@ -1,6 +1,7 @@
 class Public::MembersController < ApplicationController
   before_action :authenticate_member!, except: [:index]
-  before_action :correct_member, only: [:edit, :update, :out]
+  before_action :correct_member, only: [:edit, :update]
+
   # ゲストユーザは退会動作ができないようにする
   before_action :ensure_normal_member, only: [:out]
 
@@ -40,7 +41,7 @@ class Public::MembersController < ApplicationController
 
   private
   def member_params
-    params.require(:member).permit(:name, :introduction, :profile_image)
+    params.require(:member).permit(:name, :introduction, :profile_image, tag_ids: [])
   end
 
   def ensure_normal_member

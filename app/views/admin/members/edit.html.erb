@@ -17,19 +17,21 @@
           <%= f.label :画像 %>
           <%= f.file_field :profile_image, accept: "image/*" %>
         </div>
+        <div class="form-group">
+          <%= f.label :会員ステータス %>
+          <div>
+            <%= f.radio_button :is_deleted, true %>
+            <%= f.label :is_deleted, '退会', value: true %>
+          </div>
+          <div>
+            <%= f.radio_button :is_deleted, false %>
+            <%= f.label :is_deleted, '会員', value: false %>
+          </div>
+        </div>
         <div class="row justify-content-around">
           <div class="form-group">
             <%= f.submit "変更する", class: "btn btn-outline-primary" %>
           </div>
-          <% if @member.is_deleted == false %>
-            <div class="form-group">
-              <%= link_to "退会する", admin_out_path(@member), method: :patch, "data-confirm" => "会員を強制退会させますか？", class: "btn btn-outline-danger" %>
-            </div>
-          <% else %>
-            <div class="form-group">
-              <%= link_to "会員に戻す", class: "btn btn-outline-danger" %>
-            </div>
-          <% end %>
         </div>
       <% end %>
     </div>
