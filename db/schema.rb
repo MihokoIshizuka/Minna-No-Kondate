@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_03_120542) do
+ActiveRecord::Schema.define(version: 2022_06_09_053207) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -99,6 +99,15 @@ ActiveRecord::Schema.define(version: 2022_06_03_120542) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "member_tags", force: :cascade do |t|
+    t.integer "member_id"
+    t.integer "tag_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["member_id"], name: "index_member_tags_on_member_id"
+    t.index ["tag_id"], name: "index_member_tags_on_tag_id"
+  end
+
   create_table "members", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -164,6 +173,8 @@ ActiveRecord::Schema.define(version: 2022_06_03_120542) do
   add_foreign_key "group_members", "members"
   add_foreign_key "group_tags", "groups"
   add_foreign_key "group_tags", "tags"
+  add_foreign_key "member_tags", "members"
+  add_foreign_key "member_tags", "tags"
   add_foreign_key "menu_comments", "members"
   add_foreign_key "menu_comments", "menus"
   add_foreign_key "menu_tags", "menus"

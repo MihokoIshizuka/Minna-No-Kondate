@@ -13,16 +13,9 @@
     <td><%= member.introduction %></td>
   </tr>
 </table>
-<table class="table">
-  <!--フォロー・フォロワーのカウント非同期-->
-  <tr id="relationships_count">
-    <%= render 'public/relationships/relationships_count', member: member %>
-  </tr>
-</table>
-<!--フォロー・フォロワー非同期-->
-<div id="relationships_button", class="row justify-content-center">
+<div id="relationships">
   <%= render 'public/relationships/relationships', member: member %>
-</div>
+</div>  
 
 <div class="row mt-3">
   <%= link_to edit_member_path(member), class: "btn btn-outline-secondary btn-block" do %>

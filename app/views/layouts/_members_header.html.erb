@@ -11,6 +11,9 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
+          <%= link_to "マイページ", member_path(current_member), class: "btn btn-outline-secondary mr-1 header_btn" %>
+        </li>
+        <li class="nav-item">
           <%= link_to "会員一覧", members_path, class: "btn btn-outline-secondary mr-1 header_btn" %>
         </li>
         <li class="nav-item">

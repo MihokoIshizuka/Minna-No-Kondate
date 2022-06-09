@@ -7,7 +7,8 @@ class Public::MembersController < ApplicationController
 
 
   def index
-    @members = Member.where(is_deleted: false)
+    # @members = Member.where(is_deleted: false)
+    @members = params[:tag_id].present? ? Tag.find(params[:tag_id]).members : Member.where(is_deleted: false)
   end
 
   def show

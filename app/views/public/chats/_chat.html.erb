@@ -1,0 +1,29 @@
+<table class="table">
+  <% chats.each do |chat| %>
+    <tr>
+      <td>
+        <%= link_to member_path(chat.member_id) do %>
+          <%= image_tag chat.member.get_profile_image, size:"60x60" %><br>
+          <%= chat.member.name %>
+        <% end %>
+      </td>
+      <td>
+        <%= chat.created_at.strftime('%Y/%m/%d') %>
+        <p>
+          <!--メッセージ改行表示できる-->
+          <%=safe_join(chat.message.split("\n"),tag(:br))%>
+        </p>
+      </td>
+      <% if chat.member.id == current_member.id %>
+        <td>
+          <%= link_to "削除", group_chat_path(chat.group.id, chat), method: :delete, remote: true, class: "btn btn-sm btn-danger" %>
+        </td>
+      <% end %>
+    </tr>
+    <% if chat.image_url != nil %>
+      <tr>
+        <%= image_tag chat.image_url %>
+      </tr>
+    <% end %>
+  <% end %>
+</table>

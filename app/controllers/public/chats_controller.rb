@@ -8,19 +8,17 @@ class Public::ChatsController < ApplicationController
   end
 
   def create
-    @chat = Chat.new(chat_params)
-    if @chat.save
-      redirect_to request.referer
-    else
-      redirect_to request.referer, notice: "メッセージの作成に失敗しました"
+    @chat = current_member.chats.new(chat_params)
+    @group = Group.find(params[:group_id])
+    @chat.group.id = @group.id
+    unless @chat.save
+      render 'index', alert: "メッセージの作成に失敗しました"
     end
   end
 
   def destroy
     @group = Group.find(params[:group_id])
-    @chat = Chat.find(params[:id])
-    @chat.destroy
-    redirect_to request.referer, notice: "メッセージを削除しました"
+    Chat.find(params[:id]).destroy
   end
 
   private

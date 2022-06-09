@@ -1,7 +1,26 @@
-<% unless member == current_member %>
+<table class="table">
+  <tr>
+    <th>Follow</th>
+    <td>
+      <%= link_to member_followings_path(member) do %>
+        <%= member.followings.count %>
+      <% end %>
+    </td>
+
+    <th>Follower</th>
+    <td>
+      <%= link_to member_followers_path(member) do %>
+        <%= member.followers.count %>
+      <% end %>
+    </td>
+  </tr>
+</table>
+<div class="row justify-content-center">
+  <% unless member == current_member %>
   <% if current_member.following?(member) %>
     <%= link_to "フォロー外す", member_relationships_path(member), method: :delete, remote: true, class: "btn btn-outline-danger" %>
   <% else %>
     <%= link_to "フォローする", member_relationships_path(member), method: :post, remote: true, class: "btn btn-outline-success" %>
   <% end %>
 <% end %>
+</div>
