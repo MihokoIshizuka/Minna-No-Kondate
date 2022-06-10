@@ -3,6 +3,10 @@
     <div class="col-3">
       <%= render 'public/members/info', member: current_member %>
     </div>
-    <%= render 'index', menus: @menus %>
+    <% if @search_menus %>
+      <% render partial: 'index', menus: @search_menus %>
+    <% else %>
+      <%= render 'index', menus: @menus %>
+    <% end %>
   </div>
 </div>
