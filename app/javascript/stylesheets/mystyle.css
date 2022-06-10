@@ -38,3 +38,13 @@
 .group-member-index {
   margin-top: 20px;
 }
+
+
+.group-chat-content {
+  background-color: #c9e1ff;
+  border-radius: 5%;
+}
+
+.group-chat-icon {
+  border-radius: 50%;
+}

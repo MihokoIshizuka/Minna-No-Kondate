@@ -1,7 +1,7 @@
 <div class="container">
   <%= link_to "＜ #{@group.name}", group_path(@group) %>
   <div class="row justify-content-center">
-    <div id="group_chat", class="col-10">
+    <div id="group_chat", class="col-8">
       <%= render 'chat', chats: @chats, group: @group, chat: @chat %>
       <div id="group_chat_form", class="row justify-content-center">
         <%= render 'chat_form', group: @group, chat: @chat %>
