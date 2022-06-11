@@ -23,11 +23,15 @@
   </div>
   <!--コメント非同期部分-->
   <div class="row justify-content-center">
-    <div id="menu_comments_form" class="col-4">
-      <%= render 'public/menu_comments/menu_comments_form', menu: @menu, menu_comment: @menu_comment %>
+    <div class="col-4">
+      <%= form_with model: [@menu, @menu_comment], url: admin_menu_menu_comments_path(@menu), method: :post, local: false do |f| %>
+        <%= f.label :コメント %><br>
+        <%= f.text_area :comment, rows: "5" %><br>
+        <%= f.submit "コメントする", class: "btn btn-info" %>
+      <% end %>
     </div>
     <div id="menu_comments_area", class="col-6">
-      <%= render 'public/menu_comments/menu_comments', menu: @menu %>
+      <%= render 'admin/menu_comments/menu_comments', menu: @menu %>
     </div>
   </div>
 </div>

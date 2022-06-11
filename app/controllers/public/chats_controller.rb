@@ -12,13 +12,16 @@ class Public::ChatsController < ApplicationController
     @group = Group.find(params[:group_id])
     @chat.group.id = @group.id
     unless @chat.save
+      @chats = @group.chats.all
       render 'index', alert: "メッセージの作成に失敗しました"
     end
+    @chats = @group.chats.all
   end
 
   def destroy
     @group = Group.find(params[:group_id])
     Chat.find(params[:id]).destroy
+    @chats = @group.chats.all
   end
 
   private
