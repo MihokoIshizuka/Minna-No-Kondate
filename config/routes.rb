@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:passwords, :registrations], controllers: {
     sessions: "admin/sessions"
   }
+  
 
   devise_scope :member do
     post '/guest_sign_in' => 'public/sessions#guest_sign_in'
@@ -15,6 +16,7 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: "homes#top"
     get '/about' => "homes#about"
+    get "search" => "searches#search"
 
 
     resources :members, except: [:destroy] do

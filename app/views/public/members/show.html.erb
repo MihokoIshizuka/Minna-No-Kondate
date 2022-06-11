@@ -3,7 +3,19 @@
     <div class="col-3">
       <%= render 'info', member: @member %>
     </div>
-    <%= render 'public/menus/index', menus: @menus %>
+    <div class="col-9">
+      <div class="row justify-content-center">
+        <%= render 'public/searches/search' %>
+      </div>
+      <div class="row justify-content-end">
+        <div class="col-3 text-center">
+          <%= link_to new_menu_path, class: "btn" do %>
+            <i class="fas fa-plus-circle fa-4x" style="color:lavender;"></i>
+          <% end %>
+        </div>
+      </div>
+      <%= render 'public/menus/index', menus: @menus %>
+    </div>
   </div>
 </div>
 

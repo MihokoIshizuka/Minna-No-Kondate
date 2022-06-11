@@ -4,6 +4,9 @@
       <%= render 'public/members/info', member: current_member %>
     </div>
     <div class="col-8 offset-1">
+      <div class="row justify-content-center">
+        <%= render 'public/searches/search' %>
+      </div>
       <%= render 'index', members: @members %>
     </div>
   </div>
