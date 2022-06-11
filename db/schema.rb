@@ -125,10 +125,12 @@ ActiveRecord::Schema.define(version: 2022_06_09_053207) do
 
   create_table "menu_comments", force: :cascade do |t|
     t.integer "member_id"
+    t.integer "admin_id"
     t.integer "menu_id"
     t.string "comment"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["admin_id"], name: "index_menu_comments_on_admin_id"
     t.index ["member_id"], name: "index_menu_comments_on_member_id"
     t.index ["menu_id"], name: "index_menu_comments_on_menu_id"
   end
@@ -175,6 +177,7 @@ ActiveRecord::Schema.define(version: 2022_06_09_053207) do
   add_foreign_key "group_tags", "tags"
   add_foreign_key "member_tags", "members"
   add_foreign_key "member_tags", "tags"
+  add_foreign_key "menu_comments", "admins"
   add_foreign_key "menu_comments", "members"
   add_foreign_key "menu_comments", "menus"
   add_foreign_key "menu_tags", "menus"

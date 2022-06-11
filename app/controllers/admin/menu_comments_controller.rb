@@ -3,8 +3,9 @@ class Admin::MenuCommentsController < ApplicationController
 
   def create
     @menu = Menu.find(params[:menu_id])
-    @menu_comment = current_admin.menu_comments.new(menu_comment_params)
+    @menu_comment = MenuComment.new(menu_comment_params)
     @menu_comment.menu_id = @menu.id
+    @menu_comment.admin_id = current_admin.id
     unless @menu_comment.save
       render 'admin/menus/show'
     end
