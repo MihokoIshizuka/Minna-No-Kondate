@@ -42,13 +42,13 @@ class Public::GroupsController < ApplicationController
   def destroy
     @group = Group.find(params[:id])
     @group.members.destroy(current_member)
-    redirect_to groups_path
+    redirect_to group_path(@group)
   end
   # グループ参加
   def join
     @group = Group.find(params[:group_id])
     @group.members << current_member
-    redirect_to groups_path
+    redirect_to group_path(@group)
   end
   # グループ削除
   def all_destroy

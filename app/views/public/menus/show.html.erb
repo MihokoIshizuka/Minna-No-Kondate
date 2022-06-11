@@ -15,7 +15,7 @@
       <div class="row">
         <div class="col ">
           <!--内容を改行表示できる-->
-          <%=safe_join(@menu.body.split("\n"),tag(:br))%>
+          <%= simple_format(@menu.body) %>
         </div>
       </div>
 
