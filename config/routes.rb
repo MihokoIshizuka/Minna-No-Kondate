@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     resources :members, except: [:destroy] do
       get '/quit' => "members#quit"
       patch '/out' => "members#out"
+      get '/favorites' => "members#favorites"
       resource :relationships, only: [:create, :destroy]
         get 'followings' => "relationships#followings", as: 'followings'
         get 'followers' => "relationships#followers", as: 'followers'

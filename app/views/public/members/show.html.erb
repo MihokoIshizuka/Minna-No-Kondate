@@ -2,6 +2,14 @@
   <div class="row">
     <div class="col-3">
       <%= render 'info', member: @member %>
+      <!--会員のいいね一覧-->
+      <% if @member.id == current_member.id %>
+        <div class="row justify-content-center mt-2">
+          <%= link_to member_favorites_path(@member), class: "btn favorite-index" do %>
+            <span class="btn-favorite-index"><i class="fas fa-heart"></i></span>いいね一覧
+          <% end %>
+        </div>
+      <% end %>
     </div>
     <div class="col-9">
       <div class="row justify-content-center">

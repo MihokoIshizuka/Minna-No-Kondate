@@ -1,13 +1,37 @@
 <% chats.each do |chat| %>
-  <% if chat.member.id == current_member.id %>
-    <div class="row group-chat-box">
-      <div class="group-chat-icon-owner text-center">
-        <%= link_to member_path(chat.member_id) do %>
-          <%= image_tag chat.member.get_profile_image, size:"50x50", class: "group-chat-icon" %><br>
-          <%= chat.member.name %>
-        <% end %>
+<!--会員のチャットコメント-->
+  <% unless chat.member_id.nil? %>
+  <!--コメントした会員＝自分の場合-->
+    <% if chat.member_id == current_member.id %>
+      <div class="row group-chat-box">
+        <div class="group-chat-icon-owner text-center">
+          <%= link_to member_path(chat.member_id) do %>
+            <%= image_tag chat.member.get_profile_image, size:"50x50", class: "group-chat-icon" %><br>
+            <%= chat.member.name %>
+          <% end %>
+        </div>
+        <div class="group-chat-content-owner">
+          <%= chat.created_at.strftime('%Y/%m/%d') %>
+          <p>
+            <!--メッセージ改行表示できる-->
+            <%= simple_format(chat.message) %>
+          </p>
+          <% if chat.image_url != nil %>
+            <p>
+              <div class="group-chat-content-image text-center">
+                <%= image_tag chat.image_url, size:"120x120" %>
+              </div>
+            </p>
+          <% end %>
+          <p class="group-chat-content-owner-delete text-right">
+            <%= link_to "削除", group_chat_path(chat.group.id, chat), method: :delete, remote: true %>
+          </p>
+        </div>
       </div>
-      <div class="group-chat-content-owner">
+    <!--コメントした会員＝他メンバーの場合-->
+    <% else %>
+    <div class="row group-chat-box justify-content-end">
+      <div class="group-chat-content-others">
         <%= chat.created_at.strftime('%Y/%m/%d') %>
         <p>
           <!--メッセージ改行表示できる-->
@@ -20,19 +44,6 @@
             </div>
           </p>
         <% end %>
-        <p class="group-chat-content-owner-delete text-right">
-          <%= link_to "削除", group_chat_path(chat.group.id, chat), method: :delete, remote: true %>
-        </p>
-      </div>
-    </div>
-  <% else %>
-    <div class="row group-chat-box justify-content-end">
-      <div class="group-chat-content-others">
-        <%= chat.created_at.strftime('%Y/%m/%d') %>
-        <p>
-          <!--メッセージ改行表示できる-->
-          <%=safe_join(chat.message.split("\n"),tag(:br))%>
-        </p>
       </div>
       <div class="group-chat-icon-others text-center">
         <%= link_to member_path(chat.member_id) do %>
@@ -41,7 +52,30 @@
         <% end %>
       </div>
     </div>
+    <% end %>
+  <!--管理者のチャットコメント-->
+  <% else %>
+    <div class="row justify-content-end group-chat-box">
+      <div class="group-chat-content-others">
+        <%= chat.created_at.strftime('%Y/%m/%d') %>
+        <p>
+          <!--メッセージ改行表示できる-->
+          <%= simple_format(chat.message) %>
+        </p>
+        <% if chat.image_url != nil %>
+          <p>
+            <div class="group-chat-content-image text-center">
+              <%= image_tag chat.image_url, size:"120x120" %>
+            </div>
+          </p>
+        <% end %>
+      </div>
+      <div class="group-chat-icon-others text-center">
+          <%= image_tag 'admin.png', size:"50x50", class: "group-chat-icon" %><br>
+          管理者
+      </div>
+    </div>
   <% end %>
-
 <% end %>
+
 

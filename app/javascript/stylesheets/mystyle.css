@@ -36,6 +36,36 @@
   padding: 20px;
 }
 
+/*会員詳細 サイドバー お気に入り一覧*/
+.favorite-index {
+  display: inline-block;
+  text-align: center;
+  color: #db7093;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.favorite-index:hover {
+  color:#dbafbe;
+  transition: .5s;
+}
+
+.btn-favorite-index {
+  border-radius: 10px;
+  position: relative;
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  font-size: 25px;
+  line-height: 35px;
+  color: #FFF;
+  background: #db7093;
+}
+
+.btn-favorite-index i {
+  line-height: 50px;
+}
+
 /*グループ詳細画面*/
 .group-member-index {
   margin-top: 20px;

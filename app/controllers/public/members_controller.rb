@@ -40,6 +40,12 @@ class Public::MembersController < ApplicationController
     redirect_to root_path, notice: "退会処理が実行されました。"
   end
 
+  def favorites
+    @member = Member.find(params[:member_id])
+    favorites = Favorite.where(member_id: @member.id).pluck(:menu_id)
+    @favorite_menus = Menu.find(favorites)
+  end
+
   private
   def member_params
     params.require(:member).permit(:name, :introduction, :profile_image, tag_ids: [])

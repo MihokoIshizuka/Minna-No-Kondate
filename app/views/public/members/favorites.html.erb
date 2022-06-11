@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <%= render 'info', member: current_member %>
+    </div>
+    <div class="col-9">
+      <div class="row mb-10 justify-content-center">
+        <h4>いいね一覧</h4>
+      </div>
+      <%= render 'public/menus/index', menus: @favorite_menus %>
+    </div>
+  </div>
+</div>
