@@ -54,11 +54,13 @@ ActiveRecord::Schema.define(version: 2022_06_09_053207) do
 
   create_table "chats", force: :cascade do |t|
     t.integer "member_id"
+    t.integer "admin_id"
     t.integer "group_id"
     t.string "message"
     t.string "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["admin_id"], name: "index_chats_on_admin_id"
     t.index ["group_id"], name: "index_chats_on_group_id"
     t.index ["member_id"], name: "index_chats_on_member_id"
   end
@@ -167,6 +169,7 @@ ActiveRecord::Schema.define(version: 2022_06_09_053207) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "chats", "admins"
   add_foreign_key "chats", "groups"
   add_foreign_key "chats", "members"
   add_foreign_key "favorites", "members"

@@ -5,5 +5,5 @@ class Admin < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :menu_comments
-  
+  has_many :chats
 end

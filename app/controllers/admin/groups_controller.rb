@@ -2,11 +2,12 @@ class Admin::GroupsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @groups = Group.all
+    @groups = params[:tag_id].present? ? Tag.find(params[:tag_id]).groups : Group.all
   end
 
   def show
     @group = Group.find(params[:id])
+    @members = @group.members.all
   end
 
   def edit

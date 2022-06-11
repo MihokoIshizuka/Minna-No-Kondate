@@ -1,1 +1,22 @@
-<h2>チャット一覧</h2>
+<div class="container">
+  <%= link_to "＜ #{@group.name}", admin_group_path(@group) %>
+  <div class="row justify-content-center">
+    <div id="group_chat", class="col-8">
+      <%= render 'chat', chats: @chats, group: @group, chat: @chat %>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <%= form_with model: @chat, url: admin_group_chats_path, method: :post, local: false, class: "group-chat-form" do |f| %>
+      <%= text_field_tag 'chat[group_id]', "#{@group.id}", type: 'hidden' %>
+      <div class="form-group">
+        <%= f.text_area :message, name: 'chat[message]' %>
+      </div>
+      <div class="form-group">
+        <%= f.file_field :image, accept: 'image/*', name: 'chat[image]' %>
+      </div>
+      <div class="form-group">
+        <%= f.submit "投稿", class: "btn btn-outline-secondary" %>
+      </div>
+    <% end %>
+  </div>
+</div>

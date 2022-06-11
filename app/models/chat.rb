@@ -1,6 +1,8 @@
 class Chat < ApplicationRecord
-  belongs_to :member
+  belongs_to :member, optional: true
+  belongs_to :admin, optional: true
   belongs_to :group
+
 
   validates :message, presence: true
 
