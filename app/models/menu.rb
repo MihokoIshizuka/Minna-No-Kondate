@@ -14,12 +14,13 @@ class Menu < ApplicationRecord
   validates :menu_image, presence: true
   validates :tag_ids, presence: true
 
+  enum time_zone: { morning: 0, noon: 1, evening: 2 }
 
 
   def favorited_by?(member)
     favorites.exists?(member_id: member.id)
   end
-  
+
   # 検索
   def self.looks(word)
     @menu = Menu.where("body LIKE?", "%#{word}%")

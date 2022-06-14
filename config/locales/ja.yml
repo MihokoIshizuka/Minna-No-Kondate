@@ -1,0 +1,8 @@
+ja:
+  enums:
+    menu:
+      time_zone:
+        morning: "朝"
+        noon: "昼"
+        evening: "夕"
+

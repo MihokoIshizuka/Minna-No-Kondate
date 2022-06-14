@@ -150,6 +150,7 @@ ActiveRecord::Schema.define(version: 2022_06_09_053207) do
     t.integer "member_id"
     t.date "date"
     t.text "body"
+    t.integer "time_zone", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

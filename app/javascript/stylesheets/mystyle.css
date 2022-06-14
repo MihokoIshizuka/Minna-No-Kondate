@@ -110,3 +110,8 @@
 .menus-item {
   display: flex;
 }
+
+.time_zone_button {
+  display: flex;
+  
+}
