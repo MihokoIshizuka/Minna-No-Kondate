@@ -5,7 +5,12 @@
     </div>
     <div class="col-6">
       <div class="row justify-content-center">
-        <%= @menu.date %>
+        <%= link_to member_path(@menu.member) do %>
+          <%= @menu.member.name %>
+        <% end %>
+        さんの
+        <%= @menu.time_zone_i18n %>ごはん
+        (<%= @menu.date %>)
       </div>
       <div class="row">
         <% @menu.tags.each do |tag| %>
@@ -29,15 +34,14 @@
     </div>
   </div>
   <!--コメント非同期部分-->
-  <div class="row justify-content-center">
-    <div class="col-4">
+  <div class="row justify-content-around">
+    <div class="col-3 text-center mt-5">
       <%= form_with model: [@menu, @menu_comment], url: menu_menu_comments_path(@menu), method: :post, local: false do |f| %>
-        <%= f.label :コメント %><br>
         <%= f.text_area :comment, rows: "5" %><br>
         <%= f.submit "コメントする", class: "btn btn-info" %>
       <% end %>
     </div>
-    <div id="menu_comments_area", class="col-6">
+    <div id="menu_comments_area", class="col-7">
       <%= render 'public/menu_comments/menu_comments', menu: @menu %>
     </div>
   </div>

@@ -107,9 +107,6 @@
   border: dashed 5px #d3d6dd;
 }
 
-.menus-item {
-  display: flex;
-}
 
 /*献立新規入力画面*/
 .time_zone_button {
@@ -151,5 +148,6 @@
 .box-show {
   display: flex;
   flex-wrap: wrap;
-  margin: 0 10px;
+  margin: 0 5px;
 }
+
