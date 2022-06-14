@@ -111,7 +111,45 @@
   display: flex;
 }
 
+/*献立新規入力画面*/
 .time_zone_button {
   display: flex;
-  
+}
+
+/*タブメニュー*/
+.tab-list {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.tab {
+  width: 100%;
+  padding: 10px;
+  cursor: pointer;
+  border-left: solid 1px #CCC;
+  border-bottom: solid 1px #CCC;
+}
+
+.tab:first-child {
+  border-left: none;
+}
+
+.tab-active {
+  color: #FFF;
+  font-weight: bold;
+  font-size: large;
+  background: #4682b4;
+  transition: all 0.2s ease-in-out;
+}
+
+.tabbox {
+  display: none;
+  padding: 15px;
+}
+
+.box-show {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 10px;
 }

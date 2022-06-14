@@ -7,13 +7,14 @@ class Public::MembersController < ApplicationController
 
 
   def index
-    # @members = Member.where(is_deleted: false)
     @members = params[:tag_id].present? ? Tag.find(params[:tag_id]).members : Member.where(is_deleted: false)
   end
 
   def show
     @member = Member.find(params[:id])
-    @menus = @member.menus
+    @morning_menus = @member.menus.where(time_zone: 0)
+    @noon_menus = @member.menus.where(time_zone: 1)
+    @evening_menus = @member.menus.where(time_zone: 2)
   end
 
   def edit

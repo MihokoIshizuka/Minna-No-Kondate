@@ -17,7 +17,9 @@ class Public::MenusController < ApplicationController
   end
 
   def index
-    @menus = params[:tag_id].present? ? Tag.find(params[:tag_id]).menus : Menu.all
+    @morning_menus = params[:tag_id].present? ? Tag.find(params[:tag_id]).menus.where(time_zone: 0) : Menu.where(time_zone: 0)
+    @noon_menus = params[:tag_id].present? ? Tag.find(params[:tag_id]).menus.where(time_zone: 1) : Menu.where(time_zone: 1)
+    @evening_menus = params[:tag_id].present? ? Tag.find(params[:tag_id]).menus.where(time_zone: 2) : Menu.where(time_zone: 2)
   end
 
   def show
@@ -50,7 +52,7 @@ class Public::MenusController < ApplicationController
   private
 
   def menu_params
-    params.require(:menu).permit(:date, :body, :menu_image, tag_ids: [])
+    params.require(:menu).permit(:date, :body, :menu_image, :time_zone, tag_ids: [])
   end
 
   def correct_member
