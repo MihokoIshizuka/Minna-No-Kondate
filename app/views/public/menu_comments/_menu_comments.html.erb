@@ -17,10 +17,10 @@
       <!--コメント改行表示できる-->
       <%= simple_format(menu_comment.comment) %>
       <div class="row justify-content-end">
-        <%= menu_comment.created_at. strftime('%Y/%m/%d') %>
         <% if menu_comment.member == current_member %>
-          <%= link_to "削除", menu_menu_comment_path(menu_comment.menu, menu_comment), method: :delete, remote: true, class: "ml-3" %>
+          <%= link_to "削除", menu_menu_comment_path(menu_comment.menu, menu_comment), method: :delete, remote: true, class: "mr-3" %>
         <% end %>
+        <%= menu_comment.created_at. strftime('%Y/%m/%d') %>
       </div>
     </div>
   </div>

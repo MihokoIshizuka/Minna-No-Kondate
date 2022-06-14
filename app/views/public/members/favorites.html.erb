@@ -4,9 +4,10 @@
       <%= render 'info', member: current_member %>
     </div>
     <div class="col-9">
-      <div class="row mb-10 justify-content-center">
-        <h4>いいね一覧</h4>
+      <div class="row justify-content-center">
+        <h4>お気に入り</h4>
       </div>
+      <div class="row favorite-menu-index justify-content-center">
       <%= render 'public/menus/index', menus: @favorite_menus %>
     </div>
   </div>

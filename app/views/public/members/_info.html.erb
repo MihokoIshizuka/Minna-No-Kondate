@@ -1,7 +1,13 @@
-<div class="row justify-content-center">
+<div class="row justify-content-center info-icon-box">
   <div class="mx-auto mb-3">
     <%= image_tag member.get_profile_image, size:"150x150" %>
   </div>
+    <!--会員（自分）のいいね一覧-->
+    <% if member.id == current_member.id %>
+      <%= link_to member_favorites_path(current_member), class: "btn favorite-index" do %>
+        <i class="fas fa-heart fa-3x"></i>
+      <% end %>
+    <% end %>
 </div>
 <table class="table">
   <tr>

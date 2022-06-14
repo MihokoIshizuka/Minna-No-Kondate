@@ -36,36 +36,6 @@
   padding: 20px;
 }
 
-/*会員詳細 サイドバー お気に入り一覧*/
-.favorite-index {
-  display: inline-block;
-  text-align: center;
-  color: #db7093;
-  font-size: 20px;
-  text-decoration: none;
-}
-
-.favorite-index:hover {
-  color:#dbafbe;
-  transition: .5s;
-}
-
-.btn-favorite-index {
-  border-radius: 10px;
-  position: relative;
-  display: inline-block;
-  width: 35px;
-  height: 35px;
-  font-size: 25px;
-  line-height: 35px;
-  color: #FFF;
-  background: #db7093;
-}
-
-.btn-favorite-index i {
-  line-height: 50px;
-}
-
 /*グループ詳細画面*/
 .group-member-index {
   margin-top: 20px;
@@ -151,3 +121,36 @@
   margin: 0 5px;
 }
 
+/*献立一覧・新規作成ボタン*/
+#new {
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+}
+
+/*タグ絞り込み*/
+.search-tag {
+  margin: 10px auto;
+}
+
+.info-icon-box {
+  position: relative;
+}
+
+/*お気に入り一覧*/
+.favorite-index {
+  color: #dbafbe;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+
+.favorite-index:hover {
+  color: #db7093;
+}
+
+.favorite-menu-index {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px auto;
+}

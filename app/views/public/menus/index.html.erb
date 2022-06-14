@@ -2,17 +2,6 @@
   <div class="row">
     <div class="col-3">
       <%= render 'public/members/info', member: current_member %>
-      <!--会員（自分）のいいね一覧-->
-      <div class="row justify-content-center mt-2">
-        <%= link_to member_favorites_path(current_member), class: "btn favorite-index" do %>
-          <span class="btn-favorite-index"><i class="fas fa-heart"></i></span>いいね一覧
-        <% end %>
-      </div>
-    </div>
-    <div class="col-9">
-      <div class="row justify-content-center">
-        <%= render 'public/searches/search' %>
-      </div>
       <!--献立タグ絞り込み-->
       <div class= "row justify-content-center search-tag">
         <%= form_with url: menus_path, local: true, method: :get do |f| %>
@@ -25,13 +14,12 @@
           %>
         <% end %>
       </div>
-      <div class="row justify-content-end">
-        <div class="col-3 text-center">
-          <%= link_to new_menu_path, class: "btn" do %>
-            <i class="fas fa-plus-circle fa-4x" style="color:steelblue;"></i>
-          <% end %>
-        </div>
+      <div class="row justify-content-center">
+        <%= render 'public/searches/search' %>
       </div>
+    </div>
+    <div class="col-9">
+      <!--タブメニュー-->
       <ul class="tab-list list-unstyled">
         <li class="tab tab-active">朝</li>
         <li class="tab">昼</li>
@@ -51,3 +39,8 @@
     </div>
   </div>
 </div>
+<span id="new">
+  <%= link_to new_menu_path, class: "btn" do %>
+    <i class="fas fa-plus-circle fa-4x" style="color:steelblue;"></i>
+  <% end %>
+</span>
