@@ -2,10 +2,28 @@
   <div class="row">
     <div class="col-3">
       <%= render 'public/members/info', member: current_member %>
+      <!--会員（自分）のいいね一覧-->
+      <div class="row justify-content-center mt-2">
+        <%= link_to member_favorites_path(current_member), class: "btn favorite-index" do %>
+          <span class="btn-favorite-index"><i class="fas fa-heart"></i></span>いいね一覧
+        <% end %>
+      </div>
     </div>
     <div class="col-8 offset-1">
       <div class="row justify-content-center">
         <%= render 'public/searches/search' %>
+      </div>
+      <!--会員タグ絞り込み-->
+      <div class= "row justify-content-center search-tag">
+        <%= form_with url: members_path, local: true, method: :get do |f| %>
+          <%= select_tag :tag_id, options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
+          {
+            prompt: 'タグで絞り込み',
+            class: "form-control tags-select",
+            onchange: 'submit(this.form);'
+          }
+          %>
+        <% end %>
       </div>
       <%= render 'index', members: @members %>
     </div>
