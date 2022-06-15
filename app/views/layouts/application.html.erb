@@ -20,11 +20,20 @@
         <% else %>
           <%= render 'layouts/not_signed_in' %>
         <% end %>
-  
+
       </header>
       <main>
-        <p class="notice text-center"><%= notice %></p>
-        <p class="alert text-center"><%= alert %></p>
+        <p>
+          <% if flash[:notice] %>
+            <div class="flash text-center" id="notice">
+              <%= notice %>
+            </div>
+          <% elsif flash[:alert] %>
+            <div class="flash text-center" id="alert">
+              <%= alert %>
+            </div>
+          <% end %>
+        </p>
         <%= yield %>
       </main>
       <footer>

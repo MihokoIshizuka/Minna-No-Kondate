@@ -2,8 +2,25 @@
   font-family: 'Noto Sans JP', sans-serif;
 }
 
-/*ヘッダー・フッター*/
+/*フラッシュメッセージ*/
+.flash {
+  width: 100%;
+  height: 30px;
+  z-index: 1;
+}
 
+#notice {
+  background-color: #bbdbf3;
+}
+
+#alert {
+  background-color: #f2efbb;
+}
+
+.field_with_errors {
+  display: contents;
+}
+/*ヘッダー・フッター*/
 .main-content {
   display: flex;
   flex-direction: column;
@@ -17,6 +34,7 @@ header {
 
 main {
   padding-bottom: 30px;
+  flex: 1;
 }
 
 footer {

@@ -2,7 +2,7 @@ class Admin::MembersController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @members = params[:tag_id].present? ? Tag.find(params[:tag_id]).members : Member.where(is_deleted: false)
+    @members = params[:tag_id].present? ? Tag.find(params[:tag_id]).members.order(created_at: :desc) : Member.all.order(created_at: :desc)
   end
 
   def show

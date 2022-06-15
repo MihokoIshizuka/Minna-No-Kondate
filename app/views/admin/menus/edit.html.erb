@@ -4,6 +4,7 @@
   </div>
   <div class="row">
     <div class="col-8 mx-auto">
+      <%= render 'admin/shared/error_messages', resource: @menu %>
       <%= form_with model: @menu, url: admin_menu_path(@menu), method: :patch, local: true do |f| %>
         <%= render 'form', f: f %>
         <div class="row justify-content-around">
