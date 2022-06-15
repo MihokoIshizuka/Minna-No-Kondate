@@ -1,6 +1,6 @@
 <% menus.each do |menu| %>
   <div class="col-4 text-center menus_item">
-    <%= link_to admin_menu_path(menu) do %>
+    <%= link_to admin_menu_path(menu), class: "img-fluid" do %>
       <%= image_tag menu.menu_image, size:"200x150" %><br>
       <%= menu.member.name %><br>
       <%= menu.date %>

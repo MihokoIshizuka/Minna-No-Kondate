@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-8">
+    <div class="col-12">
       <table class="table">
         <thead>
           <tr>
@@ -8,7 +8,7 @@
             <th>グループ名</th>
             <th>紹介</th>
             <th>タグ</th>
-            <th>メンバー数</th>
+            <th>メンバー</th>
             <th></th>
           </tr>
         </thead>
@@ -28,10 +28,10 @@
               <td><%= group.introduction %></td>
               <td>
                 <% group.tags.each do |tag| %>
-                  <span class="badge badge-info"><%= tag.name %></span>
+                  <span class="badge badge-info"><%= tag.name %></span><br>
                 <% end %>
               </td>
-              <td><%= group.members.count %></td>
+              <td class="text-center"><%= group.members.count %></td>
               <td>
                 <%= link_to "編集", edit_admin_group_path(group), class: "btn btn-sm btn-outline-success" %>
               </td>

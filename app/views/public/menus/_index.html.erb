@@ -1,6 +1,6 @@
 <% menus.each do |menu| %>
-  <div class="col-4 text-center menus_item">
-    <%= link_to menu_path(menu) do %>
+  <div class="col-4 mb-5 text-center menus_item">
+    <%= link_to menu_path(menu), class: "img-fluid" do %>
       <%= image_tag menu.menu_image, size:"200x150" %><br>
       <%= menu.member.name %><br>
       <%= menu.date %>
@@ -17,7 +17,7 @@
     </div>
     <div>
       <% menu.tags.each do |tag| %>
-        <span class="badge badge-info"><%= tag.name %></span>
+        <span class="badge badge-info"><%= tag.name %></span><br>
       <% end %>
     </div>
   </div>
