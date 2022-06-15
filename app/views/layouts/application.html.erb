@@ -11,7 +11,7 @@
   </head>
 
   <body>
-    <div class="wrapper">
+    <div class="main-content">
       <header>
         <% if member_signed_in? %>
           <%= render 'layouts/members_header' %>
@@ -20,7 +20,7 @@
         <% else %>
           <%= render 'layouts/not_signed_in' %>
         <% end %>
-
+  
       </header>
       <main>
         <p class="notice"><%= notice %></p>
