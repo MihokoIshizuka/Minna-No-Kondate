@@ -11,19 +11,13 @@
         </div>
       </div>
       <div class="row justify-content-center">
-        <div class="col-5 mx-auto">
-          <%= link_to "新規登録", new_member_registration_path, class: "btn btn-success btn-block mb-3 sign_up" %>
-        </div>
+          <%= link_to "新規登録", new_member_registration_path, class: "mb-3 sign-up-button" %>
       </div>
       <div class="row justify-content-center">
-        <div class="col-5 mx-auto">
-          <%= link_to "ログイン", new_member_session_path, class: "btn btn-info btn-block mb-3 sign_in" %>
-        </div>
+          <%= link_to "ログイン", new_member_session_path, class: "mb-3 sign-in-button" %>
       </div>
       <div class="row justify-content-center">
-        <div class="col-5 text-center">
-          <%= link_to "ゲストログイン（閲覧用）", guest_sign_in_path, method: :post, class: "guest_login" %>
-        </div>
+          <%= link_to "ゲストログイン", guest_sign_in_path, method: :post, class: "guest-login" %>
       </div>
     </div>
     <div class="col-1"></div>

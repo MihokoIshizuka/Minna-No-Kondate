@@ -1,3 +1,45 @@
+* {
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+/*ヘッダー・フッター*/
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  border-bottom: solid 2px #89c3eb
+}
+
+main {
+  flex-grow: 1;
+  padding-bottom: 30px
+}
+
+footer {
+  text-align: center;
+  border-top: solid 2px #89c3eb;
+  line-height: 3;
+}
+
+.header_btn {
+  color: #524e4d;
+  font-size: 20px;
+}
+.header_btn:hover {
+  color: #524e4d;
+  font-size: 20px;
+  font-weight: bold
+}
+.header_btn:visited {
+  outline: none;
+}
+
 /*トップ画面*/
 .main-visual {
     background-image: url('../images/main-visual.png');
@@ -10,8 +52,98 @@
 .main-visual-content {
   background-color: rgba(255, 255, 255, 0.4);
   margin: 50px auto;
+  color: #524e4d;
 }
 
+.sign-up-button {
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.25em 0;
+  text-decoration: none;
+  color: #19448e;
+}
+
+.sign-up-button:before {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 4px;
+  top:100%;
+  left: 0;
+  border-radius: 3px;
+  background:#19448e;
+  transition: .2s;
+}
+
+.sign-up-button:hover:before {
+  top: -webkit-calc(100% - 3px);
+  top: calc(100% - 3px);
+}
+
+.sign-up-button:hover {
+  text-decoration: none;
+}
+
+.sign-in-button {
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.25em 0;
+  text-decoration: none;
+  color: #19448e;
+}
+
+.sign-in-button:before {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 4px;
+  top:100%;
+  left: 0;
+  border-radius: 3px;
+  background:#19448e;
+  transition: .2s;
+}
+
+.sign-in-button:hover:before {
+  top: -webkit-calc(100% - 3px);
+  top: calc(100% - 3px);
+}
+
+.sign-in-button:hover {
+  text-decoration: none;
+}
+
+.guest-login {
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.25em 0;
+  text-decoration: none;
+  color: #19448e;
+}
+
+.guest-login:before {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 4px;
+  top:100%;
+  left: 0;
+  border-radius: 3px;
+  background:#19448e;
+  transition: .2s;
+}
+
+.guest-login:hover:before {
+  top: -webkit-calc(100% - 3px);
+  top: calc(100% - 3px);
+}
+
+.guest-login:hover {
+  text-decoration: none;
+}
 
 /*アバウトページ*/
 .about-main {
@@ -22,16 +154,15 @@
 .about-image {
   background-image: url('../images/food.2.jpg');
   position: absolute;
-  top: 20px;
   left: 30px;
   width: 427px;
-  height: 640px;
+  height: 600px;
 }
 
 .about-content {
   position: absolute;
-  top: 250px;
-  left: 440px;
+  top: 100px;
+  right: 150px;
   background-color: rgba(255, 255, 255, 0.4);
   padding: 20px;
 }
