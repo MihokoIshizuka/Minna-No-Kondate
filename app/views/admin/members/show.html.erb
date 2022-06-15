@@ -3,6 +3,24 @@
     <div class="col-3">
       <%= render 'admin/members/member_info', member: @member %>
     </div>
-    <%= render 'admin/menus/index', menus: @menus %>
+    <div class="col-9">
+      <!--タブメニュー-->
+      <ul class="tab-list list-unstyled">
+        <li class="tab tab-active">朝</li>
+        <li class="tab">昼</li>
+        <li class="tab">夕</li>
+      </ul>
+      <div class="tabbox-contents">
+        <div class="tabbox box-show">
+          <%= render 'admin/menus/index', menus: @morning_menus %>
+        </div>
+        <div class="tabbox">
+          <%= render 'admin/menus/index', menus: @noon_menus %>
+        </div>
+        <div class="tabbox">
+          <%= render 'admin/menus/index', menus: @evening_menus %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

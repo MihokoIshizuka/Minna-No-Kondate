@@ -12,9 +12,9 @@ class Public::MembersController < ApplicationController
 
   def show
     @member = Member.find(params[:id])
-    @morning_menus = @member.menus.where(time_zone: 0)
-    @noon_menus = @member.menus.where(time_zone: 1)
-    @evening_menus = @member.menus.where(time_zone: 2)
+    @morning_menus = @member.menus.where(time_zone: 0).order(created_at: :desc)
+    @noon_menus = @member.menus.where(time_zone: 1).order(created_at: :desc)
+    @evening_menus = @member.menus.where(time_zone: 2).order(created_at: :desc)
   end
 
   def edit

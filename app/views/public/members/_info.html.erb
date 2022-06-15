@@ -5,7 +5,7 @@
     <!--会員（自分）のいいね一覧-->
     <% if member.id == current_member.id %>
       <%= link_to member_favorites_path(current_member), class: "btn favorite-index" do %>
-        <i class="fas fa-heart fa-3x"></i>
+        <i class="fas fa-hand-holding-heart fa-3x"></i>
       <% end %>
     <% end %>
 </div>

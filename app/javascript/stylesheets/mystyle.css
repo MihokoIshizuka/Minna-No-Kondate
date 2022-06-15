@@ -12,7 +12,7 @@
 
 header {
   width: 100%;
-  border-bottom: solid 2px #89c3eb;
+  border-bottom: solid 2px #6c9bd2;
 }
 
 main {
@@ -23,17 +23,17 @@ footer {
   margin-top: auto;
   width: 100%;
   text-align: center;
-  border-top: solid 2px #89c3eb;
+  border-top: solid 2px #6c9bd2;
   line-height: 3;
 }
 
 .header_btn {
   color: #524e4d;
-  font-size: 20px;
+  font-size: 18px;
 }
 .header_btn:hover {
   color: #524e4d;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold
 }
 
@@ -214,6 +214,10 @@ footer {
 /*献立新規入力画面*/
 .time_zone_button {
   display: flex;
+}
+
+.form-check {
+  padding-left: 40%;
 }
 
 /*タブメニュー*/

@@ -3,7 +3,9 @@ class Admin::MenusController < ApplicationController
 
 
   def index
-    @menus = Menu.all
+    @morning_menus = params[:tag_id].present? ? Tag.find(params[:tag_id]).menus.where(time_zone: 0).order(created_at: :desc) : Menu.where(time_zone: 0).order(created_at: :desc)
+    @noon_menus = params[:tag_id].present? ? Tag.find(params[:tag_id]).menus.where(time_zone: 1).order(created_at: :desc) : Menu.where(time_zone: 1).order(created_at: :desc)
+    @evening_menus = params[:tag_id].present? ? Tag.find(params[:tag_id]).menus.where(time_zone: 2).order(created_at: :desc) : Menu.where(time_zone: 2).order(created_at: :desc)
   end
 
   def show
@@ -36,7 +38,7 @@ class Admin::MenusController < ApplicationController
   private
 
   def menu_params
-    params.require(:menu).permit(:date, :body, :menu_image)
+    params.require(:menu).permit(:date, :body, :menu_image, tag_ids: [])
   end
 
 end

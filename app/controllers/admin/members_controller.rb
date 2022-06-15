@@ -2,12 +2,14 @@ class Admin::MembersController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @members = Member.all
+    @members = params[:tag_id].present? ? Tag.find(params[:tag_id]).members : Member.where(is_deleted: false)
   end
 
   def show
     @member = Member.find(params[:id])
-    @menus = @member.menus
+    @morning_menus = @member.menus.where(time_zone: 0).order(created_at: :desc)
+    @noon_menus = @member.menus.where(time_zone: 1).order(created_at: :desc)
+    @evening_menus = @member.menus.where(time_zone: 2).order(created_at: :desc)
   end
 
   def edit
@@ -24,7 +26,7 @@ class Admin::MembersController < ApplicationController
   private
 
   def member_params
-    params.require(:member).permit(:name, :introduction, :email, :is_deleted)
+    params.require(:member).permit(:name, :introduction, :email, :is_deleted, tag_ids: [])
   end
 
 end
