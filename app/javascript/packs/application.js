@@ -36,3 +36,13 @@ $(document).on('turbolinks:load', function() {
   });
 });
 
+$("#form-check-input").click(function(){
+    var $count = $("#form-check-input:checked").length;
+    var $not = $("#form-check-input").not(':checked')
+
+    if($count >= 3) {
+        $not.attr("disabled",true);
+    }else{
+        $not.attr("disabled",false);
+    }
+});
