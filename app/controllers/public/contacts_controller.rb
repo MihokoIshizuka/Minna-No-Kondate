@@ -4,12 +4,16 @@ class Public::ContactsController < ApplicationController
 
   def show
     @contacts = current_member.contacts.all
+    @contact = Contact.new
   end
 
   def create
     @contact = current_member.contacts.new(contact_params)
     @contact.save
     redirect_to request.referer
+    # unless @contact.save
+    #   render 'show', alert: "お問い合わせが送信できませんでした"
+    # end
     @contacts = current_member.contacts.all
   end
 

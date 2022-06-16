@@ -1,0 +1,77 @@
+<div class="container">
+  <%= link_to "＜ 戻る", admin_members_path %>
+  <div class="row justify-content-center">
+    <h3 class="mb-3">お問い合わせチャット</h3>
+  </div>
+  <div class="row">
+    <div class="col-8 mx-auto text-center">
+      <p>このページは、管理者へのお問い合わせ専用のチャットとなります。</p>
+      <p>何かご不明点がある場合や、新しいタグの作成の希望がある場合、<br>
+          また間違えて退会操作をしてしまい、データを復元する場合は、<br>
+          こちらのチャットからお気軽にご相談ください。</p>
+      <p>退会後1か月以上が経過している場合はデータ復元ができませんので、ご了承ください。</p>
+    </div>
+  </div>
+  </div>
+  <div class="row justify-content-center">
+    <div id="contact_chat", class="col-8">
+      <% @contacts.each do |contact| %>
+        <% unless contact.member_id.nil? %>
+          <div class="row justify-content-end group-chat-box">
+            <div class="group-chat-content-others">
+              <%= contact.created_at.strftime('%Y/%m/%d') %>
+              <p>
+                <%= simple_format(contact.message) %>
+              </p>
+              <% if contact.image_url != nil %>
+                <p>
+                  <div class="group-chat-content-image text-center">
+                    <%= image_tag contact.image_url, size:"120x120" %>
+                  </div>
+                </p>
+              <% end %>
+            </div>
+            <div class="group-chat-icon-others text-center">
+              <%= image_tag contact.member.get_profile_image, size:"50x50", class: "group-chat-icon" %><br>
+              <%= contact.member.name %>
+            </div>
+          </div>
+        <% else %>
+          <div class="row group-chat-box">
+            <div class="group-chat-icon-owner text-center">
+              <%= image_tag 'admin.png', size:"50x50", class: "group-chat-icon" %><br>
+              管理者
+            </div>
+            <div class="group-chat-content-owner">
+              <%= contact.created_at.strftime('%Y/%m/%d') %>
+              <p>
+                <%= simple_format(contact.message) %>
+              </p>
+              <% if contact.image_url != nil %>
+              <P>
+                <div class="group-chat-content-image text-center">
+                  <%= image_tag contact.image_url, size:"120x120" %>
+                </div>
+              </P>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <%= form_with model: @contact, url: admin_member_contacts_path(@member), method: :post, local: true, class: "group-chat-form" do |f| %>
+      <%= text_field_tag 'contact[admin_id]', "#{current_admin.id}", type: 'hidden' %>
+      <div class="form-group">
+        <%= f.text_area :message, name: 'contact[message]' %>
+      </div>
+      <div class="form-group">
+        <%= f.file_field :image, accept: 'image/*', name: 'contact[image]' %>
+      </div>
+      <div class="form-group">
+        <%= f.submit "回答する", class: "btn btn-outline-secondary" %>
+      </div>
+    <% end %>
+  </div>
+</div>

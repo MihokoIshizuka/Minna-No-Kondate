@@ -14,7 +14,7 @@
   </div>
   </div>
   <div class="row justify-content-center">
-    <div class="col-8">
+    <div id="contact_chat", class="col-8">
       <% @contacts.each do |contact| %>
         <% unless contact.member_id.nil? %>
           <div class="row group-chat-box">
@@ -61,7 +61,7 @@
     </div>
   </div>
   <div class="row justify-content-center">
-    <%= form_with model: @contact, url: member_contacts_path(current_member), method: :post, local: true, class: "group-chat-form" do |f| %>
+    <%= form_with model: @contact, url: member_contacts_path(current_member), method: :post, local: false, class: "group-chat-form" do |f| %>
       <%= text_field_tag 'contact[member_id]', "#{current_member.id}", type: 'hidden' %>
       <div class="form-group">
         <%= f.text_area :message, name: 'contact[message]' %>
