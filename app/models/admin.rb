@@ -6,4 +6,5 @@ class Admin < ApplicationRecord
 
   has_many :menu_comments
   has_many :chats
+  has_many :contacts
 end

@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:passwords, :registrations], controllers: {
     sessions: "admin/sessions"
   }
-  
+
 
   devise_scope :member do
     post '/guest_sign_in' => 'public/sessions#guest_sign_in'
@@ -26,6 +26,8 @@ Rails.application.routes.draw do
       resource :relationships, only: [:create, :destroy]
         get 'followings' => "relationships#followings", as: 'followings'
         get 'followers' => "relationships#followers", as: 'followers'
+      resource :contacts, only: [:create, :show]
+
     end
 
     resources :menus do
@@ -44,7 +46,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
 
-    resources :members, only: [:index, :show, :edit, :update]
+    resources :members, only: [:index, :show, :edit, :update] do
+      resources :contacts, only: [:index, :show, :create, :destroy]
+    end
     resources :tags, only: [:index, :create, :update, :edit, :destroy]
     resources :groups, only: [:index, :show, :edit, :update] do
       delete '/all_destroy' => "groups#all_destroy"

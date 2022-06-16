@@ -37,7 +37,13 @@
         <%= yield %>
       </main>
       <footer>
-        <%= render 'layouts/footer' %>
+        <% if member_signed_in? %>
+          <%= render 'layouts/members_footer' %>
+        <% elsif admin_signed_in? %>
+          <%= render 'layouts/admin_footer' %>
+        <% else %>
+          <%= render 'layouts/not_signed_in_footer' %>
+        <% end %>
       </footer>
     </div>
   </body>

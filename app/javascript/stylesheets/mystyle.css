@@ -285,12 +285,12 @@ footer {
 }
 
 .new-btn {
-  box-shadow: 5px 5px 8px rgb(0 0 0 / 30%);
+  box-shadow: 5px 5px 8px rgb(0, 0, 0, 0.3);
   border-radius: 50%;
 }
 
 .new-btn:hover {
-  box-shadow: 5px 5px 8px rgb(0 0 0 / 30%);
+  box-shadow: 5px 5px 8px rgb(0, 0, 0, 0.6);
   border-radius: 50%;
 }
 
