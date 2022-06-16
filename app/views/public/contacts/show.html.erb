@@ -16,7 +16,7 @@
   <div class="row justify-content-center">
     <div id="contact_chat", class="col-8">
       <% @contacts.each do |contact| %>
-        <% unless contact.member_id.nil? %>
+        <% if contact.role == 'member' %>
           <div class="row group-chat-box">
             <div class="group-chat-icon-owner text-center">
               <%= image_tag contact.member.get_profile_image, size:"50x50", class: "group-chat-icon" %><br>

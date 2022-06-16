@@ -5,7 +5,7 @@
 
       <!--献立タグ絞り込み-->
       <div class= "row justify-content-center search-tag">
-        <%= form_with url: menu_path(@member), local: true, method: :get do |f| %>
+        <%= form_with url: member_path(@member), local: true, method: :get do |f| %>
           <%= select_tag :tag_id, options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
           {
             prompt: 'タグで絞り込み',

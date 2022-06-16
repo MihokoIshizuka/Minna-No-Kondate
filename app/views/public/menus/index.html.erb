@@ -28,12 +28,15 @@
       <div class="tabbox-contents">
         <div class="tabbox box-show justify-content-center">
           <%= render 'index', menus: @morning_menus %>
+          <%= paginate @morning_menus %>
         </div>
         <div class="tabbox">
           <%= render 'index', menus: @noon_menus %>
+          <%= paginate @noon_menus %>
         </div>
         <div class="tabbox">
           <%= render 'index', menus: @evening_menus %>
+          <%= paginate @evening_menus %>
         </div>
       </div>
     </div>

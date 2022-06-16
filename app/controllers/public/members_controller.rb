@@ -12,9 +12,9 @@ class Public::MembersController < ApplicationController
 
   def show
     @member = Member.find(params[:id])
-    @morning_menus = @member.menus.where(time_zone: 0).order(created_at: :desc)
-    @noon_menus = @member.menus.where(time_zone: 1).order(created_at: :desc)
-    @evening_menus = @member.menus.where(time_zone: 2).order(created_at: :desc)
+    @morning_menus = params[:tag_id].present? ? Tag.find(params[:tag_id]).menus.where(time_zone: 0, member_id: @member.id).order(created_at: :desc).page(params[:page]).per(12) : Menu.where(time_zone: 0, member_id: @member.id).order(created_at: :desc).page(params[:page]).per(12)
+    @noon_menus = params[:tag_id].present? ? Tag.find(params[:tag_id]).menus.where(time_zone: 1, member_id: @member.id).order(created_at: :desc).page(params[:page]).per(12) : Menu.where(time_zone: 1, member_id: @member.id).order(created_at: :desc).page(params[:page]).per(12)
+    @evening_menus = params[:tag_id].present? ? Tag.find(params[:tag_id]).menus.where(time_zone: 2, member_id: @member.id).order(created_at: :desc).page(params[:page]).per(12) : Menu.where(time_zone: 2, member_id: @member.id).order(created_at: :desc).page(params[:page]).per(12)
   end
 
   def edit
