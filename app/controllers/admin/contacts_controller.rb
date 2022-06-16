@@ -12,7 +12,7 @@ class Admin::ContactsController < ApplicationController
     @member = Member.find(params[:member_id])
     @contact = current_admin.contacts.new(contact_params)
     @contact.member_id = @member.id
-    @contact.role = 'admin'
+    @contact.source = 'admin'
     @contact.save
     redirect_to request.referer
     @contacts = @member.contacts

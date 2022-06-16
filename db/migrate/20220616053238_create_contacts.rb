@@ -6,6 +6,7 @@ class CreateContacts < ActiveRecord::Migration[6.1]
       t.references :admin, foreign_key: true
       t.string :message
       t.string :image
+      t.string :source
 
       t.timestamps
     end

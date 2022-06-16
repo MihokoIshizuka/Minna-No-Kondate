@@ -10,7 +10,7 @@ class Public::ContactsController < ApplicationController
   def create
     @contact = current_member.contacts.new(contact_params)
     @contact.admin_id = Admin.first.id
-    @contact.role = 'member'
+    @contact.source = 'member'
     @contact.save
     redirect_to request.referer
     # unless @contact.save

@@ -16,8 +16,12 @@
   <div class="row justify-content-center">
     <div id="contact_chat", class="col-8">
       <% @contacts.each do |contact| %>
-        <% if contact.role == 'member' %>
-          <div class="row justify-content-end group-chat-box">
+        <% if contact.source == 'member' %>
+          <div class="row group-chat-box">
+            <div class="group-chat-icon-others text-center">
+              <%= image_tag contact.member.get_profile_image, size:"50x50", class: "group-chat-icon" %><br>
+              <%= contact.member.name %>
+            </div>
             <div class="group-chat-content-others">
               <%= contact.created_at.strftime('%Y/%m/%d') %>
               <p>
@@ -34,17 +38,9 @@
                 <%= link_to "削除", admin_member_contact_path(contact.member_id, contact.id), method: :delete %>
               </p>
             </div>
-            <div class="group-chat-icon-others text-center">
-              <%= image_tag contact.member.get_profile_image, size:"50x50", class: "group-chat-icon" %><br>
-              <%= contact.member.name %>
-            </div>
           </div>
         <% else %>
-          <div class="row group-chat-box">
-            <div class="group-chat-icon-owner text-center">
-              <%= image_tag 'admin.png', size:"50x50", class: "group-chat-icon" %><br>
-              管理者
-            </div>
+          <div class="row group-chat-box justify-content-end">
             <div class="group-chat-content-owner">
               <%= contact.created_at.strftime('%Y/%m/%d') %>
               <p>
@@ -57,6 +53,10 @@
                 </div>
               </P>
               <% end %>
+            </div>
+            <div class="group-chat-icon-owner text-center">
+              <%= image_tag 'admin.png', size:"50x50", class: "group-chat-icon" %><br>
+              管理者
             </div>
           </div>
         <% end %>

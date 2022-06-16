@@ -1,10 +1,6 @@
 <% contacts.each do |contact| %>
-  <% unless contact.member_id.nil? %>
-    <div class="row group-chat-box">
-      <div class="group-chat-icon-owner text-center">
-        <%= image_tag contact.member.get_profile_image, size:"50x50", class: "group-chat-icon" %><br>
-        <%= contact.member.name %>
-      </div>
+  <% if contact.source == 'member' %>
+    <div class="row group-chat-box justify-content-end">
       <div class="group-chat-content-owner">
         <%= contact.created_at.strftime('%Y/%m/%d') %>
         <p>
@@ -18,9 +14,17 @@
           </p>
         <% end %>
       </div>
+      <div class="group-chat-icon-owner text-center">
+        <%= image_tag contact.member.get_profile_image, size:"50x50", class: "group-chat-icon" %><br>
+        <%= contact.member.name %>
+      </div>
     </div>
   <% else %>
-    <div class="row justify-content-end group-chat-box">
+    <div class="row group-chat-box">
+      <div class="group-chat-icon-others text-center">
+        <%= image_tag 'admin.png', size:"50x50", class: "group-chat-icon" %><br>
+        管理者
+      </div>
       <div class="group-chat-content-others">
         <%= contact.created_at.strftime('%Y/%m/%d') %>
         <p>
@@ -33,10 +37,6 @@
           </div>
         </P>
         <% end %>
-      </div>
-      <div class="group-chat-icon-others text-center">
-        <%= image_tag 'admin.png', size:"50x50", class: "group-chat-icon" %><br>
-        管理者
       </div>
     </div>
   <% end %>
