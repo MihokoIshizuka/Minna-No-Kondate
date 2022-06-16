@@ -22,9 +22,10 @@
 <div id="relationships">
   <%= render 'public/relationships/relationships', member: member %>
 </div>
-
-<div class="row mt-3">
-  <%= link_to edit_member_path(member), class: "btn btn-outline-secondary btn-block" do %>
-    <i class="fas fa-user-cog"></i>
-  <% end %>
-</div>
+<% if member.email != "guest@example.com" %>
+  <div class="row mt-3">
+    <%= link_to edit_member_path(member), class: "btn btn-outline-secondary btn-block" do %>
+      <i class="fas fa-user-cog"></i>
+    <% end %>
+  </div>
+<% end %>

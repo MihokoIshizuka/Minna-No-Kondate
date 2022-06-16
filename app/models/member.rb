@@ -17,7 +17,7 @@ class Member < ApplicationRecord
   has_many :chats, dependent: :destroy
   has_many :member_tags
   has_many :tags, through: :member_tags, dependent: :destroy
-  has_many :contacts
+  has_many :contacts, dependent: :destroy
 
   validates :name, presence: true, uniqueness: true, length:{minimum:2, maximum:10}
   validates :introduction, presence: true, length:{maximum:20}

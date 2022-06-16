@@ -28,6 +28,6 @@ class Admin::ContactsController < ApplicationController
   private
 
   def contact_params
-    params.require(:contact).permit(:message, :image, :admin_id)
+    params.require(:contact).permit(:message, :image).merge(admin_id: current_admin.id)
   end
 end

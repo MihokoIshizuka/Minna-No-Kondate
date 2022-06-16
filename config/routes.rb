@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
 
   devise_scope :member do
-    post '/guest_sign_in' => 'public/sessions#guest_sign_in'
+    post 'members/guest_sign_in' => 'public/sessions#guest_sign_in'
   end
 
   scope module: :public do

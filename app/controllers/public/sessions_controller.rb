@@ -12,12 +12,12 @@ class Public::SessionsController < Devise::SessionsController
   def after_sign_out_path_for(resource)
     root_path
   end
-  
-  
+
+
   def guest_sign_in
     member = Member.guest
     sign_in member
-    redirect_to menus_path, notice: "ゲストユーザーとしてログインしました"
+    redirect_to members_path(member), notice: "ゲストユーザーとしてログインしました"
   end
 
 

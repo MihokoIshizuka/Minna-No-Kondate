@@ -2,8 +2,8 @@ class Public::MembersController < ApplicationController
   before_action :authenticate_member!, except: [:index]
   before_action :correct_member, only: [:edit, :update]
 
-  # ゲストユーザは退会動作ができないようにする
-  before_action :ensure_normal_member, only: [:out]
+  # ゲストユーザは編集・退会動作ができないようにする
+  before_action :ensure_normal_member, only: [:edit, :out]
 
 
   def index
@@ -53,8 +53,9 @@ class Public::MembersController < ApplicationController
   end
 
   def ensure_normal_member
-    if current_member.email == 'guest@example.com'
-      redirect_to menus_path, alert: "ゲストユーザーの退会はできません"
+    @member = Member.find(params[:id])
+    if @member.email == "guest@example.com"
+      redirect_to member_path(current_member), alert: "ゲストユーザーの編集はできません"
     end
   end
 

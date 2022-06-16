@@ -15,12 +15,14 @@
     </td>
   </tr>
 </table>
-<div class="row justify-content-center">
-  <% unless member == current_member %>
-  <% if current_member.following?(member) %>
-    <%= link_to "フォロー外す", member_relationships_path(member), method: :delete, remote: true, class: "btn btn-outline-danger" %>
-  <% else %>
-    <%= link_to "フォローする", member_relationships_path(member), method: :post, remote: true, class: "btn btn-outline-success" %>
-  <% end %>
+<% if current_member.email != "guest@example.com" %>
+  <div class="row justify-content-center">
+    <% unless member == current_member %>
+      <% if current_member.following?(member) %>
+        <%= link_to "フォロー外す", member_relationships_path(member), method: :delete, remote: true, class: "btn btn-outline-danger" %>
+      <% else %>
+        <%= link_to "フォローする", member_relationships_path(member), method: :post, remote: true, class: "btn btn-outline-success" %>
+      <% end %>
+    <% end %>
+  </div>
 <% end %>
-</div>
