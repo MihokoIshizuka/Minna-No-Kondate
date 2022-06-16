@@ -1,12 +1,5 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-3 ml-auto text-center">
-      <%= link_to new_group_path, class: "btn" do %>
-        <i class="fas fa-plus-circle fa-4x" style="color:steelblue;"></i>
-      <% end %>
-    </div>
-  </div>
-  <div class="row justify-content-center">
     <div class="col-12">
       <table class="table mx-auto">
         <thead>
@@ -51,3 +44,8 @@
     </div>
   </div>
 </div>
+<span id="new">
+  <%= link_to new_group_path, class: "btn" do %>
+    <i class="fas fa-plus-circle fa-5x new-btn" style="color:steelblue;"></i>
+  <% end %>
+</span>

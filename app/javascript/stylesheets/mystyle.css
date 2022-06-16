@@ -284,6 +284,16 @@ footer {
   bottom: 30px;
 }
 
+.new-btn {
+  box-shadow: 5px 5px 8px rgb(0 0 0 / 30%);
+  border-radius: 50%;
+}
+
+.new-btn:hover {
+  box-shadow: 5px 5px 8px rgb(0 0 0 / 30%);
+  border-radius: 50%;
+}
+
 /*タグ絞り込み*/
 .search-tag {
   margin: 10px auto;
