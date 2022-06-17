@@ -51,3 +51,12 @@ $('.form-check-input').click(function(){
         $not.attr("disabled",false);
     }
 });
+
+// $(document).ready(function(){
+//   $(".tab").tabpager({
+//     items: 12,
+//     contents: 'contents',
+//     previous: '&laquo;前へ',
+//     next: 'top',
+//   });
+// });

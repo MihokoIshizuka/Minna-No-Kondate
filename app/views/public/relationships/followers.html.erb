@@ -5,6 +5,7 @@
     </div>
     <div class="col-8 offset-1">
       <%= render 'public/members/index', members: @members %>
+      <P><%= paginate @members %></P>
     </div>
   </div>
 </div>

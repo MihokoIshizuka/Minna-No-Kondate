@@ -9,6 +9,7 @@
       </div>
       <div class="row favorite-menu-index justify-content-center">
       <%= render 'public/menus/index', menus: @favorite_menus %>
+      <p><%= paginate @favorite_menus %></p>
     </div>
   </div>
 </div>

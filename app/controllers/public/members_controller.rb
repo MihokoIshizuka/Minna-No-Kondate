@@ -3,18 +3,18 @@ class Public::MembersController < ApplicationController
   before_action :correct_member, only: [:edit, :update]
 
   # ゲストユーザは編集・退会動作ができないようにする
-  before_action :ensure_normal_member, only: [:edit, :out]
+  before_action :ensure_normal_member, only: [:edit]
 
 
   def index
-    @members = params[:tag_id].present? ? Tag.find(params[:tag_id]).members.order(created_at: :desc) : Member.where(is_deleted: false).order(created_at: :desc)
+    @members = params[:tag_id].present? ? Tag.find(params[:tag_id]).members.order(created_at: :desc).page(params[:page]).per(10) : Member.where(is_deleted: false).order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def show
     @member = Member.find(params[:id])
-    @morning_menus = params[:tag_id].present? ? Tag.find(params[:tag_id]).menus.where(time_zone: 0, member_id: @member.id).order(created_at: :desc).page(params[:page]).per(12) : Menu.where(time_zone: 0, member_id: @member.id).order(created_at: :desc).page(params[:page]).per(12)
-    @noon_menus = params[:tag_id].present? ? Tag.find(params[:tag_id]).menus.where(time_zone: 1, member_id: @member.id).order(created_at: :desc).page(params[:page]).per(12) : Menu.where(time_zone: 1, member_id: @member.id).order(created_at: :desc).page(params[:page]).per(12)
-    @evening_menus = params[:tag_id].present? ? Tag.find(params[:tag_id]).menus.where(time_zone: 2, member_id: @member.id).order(created_at: :desc).page(params[:page]).per(12) : Menu.where(time_zone: 2, member_id: @member.id).order(created_at: :desc).page(params[:page]).per(12)
+    @morning_menus = params[:tag_id].present? ? Tag.find(params[:tag_id]).menus.where(time_zone: 0, member_id: @member.id).order(created_at: :desc) : Menu.where(time_zone: 0, member_id: @member.id).order(created_at: :desc)
+    @noon_menus = params[:tag_id].present? ? Tag.find(params[:tag_id]).menus.where(time_zone: 1, member_id: @member.id).order(created_at: :desc) : Menu.where(time_zone: 1, member_id: @member.id).order(created_at: :desc)
+    @evening_menus = params[:tag_id].present? ? Tag.find(params[:tag_id]).menus.where(time_zone: 2, member_id: @member.id).order(created_at: :desc) : Menu.where(time_zone: 2, member_id: @member.id).order(created_at: :desc)
   end
 
   def edit
@@ -44,7 +44,7 @@ class Public::MembersController < ApplicationController
   def favorites
     @member = Member.find(params[:member_id])
     favorites = Favorite.where(member_id: @member.id).pluck(:menu_id)
-    @favorite_menus = Menu.find(favorites)
+    @favorite_menus = Menu.find(favorites).page(params[:page]).per(12)
   end
 
   private

@@ -3,12 +3,12 @@ class Public::GroupsController < ApplicationController
   before_action :ensure_correct_member, only: [:edit, :update]
 
   def index
-    @groups = params[:tag_id].present? ? Tag.find(params[:tag_id]).groups : Group.all
+    @groups = params[:tag_id].present? ? Tag.find(params[:tag_id]).groups.page(params[:page]).per(10) : Group.all.page(params[:page]).per(10)
   end
 
   def show
     @group = Group.find(params[:id])
-    @members = @group.members.all
+    @members = @group.members.all.page(params[:page]).per(10)
   end
 
   def new
