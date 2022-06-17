@@ -294,13 +294,17 @@ footer {
   border-radius: 50%;
 }
 
-/*タグ絞り込み*/
+/*タグ絞り込み・検索*/
 .search-tag {
   margin: 10px auto;
 }
 
 .info-icon-box {
   position: relative;
+}
+
+.search-window {
+  margin-top: 20px;
 }
 
 /*お気に入り一覧*/

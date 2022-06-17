@@ -4,11 +4,7 @@
   </div>
   <div class="row justify-content-center">
     <div class="col-9">
-      <!--検索キーワードが会員の時-->
-      <% if @range == "会員" %>
         <%= render 'public/members/index', members: @members %>
-      <!--検索キーワードが献立の時-->
-      <% else %>
         <% @menus.each do |menu| %>
         <div class="col-3 mx-3 text-center menus_item">
           <%= link_to menu_path(menu) do %>

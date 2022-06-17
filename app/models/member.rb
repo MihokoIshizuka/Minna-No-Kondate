@@ -50,9 +50,6 @@ class Member < ApplicationRecord
   def get_profile_image
     (profile_image.attached?) ? profile_image : 'no_image.jpg'
   end
-  
-  # 検索
-  def self.looks(word)
-    @member = Member.where("name LIKE?", "%#{word}%")
-  end
+
+
 end

@@ -3,6 +3,9 @@
     <div class="col-3">
       <%= render 'info', member: @member %>
 
+      <div class="row justify-content-center ">
+        <%= render 'public/searches/search' %>
+      </div>
       <!--献立タグ絞り込み-->
       <div class= "row justify-content-center search-tag">
         <%= form_with url: member_path(@member), local: true, method: :get do |f| %>
@@ -14,9 +17,6 @@
           }
           %>
         <% end %>
-      </div>
-      <div class="row justify-content-center">
-        <%= render 'public/searches/search' %>
       </div>
     </div>
     <div class="col-9">

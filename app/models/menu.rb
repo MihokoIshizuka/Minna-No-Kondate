@@ -21,8 +21,4 @@ class Menu < ApplicationRecord
     favorites.exists?(member_id: member.id)
   end
 
-  # 検索
-  def self.looks(word)
-    @menu = Menu.where("body LIKE?", "%#{word}%")
-  end
 end
