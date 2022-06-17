@@ -2,7 +2,7 @@ class Admin::MembersController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @members = params[:tag_id].present? ? Tag.find(params[:tag_id]).members.order(created_at: :desc) : Member.order(created_at: :desc)
+    @members = Member.all.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def show
@@ -20,6 +20,13 @@ class Admin::MembersController < ApplicationController
     @member = Member.find(params[:id])
     @member.update(member_params)
     redirect_to admin_member_path(@member), notice: "登録情報を更新しました"
+  end
+
+  def destroy
+    @members = Member.all.order(created_at: :desc)
+    unless Member.find(params[:id]).destroy
+      render :index, notice: "削除に失敗しました"
+    end
   end
 
 

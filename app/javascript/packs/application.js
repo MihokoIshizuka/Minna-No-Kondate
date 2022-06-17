@@ -53,10 +53,12 @@ $('.form-check-input').click(function(){
 });
 
 // $(document).ready(function(){
-//   $(".tab").tabpager({
+//   $(".tab-list").tabpager({
 //     items: 12,
-//     contents: 'contents',
-//     previous: '&laquo;前へ',
-//     next: 'top',
+//     contents: '.tabbox-contents',
+//     //time: 300,
+//     //start: 1,
+//     position: 'top',
+//     //scroll: true
 //   });
 // });

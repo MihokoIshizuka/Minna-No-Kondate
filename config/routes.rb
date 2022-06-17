@@ -46,7 +46,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
 
-    resources :members, only: [:index, :show, :edit, :update] do
+    resources :members, only: [:index, :show, :edit, :update, :destroy] do
       resource :contacts, only: [:show, :create]
       resources :contacts, only: [:destroy]
     end

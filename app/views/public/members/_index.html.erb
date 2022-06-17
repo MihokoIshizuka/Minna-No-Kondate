@@ -10,24 +10,26 @@
   </thead>
   <tbody>
     <% members.each do |member| %>
-    <tr>
-      <td>
-        <%= link_to member_path(member) do %>
-          <%= image_tag member.get_profile_image, size:"65x65" %>
-        <% end %>
-      </td>
-      <td>
-        <%= link_to member_path(member) do %>
-          <%= member.name %>
-        <% end %>
-      </td>
-      <td><%= member.introduction %></td>
-      <td>
-        <% member.tags.each do |tag| %>
-          <span class="badge badge-info"><%= tag.name %></span><br>
-        <% end %>
-      </td>
-    </tr>
+      <% unless member.email == "guest@example.com" %>
+        <tr>
+          <td>
+            <%= link_to member_path(member) do %>
+              <%= image_tag member.get_profile_image, size:"65x65" %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to member_path(member) do %>
+              <%= member.name %>
+            <% end %>
+          </td>
+          <td><%= member.introduction %></td>
+          <td>
+            <% member.tags.each do |tag| %>
+              <span class="badge badge-info"><%= tag.name %></span><br>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
