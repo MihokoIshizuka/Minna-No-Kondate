@@ -22,7 +22,7 @@ class Public::ContactsController < ApplicationController
   private
 
   def contact_params
-    params.require(:contact).permit(:message, :image).merge(member_id: current_member.id)
+    params.require(:contact).permit(:message, :image, :member_id)
   end
 
   def ensure_correct_member

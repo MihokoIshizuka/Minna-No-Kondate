@@ -1,6 +1,11 @@
 class Admin::ContactsController < ApplicationController
   before_action :authenticate_admin!
 
+  def index
+    @members = Member.all.order(created_at: :desc).page(params[:page]).per(10)
+    @contact = Contact.new
+    @contact.source = 'member'
+  end
 
   def show
     @member = Member.find(params[:member_id])
@@ -28,6 +33,6 @@ class Admin::ContactsController < ApplicationController
   private
 
   def contact_params
-    params.require(:contact).permit(:message, :image).merge(admin_id: current_admin.id)
+    params.require(:contact).permit(:message, :image, :admin_id)
   end
 end
