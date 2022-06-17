@@ -33,7 +33,7 @@ header {
 }
 
 main {
-  padding-bottom: 30px;
+  padding-bottom: 15px;
   flex: 1;
 }
 
@@ -187,56 +187,7 @@ footer {
   font-weight: bold;
 }
 
-/*グループ詳細画面*/
-.group-member-index {
-  margin-top: 20px;
-}
 
-/*グループチャット画面*/
-.group-chat-box {
-  display: flex;
-  margin-bottom: 20px;
-}
-.group-chat-content-owner {
-  width: 30%;
-  background-color: #f5ecf4;
-  border-radius: 5%;
-  padding: 0 5px;
-}
-
-.group-chat-content-others {
-  width: 30%;
-  background-color: #ebf4f5;
-  border-radius: 5%;
-  padding: 0 5px;
-}
-
-.group-chat-icon {
-  border-radius: 50%;
-}
-
-.group-chat-icon-owner {
-  width: 20%;
-}
-
-.group-chat-icon-others {
-  width: 20%;
-}
-
-.group-chat-form {
-  padding: 20px 40px 0px 40px;
-  border: dashed 5px #d3d6dd;
-}
-
-
-/*献立新規入力画面*/
-.time_zone_button {
-  display: flex;
-}
-
-.form-check {
-  padding-left: 40%;
-}
 
 /*タブメニュー*/
 .tab-list {
@@ -276,6 +227,41 @@ footer {
   margin: 0 5px;
 }
 
+/*献立新規入力画面*/
+.time_zone_button {
+  display: flex;
+}
+
+.form-check {
+  padding-left: 40%;
+}
+
+/*献立詳細*/
+.menu-content-box {
+  position: relative;
+  background-color: #eaf4fc;
+  border-radius: 10%;
+  padding: 10px;
+}
+
+.menu-comment-content {
+  position: relative;
+  background-color: #fcfceb;
+  border-radius: 10%;
+}
+
+.menu-comment-delete {
+  position: absolute;
+  right: 18px;
+  bottom: 12px;
+}
+
+.menu-edit {
+  position: absolute;
+  right: 18px;
+  bottom: 12px;
+
+}
 
 /*献立一覧・新規作成ボタン*/
 #new {
@@ -330,3 +316,44 @@ footer {
   margin: 10px auto;
 }
 
+
+/*グループ詳細画面*/
+.group-member-index {
+  margin-top: 20px;
+}
+
+/*グループチャット画面*/
+.group-chat-box {
+  display: flex;
+  margin-bottom: 20px;
+}
+.group-chat-content-owner {
+  width: 30%;
+  background-color: #f5ecf4;
+  border-radius: 5%;
+  padding: 0 5px;
+}
+
+.group-chat-content-others {
+  width: 30%;
+  background-color: #ebf4f5;
+  border-radius: 5%;
+  padding: 0 5px;
+}
+
+.group-chat-icon {
+  border-radius: 50%;
+}
+
+.group-chat-icon-owner {
+  width: 20%;
+}
+
+.group-chat-icon-others {
+  width: 20%;
+}
+
+.group-chat-form {
+  padding: 20px 40px 0px 40px;
+  border: dashed 5px #d3d6dd;
+}

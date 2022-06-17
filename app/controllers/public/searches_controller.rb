@@ -6,7 +6,7 @@ class Public::SearchesController < ApplicationController
     @members = partial_member(word)
     @menus = partial_menu(word)
   end
-  
+
   private
   # 会員の部分一致検索
   def partial_member(word)

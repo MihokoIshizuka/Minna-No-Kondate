@@ -34,7 +34,7 @@ class Public::MenusController < ApplicationController
   def update
     @menu = Menu.find(params[:id])
     if @menu.update(menu_params)
-      redirect_to menu_path(@menu), notice: "献立情報が更新されました"
+      redirect_to menu_path(@menu), notice: "献立情報を更新しました"
     else
       render 'edit'
     end
@@ -43,7 +43,7 @@ class Public::MenusController < ApplicationController
   def destroy
     @menu = Menu.find(params[:id])
     if @menu.destroy
-      redirect_to member_path(current_member)
+      redirect_to member_path(current_member), notice: "献立を削除しました"
     else
       render 'edit'
     end

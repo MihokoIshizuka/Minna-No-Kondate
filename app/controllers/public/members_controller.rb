@@ -24,7 +24,7 @@ class Public::MembersController < ApplicationController
   def update
     @member = Member.find(params[:id])
     if @member.update(member_params)
-      redirect_to member_path(@member), notice: "会員情報が更新されました"
+      redirect_to member_path(@member), notice: "会員情報を更新しました"
     else
       render 'edit'
     end
@@ -38,7 +38,7 @@ class Public::MembersController < ApplicationController
     @member = current_member
     @member.update(is_deleted: true)
     reset_session
-    redirect_to root_path, notice: "退会処理が実行されました。"
+    redirect_to root_path, notice: "退会処理を実行しました"
   end
 
   def favorites

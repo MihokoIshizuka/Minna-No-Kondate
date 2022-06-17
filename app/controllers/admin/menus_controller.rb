@@ -1,6 +1,6 @@
 class Admin::MenusController < ApplicationController
   before_action :authenticate_admin!
-
+  before_action :correct_admin, only: [:edit, :update, :destroy]
 
   def index
     @morning_menus = params[:tag_id].present? ? Tag.find(params[:tag_id]).menus.where(time_zone: 0).order(created_at: :desc) : Menu.where(time_zone: 0).order(created_at: :desc)
@@ -20,7 +20,7 @@ class Admin::MenusController < ApplicationController
   def update
     @menu = Menu.find(params[:id])
     if @menu.update(menu_params)
-      redirect_to admin_menu_path(@menu), notice: "献立情報が更新されました"
+      redirect_to admin_menu_path(@menu), notice: "献立情報を更新しました"
     else
       render 'edit'
     end
@@ -29,7 +29,7 @@ class Admin::MenusController < ApplicationController
   def destroy
     @menu = Menu.find(params[:id])
     if @menu.destroy
-      redirect_to admin_member_path(@menu.member)
+      redirect_to admin_member_path(@menu.member), notice: "献立を削除しました"
     else
       render 'edit'
     end
@@ -38,7 +38,13 @@ class Admin::MenusController < ApplicationController
   private
 
   def menu_params
-    params.require(:menu).permit(:date, :body, :menu_image, tag_ids: [])
+    params.require(:menu).permit(:date, :body, :menu_image, :time_zone, tag_ids: [])
+  end
+
+  def correct_admin
+    unless current_admin.email == "admin@example.com"
+      redirect_to admin_menus_path
+    end
   end
 
 end

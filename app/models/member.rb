@@ -20,7 +20,7 @@ class Member < ApplicationRecord
   has_many :contacts, dependent: :destroy
 
   validates :name, presence: true, uniqueness: true, length:{minimum:2, maximum:10}
-  validates :introduction, presence: true, length:{maximum:20}
+  validates :introduction, presence: true, length:{maximum:30}
   validates :is_deleted, inclusion: { in: [true, false] }
 
 # 退会したユーザーは同じアカウントでログインできない

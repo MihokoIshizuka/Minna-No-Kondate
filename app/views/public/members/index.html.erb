@@ -1,7 +1,11 @@
 <div class="container">
   <div class="row">
-    <div class="col-3">
+    <div class="col-md-3">
       <%= render 'public/members/info', member: current_member %>
+
+      <div class="row justify-content-center">
+        <%= render 'public/searches/search' %>
+      </div>
       <!--会員タグ絞り込み-->
       <div class= "row justify-content-center search-tag">
         <%= form_with url: members_path, local: true, method: :get do |f| %>
@@ -14,11 +18,8 @@
           %>
         <% end %>
       </div>
-      <div class="row justify-content-center">
-        <%= render 'public/searches/search' %>
-      </div>
     </div>
-    <div class="col-8 offset-1">
+    <div class="col-md-8 offset-1">
       <%= render 'index', members: @members %>
       <p><%= paginate @members %></p>
     </div>

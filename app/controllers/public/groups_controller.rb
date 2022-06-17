@@ -20,7 +20,7 @@ class Public::GroupsController < ApplicationController
     @group.owner_id = current_member.id
     @group.members << current_member
     if @group.save
-      redirect_to groups_path
+      redirect_to groups_path, notice: "グループを作成しました"
     else
       render 'new'
     end
@@ -33,7 +33,7 @@ class Public::GroupsController < ApplicationController
   def update
     @group = Group.find(params[:id])
     if @group.update(group_params)
-      redirect_to groups_path
+      redirect_to groups_path, notice: "グループ情報を更新しました"
     else
       render 'edit'
     end
@@ -54,7 +54,7 @@ class Public::GroupsController < ApplicationController
   def all_destroy
     @group = Group.find(params[:group_id])
     if @group.destroy
-      redirect_to groups_path
+      redirect_to groups_path, notice: "グループを削除しました"
     else
       render 'edit'
     end

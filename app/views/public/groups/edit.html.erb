@@ -3,7 +3,8 @@
     <h2>グループ編集</h2>
   </div>
   <div class="row">
-    <div class="col-8 mx-auto">
+    <div class="col-md-8 mx-auto">
+      <%= render 'public/shared/error_messages', resource: @group %>
       <%= form_with model: @group, url: group_path(@group), method: :patch, local: true do |f| %>
         <%= render 'form', f: f %>
         <div class="row  justify-content-around">
@@ -11,7 +12,7 @@
             <%= f.submit "変更を保存する", class: "btn btn-outline-success" %>
           </div>
           <div class="form-group">
-            <%= link_to "グループを削除する", group_all_destroy_path(@group), method: :delete, class: "btn btn-outline-danger" %>
+            <%= link_to "グループを削除する", group_all_destroy_path(@group), method: :delete, class: "btn btn-outline-danger", "data-confirm" => "本当にグループを削除しますか？" %>
           </div>
         </div>
       <% end %>

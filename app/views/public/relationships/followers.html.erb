@@ -1,11 +1,20 @@
 <div class="container">
   <div class="row">
-    <div class="col-3">
+    <div class="col-md-3">
       <%= render 'public/members/info', member: @member %>
     </div>
-    <div class="col-8 offset-1">
-      <%= render 'public/members/index', members: @members %>
-      <P><%= paginate @members %></P>
+    <div class="col-md-8 offset-1">
+      <div class="row justify-content-center">
+        <h4>フォロワー</h4>
+      </div>
+      <div class="row justify-content-center">
+        <% unless @members.exists? %>
+          <h3 class="mt-3">現在フォロワーはいません</h3>
+        <% else %>
+          <%= render 'public/members/index', members: @members %>
+          <P><%= paginate @members %></P>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

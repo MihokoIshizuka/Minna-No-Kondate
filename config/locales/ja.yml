@@ -5,11 +5,3 @@ ja:
         morning: "朝"
         noon: "昼"
         evening: "夕"
-
-ja:
-  views:
-    pagination:
-      first: "≪"
-      previous: "<"
-      next: ">"
-      last: "≫"

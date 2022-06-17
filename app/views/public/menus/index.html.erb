@@ -1,7 +1,11 @@
 <div class="container">
   <div class="row">
-    <div class="col-3">
+    <div class="col-md-3">
       <%= render 'public/members/info', member: current_member %>
+
+      <div class="row justify-content-center">
+        <%= render 'public/searches/search' %>
+      </div>
       <!--献立タグ絞り込み-->
       <div class= "row justify-content-center search-tag">
         <%= form_with url: menus_path, local: true, method: :get do |f| %>
@@ -14,11 +18,8 @@
           %>
         <% end %>
       </div>
-      <div class="row justify-content-center">
-        <%= render 'public/searches/search' %>
-      </div>
     </div>
-    <div class="col-9">
+    <div class="col-md-9">
       <!--タブメニュー-->
       <ul class="tab-list list-unstyled">
         <li class="tab tab-active">朝</li>

@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row justify-content-around">
-    <div class="col-5">
+    <div class="col-md-5">
       <%= image_tag @menu.menu_image, size:"400x350", class: 'img-fluid' %>
     </div>
-    <div class="col-6">
+    <div class="col-md-6 menu-content-box">
       <div class="row justify-content-center">
         <%= link_to admin_member_path(@menu.member) do %>
           <%= @menu.member.name %>
@@ -13,29 +13,34 @@
         (<%= @menu.date %>)
       </div>
       <div class="row">
-        <div class="col">
+        <% @menu.tags.each do |tag| %>
+          <span class="badge badge-info ml-2"><%= tag.name %></span>
+        <% end %>
+      </div>
+      <div class="row">
+        <div class="col-md-12 mx-auto mt-3">
           <!--内容を改行表示できる-->
           <%= simple_format(@menu.body) %>
         </div>
       </div>
 
       <div class="row justify-content-end">
-        <div class="col-3">
-          <%= link_to "編集", edit_admin_menu_path(@menu), class: "btn btn-success" %>
+        <div class="col-md-2 text-center menu-edit">
+          <%= link_to "編集", edit_admin_menu_path(@menu) %>
         </div>
       </div>
     </div>
   </div>
   <!--コメント非同期部分-->
-  <div class="row justify-content-center">
-    <div class="col-4">
+  <div class="row justify-content-around">
+    <div class="col-md-3 text-center mt-5">
       <%= form_with model: [@menu, @menu_comment], url: admin_menu_menu_comments_path(@menu), method: :post, local: false do |f| %>
         <%= f.label :コメント %><br>
         <%= f.text_area :comment, rows: "5" %><br>
         <%= f.submit "コメントする", class: "btn btn-info" %>
       <% end %>
     </div>
-    <div id="menu_comments_area", class="col-6">
+    <div id="menu_comments_area", class="col-md-7 mt-3">
       <%= render 'admin/menu_comments/menu_comments', menu: @menu %>
     </div>
   </div>
