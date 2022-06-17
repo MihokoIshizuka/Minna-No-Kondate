@@ -307,6 +307,11 @@ footer {
   margin-top: 20px;
 }
 
+.search-result {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 /*お気に入り一覧*/
 .favorite-index {
   color: #dbafbe;
@@ -324,3 +329,4 @@ footer {
   flex-wrap: wrap;
   margin: 10px auto;
 }
+

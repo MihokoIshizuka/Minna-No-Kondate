@@ -3,10 +3,15 @@
     <h4>"<%= params[:word] %>" の検索結果</h4>
   </div>
   <div class="row justify-content-center">
-    <div class="col-9">
+    <div class="col-9 search-result">
+      <% if @menus == [] && @members == [] %>
+        <h3 class="mx-auto mt-5">検索結果は見つかりませんでした。</h3>
+        <h3 class="mx-auto mt-3">別のキーワードでお試しください。</h3>
+      <% elsif @menus == [] %>
         <%= render 'public/members/index', members: @members %>
+      <% else %>
         <% @menus.each do |menu| %>
-        <div class="col-3 mx-3 text-center menus_item">
+        <div class="col-3 col-4 mb-2 text-center menus_item">
           <%= link_to menu_path(menu) do %>
             <%= image_tag menu.menu_image, size:"200x150" %><br>
             <%= menu.member.name %><br>
