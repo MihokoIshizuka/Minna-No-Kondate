@@ -29,17 +29,17 @@
         <li class="tab">間食</li>
       </ul>
       <div class="tabbox-contents">
-        <div class="tabbox box-show">
-          <%= render 'public/menus/index', menus: @morning_menus %>
+        <div class="tabbox box-show justify-content-center">
+          <%= render partial: 'public/menus/index', locals: {menus: @morning_menus, param_name: 'morning_menus', tab: 1} %>
         </div>
-        <div class="tabbox">
-          <%= render 'public/menus/index', menus: @noon_menus %>
+        <div class="tabbox justify-content-center">
+          <%= render partial: 'public/menus/index', locals: {menus: @noon_menus, param_name: 'noon_menus', tab: 2} %>
         </div>
-        <div class="tabbox">
-          <%= render 'public/menus/index', menus: @evening_menus %>
+        <div class="tabbox justify-content-center">
+          <%= render partial: 'public/menus/index', locals: {menus: @evening_menus, param_name: 'evening_menus', tab: 3} %>
         </div>
-        <div class="tabbox">
-          <%= render 'public/menus/index', menus: @snack_menus %>
+        <div class="tabbox justify-content-center">
+          <%= render partial: 'public/menus/index', locals: {menus: @snack_menus, param_name: 'snack_menus', tab: 4} %>
         </div>
       </div>
     </div>

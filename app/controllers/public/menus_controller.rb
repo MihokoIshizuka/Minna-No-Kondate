@@ -17,10 +17,10 @@ class Public::MenusController < ApplicationController
   end
 
   def index
-    @morning_menus = params[:tag_id].present? ? Tag.find(params[:tag_id]).menus.where(time_zone: 0).order(created_at: :desc) : Menu.where(time_zone: 0).order(created_at: :desc)
-    @noon_menus = params[:tag_id].present? ? Tag.find(params[:tag_id]).menus.where(time_zone: 1).order(created_at: :desc) : Menu.where(time_zone: 1).order(created_at: :desc)
-    @evening_menus = params[:tag_id].present? ? Tag.find(params[:tag_id]).menus.where(time_zone: 2).order(created_at: :desc) : Menu.where(time_zone: 2).order(created_at: :desc)
-    @snack_menus = params[:tag_id].present? ? Tag.find(params[:tag_id]).menus.where(time_zone: 3).order(created_at: :desc) : Menu.where(time_zone: 3).order(created_at: :desc)
+    @morning_menus = Tag.search_menu_on_tags(params[:tag_id], 0).page(params[:morning_menus]).per(3)
+    @noon_menus = Tag.search_menu_on_tags(params[:tag_id], 1).page(params[:noon_menus]).per(3)
+    @evening_menus = Tag.search_menu_on_tags(params[:tag_id], 2).page(params[:evening_menus]).per(3)
+    @snack_menus = Tag.search_menu_on_tags(params[:tag_id], 3).page(params[:snack_menus]).per(3)
   end
 
   def show

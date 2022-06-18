@@ -22,3 +22,7 @@
     </div>
   </div>
 <% end %>
+
+<%# param_nameで現在のタブのページネーションを使うように指定している %>
+<%# params: {tab :tab}でGetparameterを付与している %>
+<%= paginate menus, param_name: param_name, params: {tab: tab} %>

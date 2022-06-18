@@ -28,12 +28,12 @@
   <%= f.label :"画像", class: "col-md-3 form-label text-center" %>
   <%= f.file_field :menu_image, class: "col-md-5", accept: 'image/*' %>
 </div>
-<div class="form-group">
+<div class="form-group tag">
   <%= f.label :"タグ", class: "col-md-3 form-label text-center" %>
   <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
     <div class="form-check">
       <%= tag.label class: "form-check-label" do %>
-        <%= tag.check_box class: "form-check-input" %>
+        <%= tag.check_box %>
         <%= tag.text %>
       <% end %>
     </div>
