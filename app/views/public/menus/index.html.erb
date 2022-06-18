@@ -2,24 +2,25 @@
   <div class="row">
     <div class="col-md-3">
       <%= render 'public/members/info', member: current_member %>
-
-      <div class="row justify-content-center">
-        <%= render 'public/searches/search' %>
-      </div>
-      <!--献立タグ絞り込み-->
-      <div class= "row justify-content-center search-tag">
-        <%= form_with url: menus_path, local: true, method: :get do |f| %>
-          <%= select_tag :tag_id, options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
-          {
-            prompt: 'タグで絞り込み',
-            class: "form-control tags-select",
-            onchange: 'submit(this.form);'
-          }
-          %>
-        <% end %>
-      </div>
     </div>
     <div class="col-md-9">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <%= render 'public/searches/search' %>
+        </div>
+        <!--献立タグ絞り込み-->
+        <div class= "col-md-4 search-tag">
+          <%= form_with url: menus_path, local: true, method: :get do |f| %>
+            <%= select_tag :tag_id, options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
+            {
+              prompt: 'タグで絞り込み',
+              class: "form-control tags-select",
+              onchange: 'submit(this.form);'
+            }
+            %>
+          <% end %>
+        </div>
+      </div>
       <!--タブメニュー-->
       <ul class="tab-list list-unstyled">
         <li class="tab tab-active">朝</li>

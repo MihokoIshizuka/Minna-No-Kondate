@@ -23,9 +23,6 @@
         <td class="text-success font-weight-bold text-center">会員</td>
       <% end %>
       <td>
-        <%= link_to "お問い合わせ", admin_member_contacts_path(member), class: "btn btn-outline-primary" %>
-      </td>
-      <td>
         <%= link_to "編集", edit_admin_member_path(member), class: "btn btn-sm btn-outline-success mb-2" %><br>
         <%= link_to "削除", admin_member_path(member), method: :delete, remote: true, class: "btn btn-sm btn-outline-danger", "data-confirm" => "会員情報が全て消えますが、削除しますか？" %>
       </td>

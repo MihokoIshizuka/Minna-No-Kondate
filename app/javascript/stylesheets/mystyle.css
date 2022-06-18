@@ -2,7 +2,7 @@
   font-family: 'Noto Sans JP', sans-serif;
 }
 
-th {
+th, td {
   text-align: center;
 }
 /*フラッシュメッセージ*/
@@ -285,7 +285,7 @@ footer {
 
 /*タグ絞り込み・検索*/
 .search-tag {
-  margin: 10px auto;
+  margin: 10px 0;
 }
 
 .info-icon-box {
@@ -293,7 +293,7 @@ footer {
 }
 
 .search-window {
-  margin-top: 20px;
+  margin: 10px 0;
 }
 
 .search-result {

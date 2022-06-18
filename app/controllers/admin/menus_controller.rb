@@ -1,6 +1,5 @@
 class Admin::MenusController < ApplicationController
   before_action :authenticate_admin!
-  before_action :correct_admin, only: [:edit, :update, :destroy]
 
   def index
     @morning_menus = params[:tag_id].present? ? Tag.find(params[:tag_id]).menus.where(time_zone: 0).order(created_at: :desc) : Menu.where(time_zone: 0).order(created_at: :desc)
@@ -40,12 +39,6 @@ class Admin::MenusController < ApplicationController
 
   def menu_params
     params.require(:menu).permit(:date, :body, :menu_image, :time_zone, tag_ids: [])
-  end
-
-  def correct_admin
-    unless current_admin.email == "admin@example.com"
-      redirect_to admin_menus_path
-    end
   end
 
 end

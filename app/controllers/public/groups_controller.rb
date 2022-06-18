@@ -8,7 +8,7 @@ class Public::GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
-    @members = @group.members.all.page(params[:page]).per(10).order(created_at: :desc)
+    @members = @group.members.page(params[:page]).per(10).order(created_at: :desc)
   end
 
   def new

@@ -1,6 +1,6 @@
 class Public::MembersController < ApplicationController
   before_action :authenticate_member!, except: [:index]
-  before_action :correct_member, only: [:edit, :update]
+  before_action :ensure_correct_member, only: [:edit, :update]
 
   # ゲストユーザは編集・退会動作ができないようにする
   before_action :ensure_normal_member, only: [:edit]
@@ -61,7 +61,7 @@ class Public::MembersController < ApplicationController
     end
   end
 
-  def correct_member
+  def ensure_correct_member
     @member = Member.find(params[:id])
     redirect_to edit_member_path(current_member) unless @member == current_member
   end
