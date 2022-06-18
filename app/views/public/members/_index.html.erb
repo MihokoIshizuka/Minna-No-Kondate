@@ -1,4 +1,4 @@
-<div class="row members-card-box ml-5">
+<div class="row members-card-box ml-md-5">
   <% members.each do |member| %>
     <% unless member.email == "guest@example.com" %>
       <div class="col-md-4 mb-3">
@@ -17,7 +17,6 @@
     <% end %>
   <% end %>
 </div>
-<%= paginate members %>
 
 
 

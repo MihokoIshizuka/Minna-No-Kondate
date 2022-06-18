@@ -5,6 +5,12 @@
 th, td {
   text-align: center;
 }
+
+.pagination {
+  justify-content: center;
+}
+
+
 /*フラッシュメッセージ*/
 .flash {
   width: 100%;
@@ -172,21 +178,14 @@ footer {
   background-image: url('../images/food.2.jpg');
   background-repeat: no-repeat;
   background-size: cover;
-  /*position: absolute;*/
-  /*left: 30px;*/
-  /*width: 427px;*/
   height: 600px;
 }
 
 .about-content {
   position: relative;
   top: 50px;
-  left: -50px;
-  /*position: absolute;*/
-  /*top: 50px;*/
-  /*right: 50px;*/
+  left: -30px;
   background-color: rgba(137, 195, 235, 0.3);
-  /*padding: 20px;*/
   margin-bottom: 50px;
 }
 
@@ -195,8 +194,6 @@ footer {
   font-weight: bold;
 }
 
-@media screen and (max-width: 1199.98px) {}
-@media screen and (max-width: 991.98px) {}
 @media screen and (max-width: 767.98px) {
   .about-main {
     margin-left: 0;
@@ -205,15 +202,10 @@ footer {
     position: static;
     top: 0;
     left: 0;
-    /*position: absolute;*/
-    /*top: 50px;*/
-    /*right: 50px;*/
     background-color: rgba(137, 195, 235, 0.3);
-    /*padding: 20px;*/
     margin-bottom: 0;
   }
 }
-@media screen and (max-width: 575.98px) {}
 
 
 /*タブメニュー*/
@@ -252,6 +244,7 @@ footer {
   display: flex;
   flex-wrap: wrap;
   margin: 0 5px;
+  justify-content: center;
 }
 
 /*献立新規入力画面*/

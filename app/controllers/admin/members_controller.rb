@@ -3,15 +3,15 @@ class Admin::MembersController < ApplicationController
 
 
   def index
-    @members = Member.all.order(created_at: :desc).page(params[:page]).per(10)
+    @members = Member.all.order(created_at: :desc).page(params[:page]).per(6)
   end
 
   def show
     @member = Member.find(params[:id])
-    @morning_menus = params[:tag_id].present? ? Tag.find(params[:tag_id]).menus.where(time_zone: 0, member_id: @member.id).order(created_at: :desc) : Menu.where(time_zone: 0, member_id: @member.id).order(created_at: :desc)
-    @noon_menus = params[:tag_id].present? ? Tag.find(params[:tag_id]).menus.where(time_zone: 1, member_id: @member.id).order(created_at: :desc) : Menu.where(time_zone: 1, member_id: @member.id).order(created_at: :desc)
-    @evening_menus = params[:tag_id].present? ? Tag.find(params[:tag_id]).menus.where(time_zone: 2, member_id: @member.id).order(created_at: :desc) : Menu.where(time_zone: 2, member_id: @member.id).order(created_at: :desc)
-    @snack_menus = params[:tag_id].present? ? Tag.find(params[:tag_id]).menus.where(time_zone: 3, member_id: @member.id).order(created_at: :desc) : Menu.where(time_zone: 3, member_id: @member.id).order(created_at: :desc)
+    @morning_menus = Tag.search_menu_on_tags_myself(@member.id, params[:tag_id], 0).page(params[:morning_menus]).per(6)
+    @noon_menus = Tag.search_menu_on_tags_myself(@member.id, params[:tag_id], 1).page(params[:morning_menus]).per(6)
+    @evening_menus = Tag.search_menu_on_tags_myself(@member.id, params[:tag_id], 2).page(params[:morning_menus]).per(6)
+    @snack_menus = Tag.search_menu_on_tags_myself(@member.id, params[:tag_id], 3).page(params[:morning_menus]).per(6)
   end
 
   def edit

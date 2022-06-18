@@ -90,15 +90,3 @@ $(function(){
   $('.flash').slideUp(4000);
 });
 
-// $(document).ready(function(){
-//   $(".tab-list").tabpager({
-//     items: 12,
-//     contents: '.tabbox-contents',
-//     //time: 300,
-//     previous:'&laquo;前へ',
-//     next:'次へ&raquo;',
-//     //start: 1,
-//     position: 'top',
-//     //scroll: true
-//   });
-// });

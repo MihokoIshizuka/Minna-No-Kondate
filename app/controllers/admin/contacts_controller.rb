@@ -2,8 +2,8 @@ class Admin::ContactsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    # admin/contacts/indexで会員がお問い合わせチャットを管理者へ送信した順に並べたい
-    @contacts = Contact.all.order(created_at: :desc).page(params[:page]).per(10)
+    # お問い合わせのチャットが作成された順に並ぶ
+    @contacts = Contact.all.order(created_at: :desc).page(params[:page]).per(6)
    
   end
 
