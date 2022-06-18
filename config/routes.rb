@@ -46,6 +46,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'members/contacts' => "contacts#index"
+    get "search" => "searches#search"
 
     resources :members, only: [:index, :show, :edit, :update, :destroy] do
       resource :contacts, only: [:show, :create]

@@ -1,45 +1,60 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-md-12">
-      <table class="table">
-        <thead>
-          <tr>
-            <th></th>
-            <th>グループ名</th>
-            <th>紹介</th>
-            <th>タグ</th>
-            <th>メンバー</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @groups.each do |group| %>
+    <!--グループタグ絞り込み-->
+      <div class= "col-md-4 search-tag">
+        <%= form_with url: admin_groups_path, local: true, method: :get do |f| %>
+          <%= select_tag :tag_id, options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
+          {
+            prompt: 'タグで絞り込み',
+            class: "form-control tags-select",
+            onchange: 'submit(this.form);'
+          }
+          %>
+        <% end %>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-12">
+        <table class="table">
+          <thead>
             <tr>
-              <td>
-                <%= link_to admin_group_path(group) do %>
-                  <%= image_tag group.get_image, size:"65x65" %>
-                <% end %>
-              </td>
-              <td>
-                <%= link_to admin_group_path(group) do %>
-                  <%= group.name %>
-                <% end %>
-              </td>
-              <td><%= simple_format(group.introduction) %></td>
-              <td>
-                <% group.tags.each do |tag| %>
-                  <span class="badge badge-info"><%= tag.name %></span><br>
-                <% end %>
-              </td>
-              <td class="text-center"><%= group.members.count %></td>
-              <td>
-                <%= link_to "編集", edit_admin_group_path(group), class: "btn btn-sm btn-outline-success" %>
-              </td>
+              <th></th>
+              <th>グループ名</th>
+              <th>紹介</th>
+              <th>タグ</th>
+              <th>メンバー</th>
+              <th></th>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
-      <%= paginate @groups %>
+          </thead>
+          <tbody>
+            <% @groups.each do |group| %>
+              <tr>
+                <td>
+                  <%= link_to admin_group_path(group) do %>
+                    <%= image_tag group.get_image, size:"65x65" %>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to admin_group_path(group) do %>
+                    <%= group.name %>
+                  <% end %>
+                </td>
+                <td><%= simple_format(group.introduction) %></td>
+                <td>
+                  <% group.tags.each do |tag| %>
+                    <span class="badge badge-info"><%= tag.name %></span><br>
+                  <% end %>
+                </td>
+                <td class="text-center"><%= group.members.count %></td>
+                <td>
+                  <%= link_to "編集", edit_admin_group_path(group), class: "btn btn-sm btn-outline-success" %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <%= paginate @groups %>
+      </div>
     </div>
   </div>
 </div>
