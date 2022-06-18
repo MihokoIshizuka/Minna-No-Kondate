@@ -7,19 +7,19 @@
       <%= render 'admin/shared/error_messages', resource: @member %>
       <%= form_with model: @member, url: admin_member_path(@member), method: :patch, local: true do |f| %>
         <div class="form-group">
-          <%= f.label :名前, class: "col-3 form-label text-center" %>
-          <%= f.text_field :name, class: "col-5", maxlength: 10 %>
+          <%= f.label :名前, class: "col-md-3 form-label text-center" %>
+          <%= f.text_field :name, class: "col-md-5", maxlength: 10 %>
         </div>
         <div class="form-group">
-          <%= f.label :紹介文, class: "col-3 form-label text-center" %>
-          <%= f.text_area :introduction, class: "col-5", maxlength: 30 %>
+          <%= f.label :紹介文, class: "col-md-3 form-label text-center" %>
+          <%= f.text_area :introduction, class: "col-md-5", maxlength: 30 %>
         </div>
         <div class="form-group">
-          <%= f.label :画像, class: "col-3 form-label text-center" %>
+          <%= f.label :画像, class: "col-md-3 form-label text-center" %>
           <%= f.file_field :profile_image, accept: "image/*" %>
         </div>
         <div class="form-group">
-          <%= f.label :会員ステータス, class: "col-3 form-label text-center" %>
+          <%= f.label :会員ステータス, class: "col-md-3 form-label text-center" %>
           <div class="text-center">
             <%= f.radio_button :is_deleted, true %>
             <%= f.label :is_deleted, '退会', value: true %>

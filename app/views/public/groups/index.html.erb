@@ -25,7 +25,7 @@
                   <%= group.name %>
                 <% end %>
               </td>
-              <td><%= group.introduction %></td>
+              <td><%= simple_format(group.introduction) %></td>
               <td>
                 <% group.tags.each do |tag| %>
                   <span class="badge badge-info"><%= tag.name %></span><br>

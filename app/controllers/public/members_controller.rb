@@ -7,7 +7,7 @@ class Public::MembersController < ApplicationController
 
 
   def index
-    @members = params[:tag_id].present? ? Tag.find(params[:tag_id]).members.order(created_at: :desc).page(params[:page]).per(10) : Member.where(is_deleted: false).order(created_at: :desc).page(params[:page]).per(10)
+    @members = params[:tag_id].present? ? Tag.find(params[:tag_id]).members.page(params[:page]).per(10).order(created_at: :desc) : Member.where(is_deleted: false).page(params[:page]).per(10).order(created_at: :desc)
   end
 
   def show
@@ -15,6 +15,7 @@ class Public::MembersController < ApplicationController
     @morning_menus = params[:tag_id].present? ? Tag.find(params[:tag_id]).menus.where(time_zone: 0, member_id: @member.id).order(created_at: :desc) : Menu.where(time_zone: 0, member_id: @member.id).order(created_at: :desc)
     @noon_menus = params[:tag_id].present? ? Tag.find(params[:tag_id]).menus.where(time_zone: 1, member_id: @member.id).order(created_at: :desc) : Menu.where(time_zone: 1, member_id: @member.id).order(created_at: :desc)
     @evening_menus = params[:tag_id].present? ? Tag.find(params[:tag_id]).menus.where(time_zone: 2, member_id: @member.id).order(created_at: :desc) : Menu.where(time_zone: 2, member_id: @member.id).order(created_at: :desc)
+    @snack_menus = params[:tag_id].present? ? Tag.find(params[:tag_id]).menus.where(time_zone: 3, member_id: @member.id).order(created_at: :desc) : Menu.where(time_zone: 3, member_id: @member.id).order(created_at: :desc)
   end
 
   def edit
@@ -44,7 +45,8 @@ class Public::MembersController < ApplicationController
   def favorites
     @member = Member.find(params[:member_id])
     favorites = Favorite.where(member_id: @member.id).pluck(:menu_id)
-    @favorite_menus = Menu.find(favorites).page(params[:page]).per(12)
+    favorite_menus = Menu.find(favorites)
+    @favorite_menus = Kaminari.paginate_array(favorite_menus).page(params[:page]).per(12)
   end
 
   private

@@ -1,31 +1,35 @@
 <div class="form-group">
-  <%= f.label :"日付", class: "col-3 form-label text-center" %>
+  <%= f.label :"日付", class: "col-md-3 form-label text-center" %>
   <%= f.date_field :date, class: "col-5" %>
 </div>
 <div class="form-group">
-  <%= f.label :"内容", class: "col-3 form-label text-center" %>
+  <%= f.label :"内容", class: "col-md-3 form-label text-center" %>
   <%= f.text_area :body, class: "col-5" %>
 </div>
 <div class="form-group time_zone_button justify-content-center">
-  <div class="col-2 text-center">
+  <div class="col-md-2 text-center">
     <%= f.radio_button :time_zone, Menu.time_zones.key(0) %>
     <%= f.label :time_zone, Menu.time_zones_i18n[:morning] %>
   </div>
-  <div class="col-2 text-center">
+  <div class="col-md-2 text-center">
     <%= f.radio_button :time_zone, Menu.time_zones.key(1) %>
     <%= f.label :time_zone, Menu.time_zones_i18n[:noon] %>
   </div>
-  <div class="col-2 text-center">
+  <div class="col-md-2 text-center">
     <%= f.radio_button :time_zone, Menu.time_zones.key(2) %>
     <%= f.label :time_zone, Menu.time_zones_i18n[:evening] %>
   </div>
+  <div class="col-md-2 text-center">
+    <%= f.radio_button :time_zone, Menu.time_zones.key(3) %>
+    <%= f.label :time_zone, Menu.time_zones_i18n[:snack] %>
+  </div>
 </div>
 <div class="form-group">
-  <%= f.label :"画像", class: "col-3 form-label text-center" %>
-  <%= f.file_field :menu_image, class: "col-5", accept: 'image/*' %>
+  <%= f.label :"画像", class: "col-md-3 form-label text-center" %>
+  <%= f.file_field :menu_image, class: "col-md-5", accept: 'image/*' %>
 </div>
 <div class="form-group">
-  <%= f.label :"タグ", class: "col-3 form-label text-center" %>
+  <%= f.label :"タグ", class: "col-md-3 form-label text-center" %>
   <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
     <div class="form-check">
       <%= tag.label class: "form-check-label" do %>

@@ -25,6 +25,7 @@
         <li class="tab tab-active">朝</li>
         <li class="tab">昼</li>
         <li class="tab">夕</li>
+        <li class="tab">間食</li>
       </ul>
       <div class="tabbox-contents">
         <div class="tabbox box-show justify-content-center">
@@ -35,6 +36,9 @@
         </div>
         <div class="tabbox">
           <%= render 'index', menus: @evening_menus %>
+        </div>
+        <div class="tabbox">
+          <%= render 'index', menus: @snack_menus %>
         </div>
       </div>
     </div>

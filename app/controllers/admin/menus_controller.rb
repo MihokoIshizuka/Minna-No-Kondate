@@ -6,6 +6,7 @@ class Admin::MenusController < ApplicationController
     @morning_menus = params[:tag_id].present? ? Tag.find(params[:tag_id]).menus.where(time_zone: 0).order(created_at: :desc) : Menu.where(time_zone: 0).order(created_at: :desc)
     @noon_menus = params[:tag_id].present? ? Tag.find(params[:tag_id]).menus.where(time_zone: 1).order(created_at: :desc) : Menu.where(time_zone: 1).order(created_at: :desc)
     @evening_menus = params[:tag_id].present? ? Tag.find(params[:tag_id]).menus.where(time_zone: 2).order(created_at: :desc) : Menu.where(time_zone: 2).order(created_at: :desc)
+    @snack_menus = params[:tag_id].present? ? Tag.find(params[:tag_id]).menus.where(time_zone: 3).order(created_at: :desc) : Menu.where(time_zone: 3).order(created_at: :desc)
   end
 
   def show

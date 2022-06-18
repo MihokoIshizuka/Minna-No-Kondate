@@ -4,7 +4,7 @@
     <h3 class="mb-3">お問い合わせチャット</h3>
   </div>
   <div class="row">
-    <div class="col-8 mx-auto text-center">
+    <div class="col-md-8 mx-auto text-center">
       <p>このページは、管理者へのお問い合わせ専用のチャットとなります。</p>
       <p>何かご不明点がある場合や、新しいタグの作成の希望がある場合、<br>
           また間違えて退会操作をしてしまい、データを復元する場合は、<br>
@@ -14,7 +14,7 @@
   </div>
   </div>
   <div class="row justify-content-center">
-    <div id="contact_chat", class="col-8">
+    <div id="contact_chat", class="col-md-8">
       <% @contacts.each do |contact| %>
         <% if contact.source == 'member' %>
           <div class="row group-chat-box">

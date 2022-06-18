@@ -2,6 +2,9 @@
   font-family: 'Noto Sans JP', sans-serif;
 }
 
+th {
+  text-align: center;
+}
 /*フラッシュメッセージ*/
 .flash {
   width: 100%;

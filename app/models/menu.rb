@@ -14,7 +14,7 @@ class Menu < ApplicationRecord
   validates :menu_image, presence: true
   validates :tag_ids, presence: true
 
-  enum time_zone: { morning: 0, noon: 1, evening: 2 }
+  enum time_zone: { morning: 0, noon: 1, evening: 2, snack: 3 }
 
 
   def favorited_by?(member)
