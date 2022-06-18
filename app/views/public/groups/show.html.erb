@@ -20,39 +20,21 @@
         </div>
       </div>
       <div class="row justify-content-center group-member-index">
-        <table class="table">
-          <thead>
-            <tr>
-              <th></th>
-              <th>名前</th>
-              <th>紹介</th>
-              <th>よく利用するタグ</th>
-              <th colspan="3"></th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @members.each do |member| %>
-              <tr>
-                <td>
-                  <%= link_to member_path(member) do %>
-                    <%= image_tag member.get_profile_image, size:"65x65" %>
-                  <% end %>
-                </td>
-                <td>
-                  <%= link_to member_path(member) do %>
-                    <%= member.name %>
-                  <% end %>
-                </td>
-                <td><%= simple_format(member.introduction) %></td>
-                <td>
+        <% @members.each do |member| %>
+          <div class="col-md-3 mb-3">
+            <div class="card h-100">
+              <%= link_to member_path(member) do %>
+                <p class="mx-auto my-2" style="text-align:center;"><%= image_tag member.get_profile_image, class: "card-image img-fluid" %></p>
+                <p class="text-center"><%= member.name %></p>
+                <p class="text-center mt-3">
                   <% member.tags.each do |tag| %>
                     <span class="badge badge-info"><%= tag.name %></span><br>
                   <% end %>
-                </td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
+                </p>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
         <p><%= paginate @members %></p>
       </div>
     </div>

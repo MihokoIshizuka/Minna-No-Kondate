@@ -7,15 +7,15 @@ class Public::MembersController < ApplicationController
 
 
   def index
-    @members = params[:tag_id].present? ? Tag.find(params[:tag_id]).members.page(params[:page]).per(10).order(created_at: :desc) : Member.where(is_deleted: false).page(params[:page]).per(10).order(created_at: :desc)
+    @members = params[:tag_id].present? ? Tag.find(params[:tag_id]).members.page(params[:page]).per(12).order(created_at: :desc) : Member.where(is_deleted: false).page(params[:page]).per(12).order(created_at: :desc)
   end
 
   def show
     @member = Member.find(params[:id])
-    @morning_menus = Tag.search_menu_on_tags_myself(@member.id, params[:tag_id], 0).page(params[:morning_menus]).per(3)
-    @noon_menus = Tag.search_menu_on_tags_myself(@member.id, params[:tag_id], 1).page(params[:morning_menus]).per(3)
-    @evening_menus = Tag.search_menu_on_tags_myself(@member.id, params[:tag_id], 2).page(params[:morning_menus]).per(3)
-    @snack_menus = Tag.search_menu_on_tags_myself(@member.id, params[:tag_id], 3).page(params[:morning_menus]).per(3)
+    @morning_menus = Tag.search_menu_on_tags_myself(@member.id, params[:tag_id], 0).page(params[:morning_menus]).per(12)
+    @noon_menus = Tag.search_menu_on_tags_myself(@member.id, params[:tag_id], 1).page(params[:morning_menus]).per(12)
+    @evening_menus = Tag.search_menu_on_tags_myself(@member.id, params[:tag_id], 2).page(params[:morning_menus]).per(12)
+    @snack_menus = Tag.search_menu_on_tags_myself(@member.id, params[:tag_id], 3).page(params[:morning_menus]).per(12)
   end
 
   def edit

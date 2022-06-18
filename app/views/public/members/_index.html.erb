@@ -1,35 +1,24 @@
-<table class="table">
-  <thead>
-    <tr>
-      <th></th>
-      <th>名前</th>
-      <th>紹介</th>
-      <th>よく利用するタグ</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% members.each do |member| %>
-      <% unless member.email == "guest@example.com" %>
-        <tr>
-          <td>
-            <%= link_to member_path(member) do %>
-              <%= image_tag member.get_profile_image, size:"65x65" %>
-            <% end %>
-          </td>
-          <td>
-            <%= link_to member_path(member) do %>
-              <%= member.name %>
-            <% end %>
-          </td>
-          <td><%= member.introduction %></td>
-          <td>
-            <% member.tags.each do |tag| %>
-              <span class="badge badge-info"><%= tag.name %></span><br>
-            <% end %>
-          </td>
-        </tr>
-      <% end %>
+<div class="row members-card-box ml-5">
+  <% members.each do |member| %>
+    <% unless member.email == "guest@example.com" %>
+      <div class="col-md-4 mb-3">
+        <%= link_to member_path(member) do %>
+          <div class="card h-100">
+            <%= image_tag member.get_profile_image, class: "card-image mx-auto my-2 img-fluid" %>
+            <p class="text-center"><%= member.name %></p>
+            <p class="text-center mt-3">
+              <% member.tags.each do |tag| %>
+                <span class="badge badge-info"><%= tag.name %></span><br>
+              <% end %>
+            </p>
+          </div>
+        <% end %>
+      </div>
     <% end %>
-  </tbody>
-</table>
+  <% end %>
+</div>
+<%= paginate members %>
+
+
+
+

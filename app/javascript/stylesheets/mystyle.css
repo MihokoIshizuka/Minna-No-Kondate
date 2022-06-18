@@ -384,3 +384,17 @@ footer {
   padding: 20px 40px 0px 40px;
   border: dashed 5px #d3d6dd;
 }
+
+/*会員一覧*/
+
+.members-card-box {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card-image {
+  background-size: cover;
+  width: 150px;
+  height:150px;
+}
+

@@ -1,52 +1,49 @@
 <div class="container">
   <div class="row justify-content-center">
+    <!--グループタグ絞り込み-->
+      <div class= "col-md-4 search-tag">
+        <%= form_with url: groups_path, local: true, method: :get do |f| %>
+          <%= select_tag :tag_id, options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
+          {
+            prompt: 'タグで絞り込み',
+            class: "form-control tags-select",
+            onchange: 'submit(this.form);'
+          }
+          %>
+        <% end %>
+      </div>
+  </div>
+  <div class="row justify-content-center">
     <div class="col-md-12">
-      <table class="table mx-auto">
-        <thead>
-          <tr>
-            <th></th>
-            <th>グループ名</th>
-            <th>紹介</th>
-            <th>タグ</th>
-            <th>メンバー</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @groups.each do |group| %>
-            <tr>
-              <td>
-                <%= link_to group_path(group) do %>
-                  <%= image_tag group.get_image, size:"65x65" %>
-                <% end %>
-              </td>
-              <td>
-                <%= link_to group_path(group) do %>
-                  <%= group.name %>
-                <% end %>
-              </td>
-              <td><%= simple_format(group.introduction) %></td>
-              <td>
-                <% group.tags.each do |tag| %>
-                  <span class="badge badge-info"><%= tag.name %></span><br>
-                <% end %>
-              </td>
-              <td class="text-center"><%= group.members.count %></td>
-              <% if group.owner_id == current_member.id %>
-                <td>
-                  <%= link_to "編集", edit_group_path(group), class: "btn btn-sm btn-outline-success" %>
-                </td>
+      <div class="row members-card-box ml-md-5">
+        <% @groups.each do |group| %>
+          <div class="col-md-4 mb-3">
+            <div class="card h-100">
+              <%= link_to group_path(group) do %>
+                <p class="mx-auto my-2" style="text-align:center;"><%= image_tag group.get_image, class: "card-image img-fluid" %></p>
+                <p class="text-center"><%= group.name %></p>
+                <p class="text-center mt-3">
+                  <% group.tags.each do |tag| %>
+                    <span class="badge badge-info"><%= tag.name %></span><br>
+                  <% end %>
+                </p>
               <% end %>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-      <p><%= paginate @groups %></p>
+              <p class="text-center">
+                <% if group.owner_id == current_member.id %>
+                  <%= link_to "編集", edit_group_path(group), class: "btn btn-sm btn-outline-success" %>
+                <% end %>
+              </p>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
+<%= paginate @groups %>
 <span id="new">
   <%= link_to new_group_path, class: "btn" do %>
     <i class="fas fa-plus-circle fa-5x new-btn" style="color:steelblue;"></i>
   <% end %>
 </span>
+
