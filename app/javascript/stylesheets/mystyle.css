@@ -379,6 +379,13 @@ footer {
 }
 
 /*会員一覧*/
+.card {
+ border: 4px solid rgba(108, 155, 210, 0.2);
+}
+
+.link-card:hover {
+  text-decoration: none;
+}
 
 .members-card-box {
   display: flex;
@@ -391,3 +398,9 @@ footer {
   height:150px;
 }
 
+.card-member-name {
+font-size: 20px;
+font-weight: bold;
+text-decoration: none;
+color: #2a4073;
+}

@@ -23,9 +23,9 @@
         <% @members.each do |member| %>
           <div class="col-md-3 mb-3">
             <div class="card h-100">
-              <%= link_to member_path(member) do %>
+              <%= link_to member_path(member), class: "link-card" do %>
                 <p class="mx-auto my-2" style="text-align:center;"><%= image_tag member.get_profile_image, class: "card-image img-fluid" %></p>
-                <p class="text-center"><%= member.name %></p>
+                <p class="text-center card-member-name"><%= member.name %></p>
                 <p class="text-center mt-3">
                   <% member.tags.each do |tag| %>
                     <span class="badge badge-info"><%= tag.name %></span><br>

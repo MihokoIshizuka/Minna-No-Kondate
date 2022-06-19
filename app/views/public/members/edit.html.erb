@@ -18,8 +18,8 @@
           <%= f.label :画像, class: "col-3 form-label text-center" %>
           <%= f.file_field :profile_image, accept: "image/*" %>
         </div>
-        <div class="form-group">
-          <%= f.label :よく利用するタグ, class: "col-3 form-label text-center" %>
+        <div class="form-group tag">
+          <%= f.label :よく利用するタグ（最大3個まで）, class: "col-3 form-label text-center" %>
           <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
             <div class="form-check">
               <%= tag.label class: "form-check-label" do %>
