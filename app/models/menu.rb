@@ -16,6 +16,10 @@ class Menu < ApplicationRecord
 
   enum time_zone: { morning: 0, noon: 1, evening: 2, snack: 3 }
 
+  def get_image(width, height)
+    menu_image.variant(resize_to_limit: [width, height]).processed
+  end
+
 
   def favorited_by?(member)
     favorites.exists?(member_id: member.id)

@@ -355,14 +355,14 @@ footer {
   margin-bottom: 20px;
 }
 .group-chat-content-owner {
-  width: 30%;
+  width: 50%;
   background-color: #f5ecf4;
   border-radius: 5%;
   padding: 0 5px;
 }
 
 .group-chat-content-others {
-  width: 30%;
+  width: 50%;
   background-color: #ebf4f5;
   border-radius: 5%;
   padding: 0 5px;
@@ -409,8 +409,11 @@ footer {
  border-radius: 1%;
  background-color: #fff;
  transition:box-shadow 0.3s, transform 0.3s;
- padding: 10px 0;
+ padding: 10px 0 0;
 }
+
+
+
 
 .card:hover {
   box-shadow:0 6px 14px rgba(0, 0, 0, 0.24);
@@ -431,6 +434,11 @@ footer {
   background-size: cover;
   width: 150px;
   height:150px;
+}
+
+.card-img-top {
+  height: 200px;
+  width: 90%;
 }
 
 .card-member-name {
