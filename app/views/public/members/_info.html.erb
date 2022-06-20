@@ -2,12 +2,6 @@
   <div class="mx-auto mb-3">
     <%= image_tag member.get_profile_image, size:"150x150" %>
   </div>
-    <!--会員（自分）のいいね一覧-->
-    <% if member.id == current_member.id %>
-      <%= link_to member_favorites_path(current_member), class: "btn favorite-index" do %>
-        <i class="fas fa-grin-hearts fa-3x"></i>
-      <% end %>
-    <% end %>
 </div>
 <table class="table">
   <tr>
@@ -23,6 +17,13 @@
   <%= render 'public/relationships/relationships', member: member %>
 </div>
 <% if member.email != "guest@example.com" %>
+  <% if member.id == current_member.id %>
+    <div class="row mt-3">
+      <%= link_to member_favorites_path(current_member), class: "btn btn-block favorite-index" do %>
+        <i class="fas fa-heart"></i>
+      <% end %>
+    </div>
+  <% end %>
   <div class="row mt-3">
     <%= link_to edit_member_path(member), class: "btn btn-outline-secondary btn-block" do %>
       <i class="fas fa-user-cog"></i>

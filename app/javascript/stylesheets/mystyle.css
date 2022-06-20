@@ -320,13 +320,14 @@ footer {
 
 /*お気に入り一覧*/
 .favorite-index {
+  border: solid 1px #db7093;
+  background-color: #FFF;
   color: #dbafbe;
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
 }
 
 .favorite-index:hover {
+  border: solid 1px #db7093;
+  background-color: #FFF;
   color: #db7093;
 }
 
@@ -380,11 +381,20 @@ footer {
 
 /*会員一覧*/
 .card {
- border: 4px solid rgba(108, 155, 210, 0.2);
+ border: solid 1px #6c9bd2;
+ border-radius: 1%;
+ background-color: #fafdff;
+ transition:box-shadow 0.3s, transform 0.3s;
+}
+
+.card:hover {
+  box-shadow:0 6px 14px rgba(0, 0, 0, 0.24);
+  transform:translate(0, -2px);
 }
 
 .link-card:hover {
   text-decoration: none;
+
 }
 
 .members-card-box {
