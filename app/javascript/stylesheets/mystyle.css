@@ -385,23 +385,7 @@ footer {
   border: dashed 5px #d3d6dd;
 }
 
-@media screen and (max-width: 480px) {
-	/* 480px以下に適用されるCSS（スマホ用） */
-.group-chat-content-owner {
-  width: 70%;
-  background-color: #f5ecf4;
-  border-radius: 5%;
-  padding: 0 5px;
-}
 
-.group-chat-content-others {
-  width: 70%;
-  background-color: #ebf4f5;
-  border-radius: 5%;
-  padding: 0 5px;
-}
-
-}
 
 /*会員一覧・献立一覧のカード*/
 .card {

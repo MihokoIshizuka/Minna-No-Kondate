@@ -1,27 +1,38 @@
+<div class="row" style="width:100%">
 <% menus.each do |menu| %>
-  <div class="col-md-4 text-center menus_item">
-    <%= link_to admin_menu_path(menu), class: "img-fluid" do %>
-      <%= image_tag menu.menu_image, size:"200x150" %><br>
-      <%= menu.member.name %><br>
-      <%= menu.date %>
+<div class="col-md-4 mb-3">
+  <div class="text-center card h-100">
+    <%= link_to admin_menu_path(menu), class: "link-card" do %>
+      <%= image_tag menu.menu_image, class: "card-img-top" %>
     <% end %>
-    <div>
-      <span>
-        <i class="fas fa-heart fa-2x" style="color:palevioletred;"></i>
-        <%= menu.favorites.count %>
-      </span>
-      <span>
-        <%= link_to admin_menu_path(menu) do %>
-          <i class="fas fa-comment fa-2x ml-3 mr-1" style="color:lightsteelblue;"></i><%= menu.menu_comments.count %>
+    <%= link_to admin_menu_path(menu), class: "link-card" do %>
+        <div class="card-title">
+          <%= menu.member.name %><br>
+          <%= menu.date %>
+        </div>
+    <% end %>
+    <div class="card-title">
+      <div>
+        <span>
+          <i class="fas fa-heart fa-2x" style="color:palevioletred;"></i>
+            <%= menu.favorites.count %>
+        </span>
+        <span>
+          <%= link_to admin_menu_path(menu) do %>
+            <i class="fas fa-comment fa-2x ml-3 mr-1" style="color:lightsteelblue;"></i><%= menu.menu_comments.count %>
+          <% end %>
+        </span>
+      </div>
+      <div>
+        <% menu.tags.each do |tag| %>
+          <span class="badge badge-info"><%= tag.name %></span><br>
         <% end %>
-      </span>
-    </div>
-    <div>
-      <% menu.tags.each do |tag| %>
-        <span class="badge badge-info"><%= tag.name %></span><br>
-      <% end %>
+      </div>
     </div>
   </div>
+</div>
 <% end %>
-
+</div>
+<%# param_nameで現在のタブのページネーションを使うように指定している %>
+<%# params: {tab :tab}でGetparameterを付与している %>
 <%= paginate menus, param_name: param_name, params: {tab: tab} %>
