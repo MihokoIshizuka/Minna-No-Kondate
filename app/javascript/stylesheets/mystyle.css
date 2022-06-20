@@ -260,26 +260,32 @@ footer {
 .menu-content-box {
   position: relative;
   background-color: #eaf4fc;
-  border-radius: 10%;
+  border-radius: 2%;
   padding: 10px;
 }
 
+.menu-comment-icon {
+  width: 30%;
+  padding: 10px 0;
+}
+
 .menu-comment-content {
-  position: relative;
+  padding: 10px;
   background-color: #fcfceb;
   border-radius: 10%;
+  width: 70%;
 }
 
 .menu-comment-delete {
-  position: absolute;
-  right: 18px;
-  bottom: 12px;
+  position: relative;
+  right: 10px;
 }
+
 
 .menu-edit {
   position: absolute;
-  right: 18px;
-  bottom: 12px;
+  right: 10px;
+  bottom: 10px;
 
 }
 
@@ -322,13 +328,13 @@ footer {
 .favorite-index {
   border: solid 1px #db7093;
   background-color: #FFF;
-  color: #dbafbe;
+  color: #db7093;
 }
 
 .favorite-index:hover {
   border: solid 1px #db7093;
-  background-color: #FFF;
-  color: #db7093;
+  background-color: #db7093;
+  color: #FFF;
 }
 
 .favorite-menu-index {
@@ -379,12 +385,31 @@ footer {
   border: dashed 5px #d3d6dd;
 }
 
-/*会員一覧*/
+@media screen and (max-width: 480px) {
+	/* 480px以下に適用されるCSS（スマホ用） */
+.group-chat-content-owner {
+  width: 70%;
+  background-color: #f5ecf4;
+  border-radius: 5%;
+  padding: 0 5px;
+}
+
+.group-chat-content-others {
+  width: 70%;
+  background-color: #ebf4f5;
+  border-radius: 5%;
+  padding: 0 5px;
+}
+
+}
+
+/*会員一覧・献立一覧のカード*/
 .card {
  border: solid 1px #6c9bd2;
  border-radius: 1%;
- background-color: #fafdff;
+ background-color: #fff;
  transition:box-shadow 0.3s, transform 0.3s;
+ padding: 10px 0;
 }
 
 .card:hover {

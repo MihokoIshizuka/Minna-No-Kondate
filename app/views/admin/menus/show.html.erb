@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row justify-content-around">
-    <div class="col-md-5">
+    <div class="col-md-6 text-center">
       <%= image_tag @menu.menu_image, size:"400x350", class: 'img-fluid' %>
     </div>
     <div class="col-md-6 menu-content-box">
@@ -12,27 +12,25 @@
         <%= @menu.time_zone_i18n %>ごはん
         (<%= @menu.date %>)
       </div>
-      <div class="row">
+      <p>
         <% @menu.tags.each do |tag| %>
           <span class="badge badge-info ml-2"><%= tag.name %></span>
         <% end %>
-      </div>
-      <div class="row">
+      </p>
+      <p>
         <div class="col-md-12 mx-auto mt-3">
           <!--内容を改行表示できる-->
           <%= simple_format(@menu.body) %>
         </div>
-      </div>
+      </p>
 
-      <div class="row justify-content-end">
-        <div class="col-md-2 text-center menu-edit">
-          <%= link_to "編集", edit_admin_menu_path(@menu) %>
-        </div>
-      </div>
+      <p class="menu-edit">
+        <%= link_to "編集", edit_admin_menu_path(@menu) %>
+      </p>
     </div>
   </div>
   <!--コメント非同期部分-->
-  <div class="row justify-content-around">
+  <div class="row justify-content-center">
     <div class="col-md-3 text-center mt-5">
       <%= form_with model: [@menu, @menu_comment], url: admin_menu_menu_comments_path(@menu), method: :post, local: false do |f| %>
         <%= f.label :コメント %><br>

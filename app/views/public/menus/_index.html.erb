@@ -1,7 +1,7 @@
 <% menus.each do |menu| %>
-  <div class="col-md-4 mb-2 text-center menus_item">
-    <%= link_to menu_path(menu), class: "img-fluid" do %>
-      <%= image_tag menu.menu_image, size:"200x150" %><br>
+  <div class="col-md-3 mb-2 mx-4 text-center card h-100">
+    <%= link_to menu_path(menu), class: "link-card" do %>
+      <%= image_tag menu.menu_image, size:"200x150", class: "img-fluid" %><br>
       <%= menu.member.name %><br>
       <%= menu.date %>
     <% end %>

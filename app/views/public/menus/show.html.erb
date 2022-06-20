@@ -1,6 +1,6 @@
 <div class="container">
-  <div class="row justify-content-around">
-    <div class="col-md-5">
+  <div class="row justidy-content-center">
+    <div class="col-md-6 text-center">
       <%= image_tag @menu.menu_image, size:"400x350", class: 'img-fluid' %>
     </div>
     <div class="col-md-6 menu-content-box">
@@ -12,36 +12,33 @@
         <%= @menu.time_zone_i18n %>ごはん
         (<%= @menu.date %>)
       </div>
-      <div class="row">
+      <p>
         <% @menu.tags.each do |tag| %>
           <span class="badge badge-info ml-2"><%= tag.name %></span>
         <% end %>
-      </div>
-      <div class="row">
+      </p>
+      <p>
         <div class="col-md-12 mx-auto mt-3">
           <!--内容を改行表示できる-->
           <%= simple_format(@menu.body) %>
         </div>
-      </div>
-
-      <div class="row justify-content-end">
-        <div class="col-md-2 text-center menu-edit">
-          <% if @menu.member == current_member %>
-            <%= link_to "編集", edit_menu_path(@menu) %>
-          <% end %>
-        </div>
-      </div>
+      </p>
+      <p class="menu-edit">
+        <% if @menu.member == current_member %>
+          <%= link_to "編集", edit_menu_path(@menu) %>
+        <% end %>
+      </p>
     </div>
   </div>
   <!--コメント非同期部分-->
-  <div class="row justify-content-around">
-    <div class="col-md-3 text-center mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-5 text-center mt-5">
       <%= form_with model: [@menu, @menu_comment], url: menu_menu_comments_path(@menu), method: :post, local: false do |f| %>
         <%= f.text_area :comment, rows: "5" %><br>
         <%= f.submit "コメントする", class: "btn btn-info" %>
       <% end %>
     </div>
-    <div id="menu_comments_area", class="col-md-7 mt-3">
+    <div id="menu_comments_area", class="col-md-7 col-xs-12 mt-3">
       <%= render 'public/menu_comments/menu_comments', menu: @menu %>
     </div>
   </div>
