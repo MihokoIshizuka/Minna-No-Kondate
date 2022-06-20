@@ -46,7 +46,7 @@ class Public::MembersController < ApplicationController
     @member = Member.find(params[:member_id])
     favorites = Favorite.where(member_id: @member.id).pluck(:menu_id)
     favorite_menus = Menu.find(favorites)
-    @favorite_menus = Kaminari.paginate_array(favorite_menus).page(params[:favorite_menus]).per(3)
+    @favorite_menus = Kaminari.paginate_array(favorite_menus).page(params[:page]).per(3)
   end
 
   private
