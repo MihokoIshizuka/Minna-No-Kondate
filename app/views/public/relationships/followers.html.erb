@@ -12,7 +12,7 @@
           <h3 class="mt-3">現在フォロワーはいません</h3>
         <% else %>
           <%= render 'public/members/index', members: @members %>
-          <P><%= paginate @members %></P>
+          <%= paginate @members %>
         <% end %>
       </div>
     </div>

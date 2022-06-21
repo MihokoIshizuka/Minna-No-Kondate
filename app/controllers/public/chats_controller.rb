@@ -5,6 +5,7 @@ class Public::ChatsController < ApplicationController
   def index
     @group = Group.find(params[:group_id])
     @chats = @group.chats.all
+    @chat = current_member.chats.new
   end
 
   def create

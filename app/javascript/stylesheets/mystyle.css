@@ -412,6 +412,7 @@ footer {
 .members-card-box {
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
 }
 
 .card-image {
@@ -430,4 +431,10 @@ font-size: 20px;
 font-weight: bold;
 text-decoration: none;
 color: #2a4073;
+}
+
+/*退会後の会員のintro*/
+.deleted-member {
+  font-weight: bold;
+  color: red;
 }
