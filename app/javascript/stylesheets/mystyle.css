@@ -208,44 +208,6 @@ footer {
 }
 
 
-/*タブメニュー*/
-.tab-list {
-  display: flex;
-  justify-content: space-around;
-  text-align: center;
-}
-
-.tab {
-  width: 100%;
-  padding: 10px;
-  cursor: pointer;
-  border-left: solid 1px #CCC;
-  border-bottom: solid 1px #CCC;
-}
-
-.tab:first-child {
-  border-left: none;
-}
-
-.tab-active {
-  color: #FFF;
-  font-weight: bold;
-  font-size: large;
-  background: #4682b4;
-  transition: all 0.2s ease-in-out;
-}
-
-.tabbox {
-  display: none;
-  padding: 15px;
-}
-
-.box-show {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0 5px;
-  justify-content: center;
-}
 
 /*献立新規入力画面*/
 .time_zone_button {
@@ -386,17 +348,20 @@ footer {
 }
 
 
+/*退会後の会員のintro*/
+.deleted-member {
+  font-weight: bold;
+  color: red;
+}
 
 /*会員一覧・献立一覧のカード*/
 .card {
  border: solid 1px #6c9bd2;
- border-radius: 1%;
+ border-radius: 2%;
  background-color: #fff;
  transition:box-shadow 0.3s, transform 0.3s;
- padding: 10px 0 0;
+ padding: 5px;
 }
-
-
 
 
 .card:hover {
@@ -412,18 +377,7 @@ footer {
 .members-card-box {
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
-}
-
-.card-image {
-  background-size: cover;
-  width: 150px;
-  height:150px;
-}
-
-.card-img-top {
-  height: 200px;
-  width: 90%;
+  width:100%;
 }
 
 .card-member-name {
@@ -433,8 +387,41 @@ text-decoration: none;
 color: #2a4073;
 }
 
-/*退会後の会員のintro*/
-.deleted-member {
+/*タブメニュー*/
+.tab-list {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.tab {
+  width: 100%;
+  padding: 10px;
+  cursor: pointer;
+  border-left: solid 1px #CCC;
+  border-bottom: solid 1px #CCC;
+}
+
+.tab:first-child {
+  border-left: none;
+}
+
+.tab-active {
+  color: #FFF;
   font-weight: bold;
-  color: red;
+  font-size: large;
+  background: #4682b4;
+  transition: all 0.2s ease-in-out;
+}
+
+.tabbox {
+  display: none;
+  padding: 5px;
+}
+
+.box-show {
+  display: flex;
+  flex-wrap: wrap;
+  /*margin: 0 5px;*/
+  /*justify-content: center;*/
 }

@@ -47,8 +47,9 @@ class Member < ApplicationRecord
   end
 
 
-  def get_profile_image
+  def get_profile_image(width, height)
     (profile_image.attached?) ? profile_image : 'no_image.jpg'
+    profile_image.veriant(resize_to_fill: [width, height]).processed
   end
 
 

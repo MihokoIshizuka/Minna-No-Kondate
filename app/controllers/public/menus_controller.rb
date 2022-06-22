@@ -17,10 +17,10 @@ class Public::MenusController < ApplicationController
   end
 
   def index
-    @morning_menus = Tag.search_menu_on_tags(params[:tag_id], 0).page(params[:morning_menus]).per(6)
-    @noon_menus = Tag.search_menu_on_tags(params[:tag_id], 1).page(params[:noon_menus]).per(6)
-    @evening_menus = Tag.search_menu_on_tags(params[:tag_id], 2).page(params[:evening_menus]).per(6)
-    @snack_menus = Tag.search_menu_on_tags(params[:tag_id], 3).page(params[:snack_menus]).per(6)
+    @morning_menus = Tag.search_menu_on_tags(params[:tag_id], 0).page(params[:morning_menus]).per(12)
+    @noon_menus = Tag.search_menu_on_tags(params[:tag_id], 1).page(params[:noon_menus]).per(12)
+    @evening_menus = Tag.search_menu_on_tags(params[:tag_id], 2).page(params[:evening_menus]).per(12)
+    @snack_menus = Tag.search_menu_on_tags(params[:tag_id], 3).page(params[:snack_menus]).per(12)
   end
 
   def show
