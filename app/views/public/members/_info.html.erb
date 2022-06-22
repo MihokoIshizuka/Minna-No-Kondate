@@ -1,12 +1,12 @@
 <div class="row justify-content-center info-icon-box">
   <div class="mx-auto mb-3">
-    <%= image_tag member.profile_image, size:"150x150" %>
+    <%= image_tag member.get_profile_image, size:"150x150" %>
   </div>
 </div>
 <table class="table">
   <tr>
     <th>name</th>
-    <td><%= member.name %></td>
+    <td style="font-weight:bold;"><%= member.name %></td>
   </tr>
   <tr>
     <th>intro</th>

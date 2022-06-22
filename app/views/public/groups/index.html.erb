@@ -13,31 +13,27 @@
         <% end %>
       </div>
   </div>
-  <div class="row justify-content-center">
-    <div class="col-md-12">
-      <div class="row members-card-box ml-md-5">
-        <% @groups.each do |group| %>
-          <div class="col-md-4 mb-3">
-            <div class="card h-100">
-              <%= link_to group_path(group), class: "link-card" do %>
-                <p class="mx-auto my-2" style="text-align:center;"><%= image_tag group.get_image, class: "card-image img-fluid" %></p>
-                <p class="text-center card-member-name"><%= group.name %></p>
-                <p class="text-center mt-3">
-                  <% group.tags.each do |tag| %>
-                    <span class="badge badge-info"><%= tag.name %></span><br>
-                  <% end %>
-                </p>
+  <div class="row members-card-box mx-auto" style="width:100%">
+    <% @groups.each do |group| %>
+      <div class="col-md-3 mb-3">
+        <div class="card h-100">
+          <%= link_to group_path(group), class: "link-card" do %>
+            <p class="mx-auto my-2" style="text-align:center;"><%= image_tag group.get_image, class: "card-img-top" %></p>
+            <p class="text-center card-member-name"><%= group.name %></p>
+            <p class="text-center mt-3">
+              <% group.tags.each do |tag| %>
+                <span class="badge badge-info"><%= tag.name %></span><br>
               <% end %>
-              <p class="text-center">
-                <% if group.owner_id == current_member.id %>
-                  <%= link_to "編集", edit_group_path(group), class: "btn btn-sm btn-outline-success" %>
-                <% end %>
-              </p>
-            </div>
-          </div>
-        <% end %>
+            </p>
+          <% end %>
+          <p class="text-center">
+            <% if group.owner_id == current_member.id %>
+              <%= link_to "編集", edit_group_path(group), class: "btn btn-sm btn-outline-success" %>
+            <% end %>
+          </p>
+        </div>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>
 <%= paginate @groups %>

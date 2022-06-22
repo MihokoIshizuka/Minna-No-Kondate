@@ -380,11 +380,27 @@ footer {
   width:100%;
 }
 
+.card-img-top {
+  height: 170px;
+}
+
+@media screen and (max-width:480px) {
+.sm-card-image {
+  width: 50%;
+}
+.card-img-top {
+  height: 140px;
+}
+.sm-card-content {
+  width: 50%;
+}
+}
+
 .card-member-name {
-font-size: 20px;
+font-size: 18px;
 font-weight: bold;
 text-decoration: none;
-color: #2a4073;
+color: #191970;
 }
 
 /*タブメニュー*/
