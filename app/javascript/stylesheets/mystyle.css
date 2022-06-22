@@ -438,6 +438,4 @@ color: #191970;
 .box-show {
   display: flex;
   flex-wrap: wrap;
-  /*margin: 0 5px;*/
-  /*justify-content: center;*/
 }
