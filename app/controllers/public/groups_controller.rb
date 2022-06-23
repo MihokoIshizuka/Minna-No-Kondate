@@ -3,7 +3,7 @@ class Public::GroupsController < ApplicationController
   before_action :ensure_correct_member, only: [:edit, :update]
 
   def index
-    @groups = Tag.search_group_on_tags(params[:tag_id]).page(params[:page]).per(6)
+    @groups = Tag.search_group_on_tags(params[:tag_id]).page(params[:page]).per(8)
   end
 
   def show
