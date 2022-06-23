@@ -439,3 +439,8 @@ color: #191970;
   display: flex;
   flex-wrap: wrap;
 }
+
+.info-box {
+  background-color: rgba(164, 198, 255, 0.2);
+  border-radius: 2px;
+}
