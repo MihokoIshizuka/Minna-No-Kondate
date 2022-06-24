@@ -25,6 +25,12 @@
         <li class="nav-item">
           <%= link_to "ログアウト", destroy_member_session_path, method: :delete, class: "header_btn" %>
         </li>
+        <li class="nav-item">
+          <%= link_to member_notifications_path(current_member) do %>
+            <i class="fas fa-bell fa-2x ml-2" style="color:lightsteelblue;"></i>
+          <% end %>
+        </li>
+
       </ul>
     </div>
   </div>

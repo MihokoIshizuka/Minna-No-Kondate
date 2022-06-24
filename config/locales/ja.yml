@@ -13,3 +13,30 @@ ja:
       first: "最初"
       last: "最後"
       truncate: "..."
+  activerecord:
+    attributes:
+      member:
+        name: "名前"
+        email: "メール"
+        password: "パスワード"
+        password_confirmation: "パスワード（確認）"
+        introduction: "紹介文"
+      menu:
+        date: "日付"
+        body: "内容"
+        menu_image: "献立画像"
+        tag_ids: "タグ"
+      group:
+        name: "グループ名"
+        introduction: "グループ紹介"
+        tag_ids: "タグ"
+      contact:
+        message: "メッセージ"
+      chat:
+        message: "メッセージ"
+    models:
+      member: "会員"
+      menu: "献立"
+      group: "グループ"
+      chat: "チャット"
+      contact: "お問い合わせ"

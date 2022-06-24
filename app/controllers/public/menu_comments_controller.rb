@@ -4,7 +4,9 @@ class Public::MenuCommentsController < ApplicationController
     @menu = Menu.find(params[:menu_id])
     @menu_comment = current_member.menu_comments.new(menu_comment_params)
     @menu_comment.menu_id = @menu.id
-    unless @menu_comment.save
+    if @menu_comment.save
+      @menu.create_notification_menu_comment!(current_member, @menu_comment.id)
+    else
       render 'public/menus/show'
     end
   end

@@ -1,0 +1,43 @@
+<% visiter = notification.visiter %>
+<% visited = notification.visited %>
+<% menu = notification.menu %>
+
+<div class="col-md-8 mx-auto">
+  <form class="form-inline">
+    <span>
+      <%= link_to member_path(visiter) do %>
+        <%= image_tag visiter.get_profile_image, class: "icon_mini" %>
+        <strong><%= visiter.name %></strong>
+      <% end %>
+    </span>
+    さんが
+    <% case notification.action %>
+      <% when 'follow' then %>
+        あなたをフォローしました
+      <% when 'favorite' then %>
+        <%= link_to "あなたの投稿", notification.menu, style: "font-weight: bold;" %>
+        にいいねしました
+      <% when 'menu_comment' then %>
+        <!--コメントが自分の投稿に対するものだったら-->
+        <% if notification.menu.member_id == visited.id %>
+          <%= link_to "あなたの投稿", notification.menu, style: "font-weight: bold;" %>
+        <!--コメントが他者の投稿に対するものだったら-->
+        <% else %>
+          <span>
+            <%= link_to menu_path(notification.menu) do %>
+              <%= image_tag notification.menu.member.get_profile_image, class: "icon_mini" %>
+              <strong>
+                <%= notificatoin.menu.member.name %>さんの投稿
+              </strong>
+          </span>
+          にコメントしました
+        <% end %>
+        <p class="text-muted mb-0">
+          <%= Comment.find_by(id: notification.menu_comment_id).menu_comment %>
+        </p>
+    <% end %>
+    <div class="small text-muted text-right">
+      <%= time_ago_in_words(notificaiton.created_at).upcase %>
+    </div>
+  </form>
+</div>
