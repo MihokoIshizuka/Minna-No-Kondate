@@ -4,41 +4,30 @@
     <div class="col-md-10 text-center">
       <h2><%= @group.name %></h2>
       <p><%= @group.introduction %></p>
+      <div class="row justify-content-center mb-3">
+        <div class="col-md-3">
+          <% if @group.members.include?(current_member) %>
+            <%= link_to "グループチャット", group_chats_path(@group), class: "btn btn-lg btn-primary" %>
+          <% end %>
+        </div>
+      </div>
       <div class="row justify-content-end">
         <div class="col-md-3 mr-2">
           <% unless @group.owner_id == current_member.id %>
             <% if @group.members.include?(current_member) %>
-              <%= link_to "グループを退会", group_path(@group), method: :delete, class: "btn btn-danger" %>
+              <%= link_to "グループを退会", group_path(@group), method: :delete, class: "btn btn-outline-danger" %>
             <% else %>
               <%= link_to "グループに参加", group_join_path(@group), class: "btn btn-info" %>
             <% end %>
           <% end %>
         </div>
-        <div class="col-md-3 mr-3">
-          <% if @group.members.include?(current_member) %>
-            <%= link_to "グループチャット", group_chats_path(@group), class: "btn btn-outline-primary" %>
-          <% end %>
-        </div>
       </div>
       <div class="row  members-card-box mx-auto group-member-index">
         <% @members.each do |member| %>
-          <div class="col-md-6 mb-3">
-            <%= link_to member_path(member), class: "link-card" do %>
-              <div class="card mx-sm-auto">
-                <div class="row">
-                  <div class="col-md-6 sm-card-image">
-                    <%= image_tag member.get_profile_image, class: "card-img-top mx-auto" %>
-                  </div>
-                  <div class="col-md-5 sm-card-content">
-                    <p class="text-center mt-3 card-title card-member-name"><%= member.name %></p>
-                    <p class="text-center mt-3">
-                      <% member.tags.each do |tag| %>
-                        <span class="badge img-fluid badge-info"><%= tag.name %></span><br>
-                      <% end %>
-                    </p>
-                  </div>
-                </div>
-              </div>
+          <div class="col-md-2 mb-3">
+            <%= link_to member_path(member) do %>
+              <%= image_tag member.get_profile_image, size:"80x80", style:"border-radius:50%;" %><br>
+              <%= member.name %>
             <% end %>
           </div>
         <% end %>

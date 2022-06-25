@@ -38,7 +38,7 @@ th, td {
 
 header {
   width: 100%;
-  border-bottom: solid 2px #6c9bd2;
+  border-bottom: groove 3px #6c9bd2;
 }
 
 main {
@@ -50,7 +50,7 @@ footer {
   margin-top: auto;
   width: 100%;
   text-align: center;
-  border-top: solid 2px #6c9bd2;
+  border-top: groove 3px #6c9bd2;
   line-height: 3;
 }
 
@@ -71,6 +71,7 @@ footer {
     background-position: center;
     width: 900px;
     height: 600px;
+    box-shadow:0 6px 14px rgba(0, 0, 0, 0.24);
 }
 
 .main-visual-content {
@@ -179,6 +180,7 @@ footer {
   background-repeat: no-repeat;
   background-size: cover;
   height: 600px;
+  box-shadow:0 6px 14px rgba(0, 0, 0, 0.24);
 }
 
 .about-content {
@@ -187,6 +189,7 @@ footer {
   left: -30px;
   background-color: rgba(137, 195, 235, 0.3);
   margin-bottom: 50px;
+  box-shadow:0 6px 14px rgba(0, 0, 0, 0.24);
 }
 
 .about-content-title {
@@ -206,7 +209,6 @@ footer {
     margin-bottom: 0;
   }
 }
-
 
 
 /*献立新規入力画面*/
