@@ -26,22 +26,17 @@ class Menu < ApplicationRecord
     favorites.exists?(member_id: member.id)
   end
 
-  def create_notification_favorite!(current_member)
-    # すでにいいねされているかを確認する
-    temp = Notification.where(["visiter_id = ? and visited_id = ? and menu_id = ? and action = ?", current_member.id, member_id, id, 'favorite'])
-    # いいねされていない場合にのみ通知レコードを作成する
-    if temp.blank?
-      notification = current_member.active_notifications.new(
-        menu_id: id,
-        visited_id: member_id,
-        action: 'favorite'
-      )
-      # 自分の投稿へのいいねは通知済とする
-      if notification.visiter_id == notification.visited_id
-        notification.chacked = true
-      end
-      notification.save if notification.valid?
+  def create_notification_by(current_member)
+    notification = current_member.active_notifications.new(
+      menu_id: id,
+      visited_id: member_id,
+      action: 'favorite'
+    )
+    # 自分の投稿へのいいねは通知済とする・自分の投稿はいいねできない
+    if notification.visiter_id == notification.visited_id
+      notification.chacked = true
     end
+    notification.save if notification.valid?
   end
 
   def create_notification_menu_comment!(current_member, menu_comment_id)

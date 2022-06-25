@@ -4,8 +4,8 @@ class Public::FavoritesController < ApplicationController
   def create
     @menu = Menu.find(params[:menu_id])
     favorite = current_member.favorites.new(menu_id: @menu.id)
+    @menu.create_notification_by(current_member)
     favorite.save
-    menu.create_notification_favorite!(current_member)
   end
 
   def destroy

@@ -5,7 +5,7 @@
 <div class="col-md-8 mx-auto">
   <div class="user-view clearfix">
     <%= link_to member_path(visiter) do %>
-      <%= image_tag visiter.get_profile_image, size:"80x80" %>
+      <%= image_tag visiter.get_profile_image, size:"50x50", style:"border-radius:50%;" %>
     <% end %>
     <%= notification_form(notification) %><span class="moderate-font"><%= "（#{time_ago_in_words(notification.created_at)} 前）" %></span>
     <br>
