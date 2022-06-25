@@ -3,14 +3,12 @@
 <% menu = notification.menu %>
 
 <div class="col-md-8 mx-auto">
-  <div class="user-view clearfix">
-    <%= link_to member_path(visiter) do %>
-      <%= image_tag visiter.get_profile_image, size:"50x50", style:"border-radius:50%;" %>
-    <% end %>
-    <%= notification_form(notification) %><span class="moderate-font"><%= "（#{time_ago_in_words(notification.created_at)} 前）" %></span>
-    <br>
-    <% if !@menu_comment.nil? %>
-      <p class="moderate-font text-center" style="color: #C0C0C0;"><%= @menu_comment %></p>
-    <% end %>
-  </div>
+  <%= link_to member_path(visiter) do %>
+    <%= image_tag visiter.get_profile_image, size:"50x50", style:"border-radius:50%;" %>
+  <% end %>
+  <%= notification_form(notification) %><span class="moderate-font"><%= "（#{time_ago_in_words(notification.created_at)} 前）" %></span>
+  <br>
+  <% if !@menu_comment.nil? %>
+    <p class="moderate-font text-center" style="color: #C0C0C0;"><%= @menu_comment %></p>
+  <% end %>
 </div>
