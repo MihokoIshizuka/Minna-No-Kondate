@@ -1,5 +1,5 @@
 <%= form_with url: search_path, local: true, method: :get, class: "search-window text-center" do |f| %>
-  <%= f.text_field :word, placeholder: "会員・献立・キーワードで検索" %>
+  <%= f.text_field :word, placeholder: "会員・献立・キーワードで検索", required: true %>
   <%= f.button :submit do %>
     <i class="fas fa-search"></i>
   <% end %>

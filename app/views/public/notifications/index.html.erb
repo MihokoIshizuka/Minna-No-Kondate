@@ -3,15 +3,14 @@
     <h4 class="my-3">通知</h4>
   </div>
   <div class="row">
-    <%= link_to member_notifications_all_destroy_path(current_member), method: :delete do %>
+    <%= link_to member_notifications_destroy_all_path(current_member), method: :delete do %>
       <i class="fas fa-trash" style="color:steelblue;"></i>
       <h7 style="color:steelblue">すべて削除する</h7>
     <% end %>
   </div>
   <div class="row justify-content-center">
-    <% notifications = @notifications.where.not(visiter_id: current_member.id) %>
-    <% if notifications.exists? %>
-      <%= render 'public/notifications/notification' %>
+    <% if @notifications.exists? %>
+      <%= render partial: 'public/notifications/notification', collection: @notifications %>
     <% else %>
       <p>通知はありません</p>
     <% end %>

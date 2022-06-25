@@ -45,13 +45,8 @@ class Menu < ApplicationRecord
   end
 
   def create_notification_menu_comment!(current_member, menu_comment_id)
-    # 自分以外にコメントしている人を全て取得し、全員に通知を送る
-    temp_ids = MenuComment.select(:member_id).where(menu_id: id).where.not(member_id: current_member.id).distinct
-    temp_ids.each do |temp_id|
-      save_notification_menu_comment!(current_member, menu_comment_id, temp_id['member_id'])
-    end
-    # まだ誰もコメントしていない場合は投稿者に通知を送る
-    save_notification_menu_comment!(current_member, menu_comment_id, member_id) if temp_ids.blank?
+    # 投稿者に通知を送る
+    save_notification_menu_comment!(current_member, menu_comment_id, member_id)
   end
 
   def save_notification_menu_comment!(current_member, menu_comment_id, visited_id)
@@ -60,7 +55,7 @@ class Menu < ApplicationRecord
       menu_id: id,
       menu_comment_id: menu_comment_id,
       visited_id: visited_id,
-      action: 'menu_commment'
+      action: 'menu_comment'
     )
     # 自分の投稿に対するコメントは通知済とする
     if notification.visiter_id == notification.visited_id

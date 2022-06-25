@@ -3,12 +3,9 @@
 <% menu = notification.menu %>
 
 <div class="col-md-8 mx-auto">
-  <%= link_to member_path(notification.visiter) do %>
-    <%= image_tag visiter.member.get_image, size:"80x80" %>
-  <% end %>
   <div class="user-view clearfix">
     <%= link_to member_path(visiter) do %>
-      <%= image_tag visiter.get_profile_image, class: "icon_mini" %>
+      <%= image_tag visiter.get_profile_image, size:"80x80" %>
     <% end %>
     <%= notification_form(notification) %><span class="moderate-font"><%= "（#{time_ago_in_words(notification.created_at)} 前）" %></span>
     <br>
