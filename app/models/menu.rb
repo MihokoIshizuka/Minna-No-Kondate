@@ -32,9 +32,9 @@ class Menu < ApplicationRecord
       visited_id: member_id,
       action: 'favorite'
     )
-    # 自分の投稿へのいいねは通知済とする・自分の投稿はいいねできない
+    # 自分の投稿へのいいねは通知済とする
     if notification.visiter_id == notification.visited_id
-      notification.chacked = true
+      notification.checked = true
     end
     notification.save if notification.valid?
   end

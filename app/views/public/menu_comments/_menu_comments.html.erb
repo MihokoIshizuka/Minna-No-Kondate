@@ -5,12 +5,12 @@
       <!--会員がコメントしていたら-->
       <% unless menu_comment.member_id.nil? %>
         <%= link_to member_path(menu_comment.member) do %>
-          <%= image_tag menu_comment.member.get_profile_image, size:"65x65", class: 'img-fluid rounded' %><br>
+          <%= image_tag menu_comment.member.get_profile_image, size:"65x65", style:"border-radius:50%;" %><br>
           <%= menu_comment.member.name %>
         <% end %>
       <!--管理者がコメントしていたら-->
       <% else %>
-        <%= image_tag 'admin.png', size:"65x65", class: 'img-fluid' %>
+        <%= image_tag 'admin.png', size:"65x65", style:"border-radius:50%;" %>
       <% end %>
     </div>
     <div class="menu-comment-content">

@@ -7,9 +7,9 @@ module Public::NotificationsHelper
     # actionがfollowかfavoriteかcommentか
     case notification.action
       when "follow" then
-        tag.a(notification.visiter.name, href:member_path(@visiter), style:"font-weight: bold;")+"があなたをフォローしました"
+        tag.a(@visiter.name, href:member_path(@visiter), style:"font-weight: bold;")+"があなたをフォローしました"
       when "favorite" then
-        tag.a(notification.visiter.name, href:member_path(@visiter), style:"font-weight: bold;")+"が"+tag.a('あなたの投稿', href:menu_path(notification.menu_id), style:"font-weight: bold;")+"にいいねしました"
+        tag.a(@visiter.name, href:member_path(@visiter), style:"font-weight: bold;")+"が"+tag.a('あなたの投稿', href:menu_path(notification.menu_id), style:"font-weight: bold;")+"にいいねしました"
       when "menu_comment" then
         @menu_comment = MenuComment.find_by(id: @visiter_menu_comment)&.comment
         tag.a(@visiter.name, href:member_path(@visiter), style:"font-weight: bold;")+"が"+tag.a('あなたの投稿', href:menu_path(notification.menu_id), style:"font-weight: bold;")+"にコメントしました"
