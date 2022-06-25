@@ -15,49 +15,7 @@
   </div>
   <div class="row justify-content-center">
     <div id="contact_chat", class="col-md-8">
-      <% @contacts.each do |contact| %>
-        <% if contact.source == 'member' %>
-          <div class="row group-chat-box justify-content-end">
-            <div class="group-chat-content-owner">
-              <%= contact.created_at.strftime('%Y/%m/%d') %>
-              <p>
-                <%= simple_format(contact.message) %>
-              </p>
-              <% if contact.image_url != nil %>
-                <p>
-                  <div class="group-chat-content-image text-center">
-                    <%= image_tag contact.image_url, size:"120x120" %>
-                  </div>
-                </p>
-              <% end %>
-            </div>
-            <div class="group-chat-icon-owner text-center">
-              <%= image_tag contact.member.get_profile_image, size:"50x50", class: "group-chat-icon" %><br>
-              <%= contact.member.name %>
-            </div>
-          </div>
-        <% else %>
-          <div class="row group-chat-box">
-            <div class="group-chat-icon-others text-center">
-              <%= image_tag 'admin.png', size:"50x50", class: "group-chat-icon" %><br>
-              管理者
-            </div>
-            <div class="group-chat-content-others">
-              <%= contact.created_at.strftime('%Y/%m/%d') %>
-              <p>
-                <%= simple_format(contact.message) %>
-              </p>
-              <% if contact.image_url != nil %>
-              <P>
-                <div class="group-chat-content-image text-center">
-                  <%= image_tag contact.image_url, size:"150x150" %>
-                </div>
-              </P>
-              <% end %>
-            </div>
-          </div>
-        <% end %>
-      <% end %>
+      <%= render 'public/contacts/contact', contacts: @contacts %>
     </div>
   </div>
   <div class="row justify-content-center">

@@ -11,11 +11,8 @@ class Public::ContactsController < ApplicationController
     @contact = current_member.contacts.new(contact_params)
     @contact.admin_id = Admin.first.id
     @contact.source = 'member'
-     @contact.save
-     redirect_to request.referer
-    # unless @contact.save
-    #   render 'show', alert: "お問い合わせが送信できませんでした"
-    # end
+    @contact.save
+    # redirect_to request.referer
     @contacts = current_member.contacts.all
   end
 
