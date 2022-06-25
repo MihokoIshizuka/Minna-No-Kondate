@@ -27,7 +27,10 @@
         </li>
         <li class="nav-item">
           <%= link_to member_notifications_path(current_member) do %>
-            <i class="fas fa-bell fa-2x ml-2" style="color:lightsteelblue;"></i>
+            <i class="fas fa-bell fa-2x ml-3" style="color:lightsteelblue;"></i>
+          <% end %>
+          <% if unchecked_notifications.any? %>
+            <i class="fa fa-circle fa-xs" style="color:steelblue;"></i>
           <% end %>
         </li>
 
