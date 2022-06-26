@@ -20,11 +20,11 @@ import '@fortawesome/fontawesome-free/js/all'
 
 
 Rails.start()
-Turbolinks.start()
+// Turbolinks.start()
 ActiveStorage.start()
 
 /* global $*/
-$(document).on('turbolinks:load', function() {
+$(function() {
   /*
     ---
     タブの初期値制御
@@ -49,8 +49,6 @@ $(document).on('turbolinks:load', function() {
     タブの表示制御
     ---
   */
-
-  $(function() {
     $('.tab').click(function(){
       // .tab-active自身のクラスを削除
       $('.tab-active').removeClass('tab-active');
@@ -63,7 +61,6 @@ $(document).on('turbolinks:load', function() {
       // .tabboxで(1)で算出した場所の.tabboxにbox-showを付与
       $('.tabbox').eq(index).addClass('box-show');
     });
-  });
 
   /*
     ---
@@ -84,9 +81,5 @@ $(document).on('turbolinks:load', function() {
       not.attr("disabled",false); // チェックボックス有効化
     }
   });
+   $('.flash').slideUp(4000);
 });
-
-$(function(){
-  $('.flash').slideUp(4000);
-});
-

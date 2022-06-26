@@ -27,21 +27,26 @@ class Menu < ApplicationRecord
   end
 
   def create_notification_by(current_member)
-    notification = current_member.active_notifications.new(
-      menu_id: id,
-      visited_id: member_id,
-      action: 'favorite'
-    )
+    temp = Notification.where(["visiter_id = ? and visited_id = ? and menu_id = ? and action = ? ", current_member.id, member_id, id, 'favorite'])
+    if temp.blank?
+      notification = current_member.active_notifications.new(
+        menu_id: id,
+        visited_id: member_id,
+        action: 'favorite'
+      )
     # 自分の投稿へのいいねは通知済とする
-    if notification.visiter_id == notification.visited_id
-      notification.checked = true
+      if notification.visiter_id == notification.visited_id
+        notification.checked = true
+      end
+      notification.save if notification.valid?
     end
-    notification.save if notification.valid?
   end
 
   def create_notification_menu_comment!(current_member, menu_comment_id)
     # 投稿者に通知を送る
-    save_notification_menu_comment!(current_member, menu_comment_id, member_id)
+    if self.member_id != current_member.id
+      save_notification_menu_comment!(current_member, menu_comment_id, member_id)
+    end
   end
 
   def save_notification_menu_comment!(current_member, menu_comment_id, visited_id)

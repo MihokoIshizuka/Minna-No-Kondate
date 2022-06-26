@@ -7,10 +7,10 @@
           <%= simple_format(contact.message) %>
         </p>
         <% if contact.image_url != nil %>
-          <p>
-            <div class="group-chat-content-image text-center">
-              <%= image_tag contact.image_url, size:"120x120" %>
-            </div>
+          <p class="text-center">
+            <%= link_to contact.image_url, "data-lightbox": contact.image_url do %>
+              <%= image_tag contact.image_url,size:"150x150", class:"img"%>
+            <% end %>
           </p>
         <% end %>
       </div>
@@ -31,11 +31,11 @@
           <%= simple_format(contact.message) %>
         </p>
         <% if contact.image_url != nil %>
-        <P>
-          <div class="group-chat-content-image text-center">
-            <%= image_tag contact.image_url, size:"150x150" %>
-          </div>
-        </P>
+        <p class="text-center">
+          <%= link_to contact.image_url, "data-lightbox": contact.image_url do %>
+            <%= image_tag contact.image_url,size:"150x150", class:"img"%>
+          <% end %>
+        </p>
         <% end %>
       </div>
     </div>

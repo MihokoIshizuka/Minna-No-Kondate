@@ -1,13 +1,12 @@
 class Public::NotificationsController < ApplicationController
 
   def index
-    notifications = current_member.passive_notifications
+    @notifications = current_member.passive_notifications
 
     # まだ確認していない通知のみ
-    notifications.where(checked: false).each do |notification|
+    @notifications.where(checked: false).each do |notification|
       notification.update(checked: true)
     end
-    @notifications = notifications.where.not(visiter_id: current_member.id)
 
   end
 

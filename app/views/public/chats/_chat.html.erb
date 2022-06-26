@@ -11,10 +11,10 @@
             <%= simple_format(chat.message) %>
           </p>
           <% if chat.image_url != nil %>
-            <p>
-              <div class="group-chat-content-image text-center">
-                <%= image_tag chat.image_url, size:"120x120" %>
-              </div>
+            <p class="text-center">
+              <%= link_to chat.image_url, "data-lightbox": chat.image_url do %>
+                <%= image_tag chat.image_url,size:"150x150", class:"img" %>
+              <% end %>
             </p>
           <% end %>
           <p class="group-chat-content-owner-delete text-right">
@@ -44,10 +44,10 @@
           <%= simple_format(chat.message) %>
         </p>
         <% if chat.image_url != nil %>
-          <p>
-            <div class="group-chat-content-image text-center">
-              <%= image_tag chat.image_url, size:"120x120" %>
-            </div>
+          <p class="text-center">
+            <%= link_to chat.image_url, "data-lightbox": chat.image_url do %>
+              <%= image_tag chat.image_url,size:"150x150", class:"img"%>
+            <% end %>
           </p>
         <% end %>
       </div>
