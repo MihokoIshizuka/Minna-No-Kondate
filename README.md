@@ -53,5 +53,11 @@ https://docs.google.com/spreadsheets/d/1yhBjdU9gkk8SjL0r0ClrLwF9YXjWjMks_X_MsTvc
 - IDE：Cloud9
 
 ## 使用素材
+・Google Fonts
+https://fonts.google.com/
 
-使用検討中です。
+・LOGO MAKER
+https://logo-maker.stores.jp/
+
+・photo AC
+https://www.photo-ac.com/

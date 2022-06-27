@@ -2,7 +2,7 @@
   <div class="row justify-content-center">
     <div class="col-7">
       <%= form_with model: @tag, url: admin_tags_path, method: :post do |f| %>
-        <table class="table text-center tag-form">
+        <table class="table text-center tag-form table-borderless">
           <tr>
             <th>タグ名</th>
             <td><%= f.text_field :name %></td>
@@ -13,7 +13,7 @@
 
       <div class="row justify-content-center">
         <div class="col-7">
-          <table class="table ">
+          <table class="table">
             <thead class="text-center">
               <tr>
                 <th>タグ</th>
