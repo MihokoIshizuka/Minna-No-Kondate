@@ -2,12 +2,12 @@ class Admin::GroupsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @groups = Tag.search_group_on_tags(params[:tag_id]).page(params[:page]).per(3)
+    @groups = Tag.search_group_on_tags(params[:tag_id]).page(params[:page]).per(8)
   end
 
   def show
     @group = Group.find(params[:id])
-    @members = @group.members.page(params[:page]).per(3).order(created_at: :desc)
+    @members = @group.members.page(params[:page]).per(12).order(created_at: :desc)
   end
 
   def edit

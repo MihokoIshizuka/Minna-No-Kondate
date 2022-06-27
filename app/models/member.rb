@@ -49,6 +49,7 @@ class Member < ApplicationRecord
   end
 
   def create_notification_follow!(current_member)
+    # 通知の中から自分が会員にしたフォローを探す＝何度フォローしても通知は1回にする
     temp = Notification.where(["visiter_id = ? and visited_id = ? and action = ?", current_member.id, id, 'follow'])
     if temp.blank?
       notification = current_member.active_notifications.new(
@@ -62,7 +63,6 @@ class Member < ApplicationRecord
 
   def get_profile_image
     (profile_image.attached?) ? profile_image : 'no_image.jpg'
-    # profile_image.veriant(resize_to_fill: [width, height]).processed
   end
 
 

@@ -4,6 +4,7 @@ class Public::FavoritesController < ApplicationController
   def create
     @menu = Menu.find(params[:menu_id])
     favorite = current_member.favorites.new(menu_id: @menu.id)
+    # 投稿者が自分の投稿にいいねしても通知を作らないようにする
     if @menu.member_id != current_member.id
       @menu.create_notification_by(current_member)
     end

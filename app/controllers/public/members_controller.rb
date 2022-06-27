@@ -54,6 +54,7 @@ class Public::MembersController < ApplicationController
     params.require(:member).permit(:name, :introduction, :profile_image, tag_ids: [])
   end
 
+  # ゲストユーザは編集・退会動作ができないようにする
   def ensure_normal_member
     @member = Member.find(params[:id])
     if @member.email == "guest@example.com"

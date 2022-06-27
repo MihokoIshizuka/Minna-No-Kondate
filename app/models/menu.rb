@@ -27,6 +27,7 @@ class Menu < ApplicationRecord
   end
 
   def create_notification_by(current_member)
+    # 通知の中から自分がしたいいねを探す＝同じ投稿に何度いいねしても通知は1回にする
     temp = Notification.where(["visiter_id = ? and visited_id = ? and menu_id = ? and action = ? ", current_member.id, member_id, id, 'favorite'])
     if temp.blank?
       notification = current_member.active_notifications.new(
