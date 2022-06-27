@@ -3,9 +3,9 @@
     <div class="col-md-6 mb-3">
       <%= link_to member_path(member), class: "link-card" do %>
         <div class="card mx-sm-auto">
-          <div class="row">
+          <div class="row justify-content-center">
             <div class="col-md-6 sm-card-image">
-              <%= image_tag member.get_profile_image, class: "card-img-top mx-auto" %>
+              <%= image_tag member.get_profile_image, class: "card-img-top" %>
             </div>
             <div class="col-md-5 sm-card-content">
               <p class="text-center mt-3 card-title card-member-name"><%= member.name %></p>

@@ -1,17 +1,20 @@
-<table class="table">
+<table class="table table-borderless">
   <tr>
-    <th>Follow</th>
     <td>
-      <%= link_to member_followings_path(member) do %>
-        <%= member.followings.count %>
-      <% end %>
+      <strong>
+        <%= link_to member_followings_path(member) do %>
+          <%= member.followings.count %> フォロー
+        <% end %>
+      </strong>
     </td>
-
-    <th>Follower</th>
+  </tr>
+  <tr>
     <td>
-      <%= link_to member_followers_path(member) do %>
-        <%= member.followers.count %>
-      <% end %>
+      <strong>
+        <%= link_to member_followers_path(member) do %>
+          <%= member.followers.count %> フォロワー
+        <% end %>
+      </strong>
     </td>
   </tr>
 </table>

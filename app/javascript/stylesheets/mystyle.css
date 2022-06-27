@@ -11,6 +11,8 @@ th, td {
 }
 
 
+
+
 /*フラッシュメッセージ*/
 .flash {
   width: 100%;
@@ -233,9 +235,18 @@ footer {
   border-radius: 2%;
   padding: 10px;
 }
+@media screen and (max-width:480px) {
+.menu-content-box {
+  position: relative;
+  background-color: #eaf4fc;
+  border-radius: 2%;
+  padding: 10px;
+  margin: 5px 15px;
+}
+}
 
 .menu-comment-icon {
-  width: 30%;
+  width: 20%;
   padding: 10px 0;
 }
 

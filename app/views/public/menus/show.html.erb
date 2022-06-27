@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row justidy-content-center">
-    <div class="col-md-6 text-center">
+    <div class="col-md-5 text-center">
       <%= image_tag @menu.get_menu_image(400,350), class: 'img-fluid' %>
     </div>
-    <div class="col-md-6 menu-content-box">
+    <div class="col-md-7 menu-content-box">
       <div class="row justify-content-center">
         <%= link_to member_path(@menu.member) do %>
           <%= @menu.member.name %>

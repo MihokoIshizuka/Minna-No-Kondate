@@ -36,7 +36,14 @@
 ・食事に関する相談や情報共有を、同じ悩みを持つ他者としたい時<br>
 
 ## 設計書
-<...>
+・ER図
+https://app.diagrams.net/?pages=1&sketch=1#G1zFdh_8PL-fkfH_NDAOsC6-BL54yZ5rjA
+
+・テーブル設計書
+https://docs.google.com/spreadsheets/d/1Ev8WF7p_0wALJ2o5rae5M2MaHGl7R66Dj79WmR_n0Fw/edit#gid=1373217982
+
+・アプリケーション詳細設計書
+https://docs.google.com/spreadsheets/d/1yhBjdU9gkk8SjL0r0ClrLwF9YXjWjMks_X_MsTvcoBE/edit#gid=1031934256
 
 ## 開発環境
 - OS：Linux(CentOS)
