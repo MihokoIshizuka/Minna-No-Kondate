@@ -37,7 +37,7 @@
 
 ## 設計書
 ・ER図
-https://app.diagrams.net/?pages=1&sketch=1#G1zFdh_8PL-fkfH_NDAOsC6-BL54yZ5rjA
+file:///C:/Users/micob/Downloads/%E3%81%BF%E3%82%93%E3%81%AA%E3%81%AE%E7%8C%AE%E7%AB%8B.drawio.pdf
 
 ・テーブル設計書
 https://docs.google.com/spreadsheets/d/1Ev8WF7p_0wALJ2o5rae5M2MaHGl7R66Dj79WmR_n0Fw/edit#gid=1373217982
