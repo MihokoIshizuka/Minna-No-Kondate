@@ -1,9 +1,7 @@
 <div class="container px-3 py-3 info-box">
   <div class="row justify-content-center info-icon-box">
-    <div class="mx-auto mb-1">
-      <%= image_tag member.get_profile_image, size:"150x150" %>
-    </div>
     <div class="text-center mb-1">
+      <%= image_tag member.get_profile_image, size:"150x150" %><br>
       <% member.tags.each do |tag| %>
         <span class="badge img-fluid badge-primary"><%= tag.name %></span><br>
       <% end %>
