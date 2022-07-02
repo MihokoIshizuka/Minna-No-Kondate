@@ -14,8 +14,16 @@ class Menu < ApplicationRecord
   validates :body, presence: true
   validates :menu_image, presence: true
   validates :tag_ids, presence: true
+  validate :menu_image_type
+
 
   enum time_zone: { morning: 0, noon: 1, evening: 2, snack: 3 }
+
+  def menu_image_type
+    if !menu_image.blob.content_type.in?(%('image/jpeg image/png'))
+      errors.add(:menu_image, 'はjpegまたはpng形式でアップロードしてください')
+    end
+  end
 
   def get_menu_image(width, height)
     menu_image.variant(resize_to_fill: [width, height]).processed
