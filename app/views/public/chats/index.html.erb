@@ -12,6 +12,7 @@
         <%= f.text_area :message, name: 'chat[message]' %>
       </div>
       <div class="form-group">
+        <%= f.label :"画像はjpegかpngの形式でアップロードしてください", style:"color:red;" %><br>
         <%= f.file_field :image, accept: 'image/*', name: 'chat[image]' %>
       </div>
       <div class="form-group">
