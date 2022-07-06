@@ -66,6 +66,11 @@ footer {
   font-weight: bold
 }
 
+.n-circle {
+  position: absolute;
+  padding-bottom: 1px;
+}
+
 /*トップ画面*/
 .main-visual {
     background-image: url('../images/main-visual.png');
