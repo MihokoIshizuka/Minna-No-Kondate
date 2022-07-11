@@ -1,24 +1,24 @@
 <div class="container px-3 py-3 info-box">
   <div class="row justify-content-center info-icon-box">
     <div class="text-center mb-1">
-      <%= image_tag member.get_profile_image, size:"150x150" %><br>
+      <%= image_tag member.get_profile_image, size:"150x150" %>
+    </div>
+  </div>
+  <div class="row justify-content-center py-2" style="font-weight:bold;">
+    <%= member.name %>
+  </div>
+  <div class="row justify-content-center">
+    <% if member.is_deleted == true %>
+      <p class="deleted-member">この会員は退会しています</p>
+    <% else %>
+      <p><%= simple_format(member.introduction) %></p>
+    <% end %>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-md-8 text-center">
       <%= render 'public/shared/tag', obj: member %>
     </div>
   </div>
-  <table class="table">
-    <tr>
-      <th>name</th>
-      <td style="font-weight:bold;"><%= member.name %></td>
-    </tr>
-    <tr>
-      <th>intro</th>
-      <% if member.is_deleted == true %>
-        <td class="deleted-member">この会員は退会しています</td>
-      <% else %>
-        <td><%= simple_format(member.introduction) %></td>
-      <% end %>
-    </tr>
-  </table>
   <div id="relationships">
     <%= render 'public/relationships/relationships', member: member %>
   </div>

@@ -1,24 +1,16 @@
-<table class="table table-borderless">
-  <tr>
-    <td>
-      <strong>
-        <%= link_to member_followings_path(member) do %>
-          <%= member.followings.count %> フォロー
-        <% end %>
-      </strong>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <strong>
-        <%= link_to member_followers_path(member) do %>
-          <%= member.followers.count %> フォロワー
-        <% end %>
-      </strong>
-    </td>
-  </tr>
-</table>
-<div class="row justify-content-center">
+<div class="row">
+  <div class="col-md-6 text-center" style="font-weight:bold;">
+    <%= link_to member_followings_path(member) do %>
+      <%= member.followings.count %><br>フォロー
+    <% end %>
+  </div>
+  <div class="col-md-6 text-center" style="font-weight:bold;">
+    <%= link_to member_followers_path(member) do %>
+      <%= member.followers.count %><br>フォロワー
+    <% end %>
+  </div>
+</div>
+<div class="row justify-content-center pt-3">
   <% unless member == current_member || member.email == "guest@example.com" %>
     <% if current_member.following?(member) %>
       <%= link_to "フォロー外す", member_relationships_path(member), method: :delete, remote: true, class: "btn btn-outline-danger" %>
