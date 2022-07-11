@@ -9,9 +9,9 @@
   </div>
   <div class="row justify-content-center">
     <% if member.is_deleted == true %>
-      <p class="deleted-member">この会員は退会しています</p>
+      <div class="deleted-member">この会員は退会しています</div>
     <% else %>
-      <p><%= simple_format(member.introduction) %></p>
+      <div class="text-center"><%= simple_format(member.introduction) %></div>
     <% end %>
   </div>
   <div class="row justify-content-center">
