@@ -2,9 +2,7 @@
   <div class="row justify-content-center info-icon-box">
     <div class="text-center mb-1">
       <%= image_tag member.get_profile_image, size:"150x150" %><br>
-      <% member.tags.each do |tag| %>
-        <span class="badge img-fluid badge-primary"><%= tag.name %></span><br>
-      <% end %>
+      <%= render 'public/shared/tag', obj: member %>
     </div>
   </div>
   <table class="table">
