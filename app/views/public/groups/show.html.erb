@@ -24,12 +24,14 @@
       </div>
       <div class="row  members-card-box mx-auto group-member-index">
         <% @members.each do |member| %>
-          <div class="col-md-2 mb-3">
-            <%= link_to member_path(member) do %>
-              <%= image_tag member.get_profile_image, size:"80x80", style:"border-radius:50%;" %><br>
-              <%= member.name %>
-            <% end %>
-          </div>
+          <% if member.is_deleted != true %>
+            <div class="col-md-2 mb-3">
+              <%= link_to member_path(member) do %>
+                <%= image_tag member.get_profile_image, size:"80x80", style:"border-radius:50%;" %><br>
+                <%= member.name %>
+              <% end %>
+            </div>
+          <% end %>
         <% end %>
         <%= paginate @members %>
       </div>

@@ -21,9 +21,7 @@
             <p class="mx-auto my-2" style="text-align:center;"><%= image_tag group.get_image, class: "card-img-top" %></p>
             <p class="text-center card-member-name"><%= group.name %></p>
             <p class="text-center mt-3">
-              <% group.tags.each do |tag| %>
-                <span class="badge badge-info"><%= tag.name %></span><br>
-              <% end %>
+              <%= render 'public/shared/tag', obj: group %>
             </p>
           <% end %>
           <p class="text-center">

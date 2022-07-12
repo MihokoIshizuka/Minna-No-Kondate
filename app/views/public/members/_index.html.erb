@@ -10,9 +10,7 @@
             <div class="col-md-5 sm-card-content">
               <p class="text-center mt-3 card-title card-member-name"><%= member.name %></p>
               <p class="text-center mt-3">
-                <% member.tags.each do |tag| %>
-                  <span class="badge img-fluid badge-info"><%= tag.name %></span><br>
-                <% end %>
+                <%= render 'public/shared/tag', obj: member %>
               </p>
             </div>
           </div>

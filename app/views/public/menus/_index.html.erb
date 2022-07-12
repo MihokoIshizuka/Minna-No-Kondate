@@ -24,9 +24,7 @@
               </span>
             </div>
             <div>
-              <% menu.tags.each do |tag| %>
-                <span class="badge badge-info"><%= tag.name %></span><br>
-              <% end %>
+              <%= render 'public/shared/tag', obj: menu %>
             </div>
           </div>
         </div>
