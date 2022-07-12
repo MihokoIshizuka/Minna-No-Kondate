@@ -10,39 +10,39 @@
       <div class="container">
         <div class="row favorite-menu-index justify-content-center">
           <% @favorite_menus.each do |menu| %>
-            <div class="col-md-4 mb-3">
-              <div class="text-center card h-100">
-                <%= link_to menu_path(menu), class: "link-card" do %>
-                  <%= image_tag menu.get_menu_image(200,200), class: "img-fluid" %>
-                <% end %>
-                <%= link_to menu_path(menu), class: "link-card" do %>
-                    <div class="card-title">
-                      <%= menu.member.name %><br>
-                      <%= menu.date %>
+            <% if menu.member.is_deleted != true %>
+              <div class="col-md-4 mb-3">
+                <div class="text-center card h-100">
+                  <%= link_to menu_path(menu), class: "link-card" do %>
+                    <%= image_tag menu.get_menu_image(200,200), class: "img-fluid" %>
+                  <% end %>
+                  <%= link_to menu_path(menu), class: "link-card" do %>
+                      <div class="card-title">
+                        <%= menu.member.name %><br>
+                        <%= menu.date %>
+                      </div>
+                  <% end %>
+                  <div class="card-title">
+                    <div>
+                      <span id="favorite_buttons_<%= menu.id %>">
+                        <%= render "public/favorites/favorites", menu: menu %>
+                      </span>
+                      <span>
+                        <%= link_to menu_path(menu) do %>
+                          <i class="fas fa-comment fa-2x ml-3 mr-1" style="color:lightsteelblue;"></i><%= menu.menu_comments.count %>
+                        <% end %>
+                      </span>
                     </div>
-                <% end %>
-                <div class="card-title">
-                  <div>
-                    <span id="favorite_buttons_<%= menu.id %>">
-                      <%= render "public/favorites/favorites", menu: menu %>
-                    </span>
-                    <span>
-                      <%= link_to menu_path(menu) do %>
-                        <i class="fas fa-comment fa-2x ml-3 mr-1" style="color:lightsteelblue;"></i><%= menu.menu_comments.count %>
-                      <% end %>
-                    </span>
-                  </div>
-                  <div>
-                    <% menu.tags.each do |tag| %>
-                      <span class="badge badge-info"><%= tag.name %></span><br>
-                    <% end %>
+                    <div>
+                      <%= render 'public/shared/tag', obj: menu %>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            <% end %>
           <% end %>
-        <%= paginate @favorite_menus %>
         </div>
+        <%= paginate @favorite_menus %>
       </div>
     </div>
   </div>
