@@ -67,4 +67,5 @@ group :production do
   gem 'mysql2'
 end
 gem "mini_magick"
-
+gem 'rubocop', require:false
+gem 'rubocop-rails', require:false
