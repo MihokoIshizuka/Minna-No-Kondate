@@ -18,8 +18,12 @@ class Menu < ApplicationRecord
 
 
   enum time_zone: { morning: 0, noon: 1, evening: 2, snack: 3 }
-
   def menu_image_type
+    # menu_imageのデータが空の時は処理を抜ける
+    if menu_image.blob.nil?
+      errors.add(:menu_image, 'が入力されていないです。')
+      return
+    end
     if !menu_image.blob.content_type.in?(%('image/jpeg image/png'))
       errors.add(:menu_image, 'はjpegまたはpng形式でアップロードしてください')
     end
