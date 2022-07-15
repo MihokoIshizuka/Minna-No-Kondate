@@ -21,7 +21,7 @@ class Menu < ApplicationRecord
   def menu_image_type
     # menu_imageのデータが空の時は処理を抜ける
     if menu_image.blob.nil?
-      errors.add(:menu_image, 'が入力されていないです。')
+      errors.add(:menu_image, 'が入力されていません。')
       return
     end
     if !menu_image.blob.content_type.in?(%('image/jpeg image/png'))
