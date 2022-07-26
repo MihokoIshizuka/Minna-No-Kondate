@@ -13,33 +13,74 @@
         <div class="col-md-9">
           <%= render 'public/members/index', members: @members %>
         </div>
-      <% else %>
+      <% elsif @members == [] %>
         <div class="col-md-9 search-result">
           <% @menus.each do |menu| %>
-          <div class="col-md-3 mb-2">
-            <div class="card h-100 text-center">
-                <%= link_to menu_path(menu), class: "link-card" do %>
-                  <%= image_tag menu.get_menu_image(200,200), class: "img-fluid" %><br>
-                  <%= menu.member.name %><br>
-                  <%= menu.date %>
-                <% end %>
-              <div>
-                <span id="favorite_buttons_<%= menu.id %>">
-                  <%= render "public/favorites/favorites", menu: menu %>
-                </span>
-                <span>
-                  <%= link_to menu_path(menu) do %>
-                    <i class="fas fa-comment fa-2x ml-3 mr-1" style="color:lightsteelblue;"></i><%= menu.menu_comments.count %>
+            <div class="col-md-3 mb-2">
+              <div class="card h-100 text-center">
+                  <%= link_to menu_path(menu), class: "link-card" do %>
+                    <%= image_tag menu.get_menu_image(200,200), class: "img-fluid" %><br>
+                    <%= menu.member.name %><br>
+                    <%= menu.date %>
                   <% end %>
-                </span>
-              </div>
-              <div>
-                <% menu.tags.each do |tag| %>
-                  <span class="badge badge-info"><%= tag.name %></span>
-                <% end %>
+                <div>
+                  <span id="favorite_buttons_<%= menu.id %>">
+                    <%= render "public/favorites/favorites", menu: menu %>
+                  </span>
+                  <span>
+                    <%= link_to menu_path(menu) do %>
+                      <i class="fas fa-comment fa-2x ml-3 mr-1" style="color:lightsteelblue;"></i><%= menu.menu_comments.count %>
+                    <% end %>
+                  </span>
+                </div>
+                <div>
+                  <% menu.tags.each do |tag| %>
+                    <span class="badge badge-info"><%= tag.name %></span>
+                  <% end %>
+                </div>
               </div>
             </div>
-          </div>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="row members-card-box mx-auto">
+          <% @members.each do |member| %>
+            <% if member.is_deleted != true %>
+              <div class="col-md-2 mb-3 text-center">
+                <%= link_to member_path(member) do %>
+                  <%= image_tag member.get_profile_image, size:"80x80", style:"border-radius:50%;" %><br>
+                  <%= member.name %>
+                <% end %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="col-md-9 search-result">
+          <% @menus.each do |menu| %>
+            <div class="col-md-3 mb-2">
+              <div class="card h-100 text-center">
+                  <%= link_to menu_path(menu), class: "link-card" do %>
+                    <%= image_tag menu.get_menu_image(200,200), class: "img-fluid" %><br>
+                    <%= menu.member.name %><br>
+                    <%= menu.date %>
+                  <% end %>
+                <div>
+                  <span id="favorite_buttons_<%= menu.id %>">
+                    <%= render "public/favorites/favorites", menu: menu %>
+                  </span>
+                  <span>
+                    <%= link_to menu_path(menu) do %>
+                      <i class="fas fa-comment fa-2x ml-3 mr-1" style="color:lightsteelblue;"></i><%= menu.menu_comments.count %>
+                    <% end %>
+                  </span>
+                </div>
+                <div>
+                  <% menu.tags.each do |tag| %>
+                    <span class="badge badge-info"><%= tag.name %></span>
+                  <% end %>
+                </div>
+              </div>
+            </div>
           <% end %>
         </div>
       <% end %>
