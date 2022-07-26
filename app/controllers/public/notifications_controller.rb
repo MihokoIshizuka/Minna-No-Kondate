@@ -4,9 +4,7 @@ class Public::NotificationsController < ApplicationController
     @notifications = current_member.passive_notifications
 
     # まだ確認していない通知のみ
-    @notifications.where(checked: false).each do |notification|
-      notification.update(checked: true)
-    end
+    @notifications.where(checked: false).update_all(checked: true)
 
   end
 
