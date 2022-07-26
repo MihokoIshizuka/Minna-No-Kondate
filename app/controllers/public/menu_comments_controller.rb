@@ -14,7 +14,9 @@ class Public::MenuCommentsController < ApplicationController
   def destroy
     @menu = Menu.find(params[:menu_id])
     @menu_comment = MenuComment.find(params[:id])
-    @menu_comment.destroy
+    if @menu_comment.member.id == current_member.id
+      @menu_comment.destroy
+    end
   end
 
   private

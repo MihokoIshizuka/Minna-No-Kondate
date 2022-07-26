@@ -31,7 +31,7 @@
   </div>
   <!--コメント非同期部分-->
   <div class="row justify-content-center">
-    <div class="col-md-3 text-center mt-5">
+    <div class="col-md-5 text-center mt-5">
       <%= form_with model: [@menu, @menu_comment], url: admin_menu_menu_comments_path(@menu), method: :post, local: false do |f| %>
         <%= f.label :コメント %><br>
         <%= f.text_area :comment, rows: "5" %><br>

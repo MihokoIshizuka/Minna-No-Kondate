@@ -21,7 +21,10 @@ class Public::ChatsController < ApplicationController
 
   def destroy
     @group = Group.find(params[:group_id])
-    Chat.find(params[:id]).destroy
+    @chat = Chat.find(params[:id])
+    if @chat.member.id == current_member.id
+      @chat.destroy
+    end
     @chats = @group.chats.all
   end
 

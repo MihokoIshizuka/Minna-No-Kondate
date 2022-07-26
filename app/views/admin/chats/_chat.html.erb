@@ -9,7 +9,6 @@
         <% end %>
       </div>
       <div class="group-chat-content-others">
-        <%= chat.created_at.strftime('%Y/%m/%d') %>
         <p>
           <!--メッセージ改行表示できる-->
           <%= simple_format(chat.message) %>
@@ -23,7 +22,8 @@
             </p>
           </p>
         <% end %>
-        <p class="group-chat-content-owner-delete text-right">
+        <p class="text-right">
+          <%= chat.created_at.strftime('%Y/%m/%d') %><br>
           <%= link_to "削除", admin_group_chat_path(chat.group.id, chat), method: :delete, remote: true %>
         </p>
       </div>
@@ -32,7 +32,6 @@
   <% else %>
     <div class="row group-chat-box justify-content-end">
       <div class="group-chat-content-owner">
-        <%= chat.created_at.strftime('%Y/%m/%d') %>
         <p>
           <!--メッセージ改行表示できる-->
           <%= simple_format(chat.message) %>
@@ -44,7 +43,8 @@
             <% end %>
           </p>
         <% end %>
-        <p class="group-chat-content-owner-delete text-right">
+        <p class="text-right">
+          <%= chat.created_at.strftime('%Y/%m/%d') %><br>
           <%= link_to "削除", admin_group_chat_path(chat.group.id, chat), method: :delete, remote: true %>
         </p>
       </div>
