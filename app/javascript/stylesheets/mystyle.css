@@ -256,6 +256,7 @@ footer {
 }
 
 .menu-comment-content {
+  position: relative;
   padding: 10px;
   background-color: #fcfceb;
   border-radius: 10%;
@@ -263,8 +264,9 @@ footer {
 }
 
 .menu-comment-delete {
-  position: relative;
-  right: 10px;
+  position: absolute;
+  bottom: 5px;
+  right: 20px;
 }
 
 
